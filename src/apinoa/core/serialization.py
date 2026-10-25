@@ -48,8 +48,10 @@ def _get_cached_type_hints(expected_type: typing.Any) -> typing.Dict[str, typing
 def _resolve_type_hints(expected_type: typing.Any) -> typing.Dict[str, typing.Any]:
     try:
         return typing_extensions.get_type_hints(expected_type, include_extras=True)
-    except NameError:
-        # The type contains a circular reference, so we use the __annotations__ attribute directly.
+    except (NameError, TypeError):
+        # NameError: the type contains a circular reference. TypeError: an annotation uses syntax this
+        # Python can't evaluate (pydantic's own ConfigDict uses `X | None`, which fails on 3.9). Either
+        # way, use the __annotations__ attribute directly.
         return getattr(expected_type, "__annotations__", {})
 
 

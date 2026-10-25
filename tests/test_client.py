@@ -127,3 +127,16 @@ async def test_async_client() -> None:
     c = AsyncApinoa(api_key="k", base_url="https://api.test", httpx_client=httpx.AsyncClient(transport=httpx.MockTransport(fake)))
     res = await c.tiktok.profile(username="nasa")
     assert res.data.handle == "nasa"
+
+
+def test_a_social_page_serializes_to_json() -> None:
+    post = {"platform": "x", "id": "1", "url": "https://x.com/a/status/1", "text": "hi", "createdAt": "2026-10-20T23:24:11Z",
+            "author": {"platform": "x", "handle": "a"}, "metrics": {"likes": 2, "views": 30},
+            "media": [{"type": "image", "url": "https://cdn/i.jpg", "variants": [{"url": "https://cdn/i-s.jpg"}]}]}
+    fake = Fake(lambda r, n: ok({"platform": "x", "items": [post], "cursor": "c2"}))
+    res = client(fake).x.posts(username="a")
+    for dumped in (json.loads(res.model_dump_json(by_alias=True)), res.model_dump(mode="json", by_alias=True), res.dict(by_alias=True)):
+        item = dumped["data"]["items"][0]
+        assert item["metrics"]["views"] == 30
+        assert item["media"][0]["variants"][0]["url"] == "https://cdn/i-s.jpg"
+    assert json.loads(res.model_dump_json(by_alias=True))["data"]["items"][0]["createdAt"].startswith("2026-10-20T23:24:11")

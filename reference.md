@@ -4079,7 +4079,7 @@ client.tiktok.profiles()
 <dl>
 <dd>
 
-**limit:** `typing.Optional[int]` — Items per page, 1–50.
+**limit:** `typing.Optional[int]` — Items per page, 1–30.
     
 </dd>
 </dl>
@@ -4285,7 +4285,7 @@ client.tiktok.posts()
 <dl>
 <dd>
 
-**limit:** `typing.Optional[int]` — Items per page, 1–50.
+**limit:** `typing.Optional[int]` — Items per page, 1–30.
     
 </dd>
 </dl>
@@ -4562,7 +4562,7 @@ client.tiktok.groups()
 <dl>
 <dd>
 
-**limit:** `typing.Optional[int]` — Items per page, 1–50.
+**limit:** `typing.Optional[int]` — Items per page, 1–30.
     
 </dd>
 </dl>

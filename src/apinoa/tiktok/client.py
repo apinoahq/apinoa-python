@@ -89,7 +89,7 @@ class TiktokClient:
             Which list: followers or following.
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -188,7 +188,7 @@ class TiktokClient:
             Default feed only: explore category id (default 120).
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -335,7 +335,7 @@ class TiktokClient:
             playlists (the only list TikTok has).
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -480,7 +480,7 @@ class AsyncTiktokClient:
             Which list: followers or following.
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -595,7 +595,7 @@ class AsyncTiktokClient:
             Default feed only: explore category id (default 120).
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -766,7 +766,7 @@ class AsyncTiktokClient:
             playlists (the only list TikTok has).
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.

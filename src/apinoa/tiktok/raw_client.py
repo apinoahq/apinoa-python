@@ -219,7 +219,7 @@ class RawTiktokClient:
             Which list: followers or following.
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -570,7 +570,7 @@ class RawTiktokClient:
             Default feed only: explore category id (default 120).
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -1091,7 +1091,7 @@ class RawTiktokClient:
             playlists (the only list TikTok has).
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -1595,7 +1595,7 @@ class AsyncRawTiktokClient:
             Which list: followers or following.
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -1946,7 +1946,7 @@ class AsyncRawTiktokClient:
             Default feed only: explore category id (default 120).
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -2467,7 +2467,7 @@ class AsyncRawTiktokClient:
             playlists (the only list TikTok has).
 
         limit : typing.Optional[int]
-            Items per page, 1–50.
+            Items per page, 1–30.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.

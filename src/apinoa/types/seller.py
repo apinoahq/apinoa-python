@@ -9,22 +9,22 @@ from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
 from .ext import Ext
 from .rating import Rating
-from .seller_detailed_ratings import SellerDetailedRatings
 
 
 class Seller(UncheckedBaseModel):
     id: typing.Optional[str] = None
     name: typing.Optional[str] = None
     url: typing.Optional[str] = None
+    logo_url: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="logoUrl"), pydantic.Field(alias="logoUrl")
+    ] = None
     rating: typing.Optional[Rating] = None
     country: typing.Optional[str] = None
-    detailed_ratings: typing_extensions.Annotated[
-        typing.Optional[SellerDetailedRatings],
-        FieldMetadata(alias="detailedRatings"),
-        pydantic.Field(alias="detailedRatings"),
-    ] = None
     positive_percent: typing_extensions.Annotated[
         typing.Optional[float], FieldMetadata(alias="positivePercent"), pydantic.Field(alias="positivePercent")
+    ] = None
+    product_count: typing_extensions.Annotated[
+        typing.Optional[int], FieldMetadata(alias="productCount"), pydantic.Field(alias="productCount")
     ] = None
     ext: typing.Optional[Ext] = None
 

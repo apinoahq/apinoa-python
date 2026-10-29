@@ -3,9 +3,7 @@
 import typing
 
 import pydantic
-import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
-from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
 
 
@@ -17,9 +15,6 @@ class PostMetrics(UncheckedBaseModel):
     reposts: typing.Optional[int] = None
     quotes: typing.Optional[int] = None
     saves: typing.Optional[int] = None
-    live_viewers: typing_extensions.Annotated[
-        typing.Optional[int], FieldMetadata(alias="liveViewers"), pydantic.Field(alias="liveViewers")
-    ] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

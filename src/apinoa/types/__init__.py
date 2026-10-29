@@ -20,6 +20,7 @@ if typing.TYPE_CHECKING:
     from .audio import Audio
     from .broadcast import Broadcast
     from .broadcast_status import BroadcastStatus
+    from .caption_track import CaptionTrack
     from .catalog import Catalog
     from .catalog_marketplaces_item import CatalogMarketplacesItem
     from .catalog_marketplaces_item_cost_value import CatalogMarketplacesItemCostValue
@@ -55,6 +56,7 @@ if typing.TYPE_CHECKING:
     from .identifiers import Identifiers
     from .in_reply_to import InReplyTo
     from .job import Job
+    from .job_apply_method import JobApplyMethod
     from .job_company import JobCompany
     from .job_page import JobPage
     from .job_page_items_item import JobPageItemsItem
@@ -70,6 +72,7 @@ if typing.TYPE_CHECKING:
     from .media_file import MediaFile
     from .media_file_encoding import MediaFileEncoding
     from .media_file_response import MediaFileResponse
+    from .media_tag import MediaTag
     from .media_variant import MediaVariant
     from .media_video import MediaVideo
     from .mention import Mention
@@ -77,6 +80,7 @@ if typing.TYPE_CHECKING:
     from .ocr_result import OcrResult
     from .ocr_result_response import OcrResultResponse
     from .offer import Offer
+    from .offer_unit_price import OfferUnitPrice
     from .option import Option
     from .option_value import OptionValue
     from .page import Page
@@ -98,10 +102,12 @@ if typing.TYPE_CHECKING:
     from .product_response import ProductResponse
     from .product_review_aspects_item import ProductReviewAspectsItem
     from .product_unit_price import ProductUnitPrice
+    from .protection_plan import ProtectionPlan
     from .rating import Rating
     from .review import Review
     from .review_page import ReviewPage
     from .review_page_response import ReviewPageResponse
+    from .review_page_review_aspects_item import ReviewPageReviewAspectsItem
     from .review_reply import ReviewReply
     from .search_item import SearchItem
     from .search_item_delivery_to import SearchItemDeliveryTo
@@ -111,7 +117,6 @@ if typing.TYPE_CHECKING:
     from .search_result import SearchResult
     from .search_result_response import SearchResultResponse
     from .seller import Seller
-    from .seller_detailed_ratings import SellerDetailedRatings
     from .shipping_option import ShippingOption
     from .shipping_quote import ShippingQuote
     from .shipping_quote_response import ShippingQuoteResponse
@@ -147,6 +152,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "Audio": ".audio",
     "Broadcast": ".broadcast",
     "BroadcastStatus": ".broadcast_status",
+    "CaptionTrack": ".caption_track",
     "Catalog": ".catalog",
     "CatalogMarketplacesItem": ".catalog_marketplaces_item",
     "CatalogMarketplacesItemCostValue": ".catalog_marketplaces_item_cost_value",
@@ -182,6 +188,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "Identifiers": ".identifiers",
     "InReplyTo": ".in_reply_to",
     "Job": ".job",
+    "JobApplyMethod": ".job_apply_method",
     "JobCompany": ".job_company",
     "JobPage": ".job_page",
     "JobPageItemsItem": ".job_page_items_item",
@@ -197,6 +204,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "MediaFile": ".media_file",
     "MediaFileEncoding": ".media_file_encoding",
     "MediaFileResponse": ".media_file_response",
+    "MediaTag": ".media_tag",
     "MediaVariant": ".media_variant",
     "MediaVideo": ".media_video",
     "Mention": ".mention",
@@ -204,6 +212,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "OcrResult": ".ocr_result",
     "OcrResultResponse": ".ocr_result_response",
     "Offer": ".offer",
+    "OfferUnitPrice": ".offer_unit_price",
     "Option": ".option",
     "OptionValue": ".option_value",
     "Page": ".page",
@@ -225,10 +234,12 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ProductResponse": ".product_response",
     "ProductReviewAspectsItem": ".product_review_aspects_item",
     "ProductUnitPrice": ".product_unit_price",
+    "ProtectionPlan": ".protection_plan",
     "Rating": ".rating",
     "Review": ".review",
     "ReviewPage": ".review_page",
     "ReviewPageResponse": ".review_page_response",
+    "ReviewPageReviewAspectsItem": ".review_page_review_aspects_item",
     "ReviewReply": ".review_reply",
     "SearchItem": ".search_item",
     "SearchItemDeliveryTo": ".search_item_delivery_to",
@@ -238,7 +249,6 @@ _dynamic_imports: typing.Dict[str, str] = {
     "SearchResult": ".search_result",
     "SearchResultResponse": ".search_result_response",
     "Seller": ".seller",
-    "SellerDetailedRatings": ".seller_detailed_ratings",
     "ShippingOption": ".shipping_option",
     "ShippingQuote": ".shipping_quote",
     "ShippingQuoteResponse": ".shipping_quote_response",
@@ -298,6 +308,7 @@ __all__ = [
     "Audio",
     "Broadcast",
     "BroadcastStatus",
+    "CaptionTrack",
     "Catalog",
     "CatalogMarketplacesItem",
     "CatalogMarketplacesItemCostValue",
@@ -333,6 +344,7 @@ __all__ = [
     "Identifiers",
     "InReplyTo",
     "Job",
+    "JobApplyMethod",
     "JobCompany",
     "JobPage",
     "JobPageItemsItem",
@@ -348,6 +360,7 @@ __all__ = [
     "MediaFile",
     "MediaFileEncoding",
     "MediaFileResponse",
+    "MediaTag",
     "MediaVariant",
     "MediaVideo",
     "Mention",
@@ -355,6 +368,7 @@ __all__ = [
     "OcrResult",
     "OcrResultResponse",
     "Offer",
+    "OfferUnitPrice",
     "Option",
     "OptionValue",
     "Page",
@@ -376,10 +390,12 @@ __all__ = [
     "ProductResponse",
     "ProductReviewAspectsItem",
     "ProductUnitPrice",
+    "ProtectionPlan",
     "Rating",
     "Review",
     "ReviewPage",
     "ReviewPageResponse",
+    "ReviewPageReviewAspectsItem",
     "ReviewReply",
     "SearchItem",
     "SearchItemDeliveryTo",
@@ -389,7 +405,6 @@ __all__ = [
     "SearchResult",
     "SearchResultResponse",
     "Seller",
-    "SellerDetailedRatings",
     "ShippingOption",
     "ShippingQuote",
     "ShippingQuoteResponse",

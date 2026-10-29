@@ -20,8 +20,8 @@ class CategoryNode(UncheckedBaseModel):
         typing.Optional[bool], FieldMetadata(alias="hasChildren"), pydantic.Field(alias="hasChildren")
     ] = None
     browsable: typing.Optional[bool] = None
-    product_count: typing_extensions.Annotated[
-        typing.Optional[int], FieldMetadata(alias="productCount"), pydantic.Field(alias="productCount")
+    image_url: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="imageUrl"), pydantic.Field(alias="imageUrl")
     ] = None
     ext: typing.Optional[Ext] = None
 

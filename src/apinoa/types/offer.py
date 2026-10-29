@@ -10,6 +10,7 @@ from ..core.unchecked_base_model import UncheckedBaseModel
 from .delivery_option import DeliveryOption
 from .ext import Ext
 from .money import Money
+from .offer_unit_price import OfferUnitPrice
 from .seller import Seller
 
 
@@ -31,6 +32,18 @@ class Offer(UncheckedBaseModel):
     ] = None
     status: typing.Optional[str] = None
     delivery: typing.Optional[DeliveryOption] = None
+    shipping_options: typing_extensions.Annotated[
+        typing.Optional[typing.List[DeliveryOption]],
+        FieldMetadata(alias="shippingOptions"),
+        pydantic.Field(alias="shippingOptions"),
+    ] = None
+    unit_price: typing_extensions.Annotated[
+        typing.Optional[OfferUnitPrice], FieldMetadata(alias="unitPrice"), pydantic.Field(alias="unitPrice")
+    ] = None
+    promotions: typing.Optional[typing.List[str]] = None
+    payment_options: typing_extensions.Annotated[
+        typing.Optional[typing.List[str]], FieldMetadata(alias="paymentOptions"), pydantic.Field(alias="paymentOptions")
+    ] = None
     ext: typing.Optional[Ext] = None
 
     if IS_PYDANTIC_V2:

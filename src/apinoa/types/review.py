@@ -14,6 +14,9 @@ from .review_reply import ReviewReply
 class Review(UncheckedBaseModel):
     id: typing.Optional[str] = None
     author: typing.Optional[str] = None
+    author_avatar_url: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="authorAvatarUrl"), pydantic.Field(alias="authorAvatarUrl")
+    ] = None
     rating: float
     title: typing.Optional[str] = None
     body: typing.Optional[str] = None
@@ -23,7 +26,25 @@ class Review(UncheckedBaseModel):
     helpful_count: typing_extensions.Annotated[
         typing.Optional[int], FieldMetadata(alias="helpfulCount"), pydantic.Field(alias="helpfulCount")
     ] = None
+    unhelpful_count: typing_extensions.Annotated[
+        typing.Optional[int], FieldMetadata(alias="unhelpfulCount"), pydantic.Field(alias="unhelpfulCount")
+    ] = None
+    recommended: typing.Optional[bool] = None
+    badges: typing.Optional[typing.List[str]] = None
+    syndicated_from: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="syndicatedFrom"), pydantic.Field(alias="syndicatedFrom")
+    ] = None
+    product_id: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="productId"), pydantic.Field(alias="productId")
+    ] = None
+    product_image_url: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="productImageUrl"), pydantic.Field(alias="productImageUrl")
+    ] = None
     variant: typing.Optional[str] = None
+    variant_id: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="variantId"), pydantic.Field(alias="variantId")
+    ] = None
+    language: typing.Optional[str] = None
     images: typing.List[str]
     incentivized: typing.Optional[bool] = None
     reply: typing.Optional[ReviewReply] = None

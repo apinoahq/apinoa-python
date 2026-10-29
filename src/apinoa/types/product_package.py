@@ -7,24 +7,14 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .ext import Ext
 
 
 class ProductPackage(UncheckedBaseModel):
-    length_cm: typing_extensions.Annotated[
-        typing.Optional[float], FieldMetadata(alias="lengthCm"), pydantic.Field(alias="lengthCm")
-    ] = None
-    width_cm: typing_extensions.Annotated[
-        typing.Optional[float], FieldMetadata(alias="widthCm"), pydantic.Field(alias="widthCm")
-    ] = None
-    height_cm: typing_extensions.Annotated[
-        typing.Optional[float], FieldMetadata(alias="heightCm"), pydantic.Field(alias="heightCm")
-    ] = None
     weight_kg: typing_extensions.Annotated[
         typing.Optional[float], FieldMetadata(alias="weightKg"), pydantic.Field(alias="weightKg")
     ] = None
-    sold_in_lot: typing_extensions.Annotated[
-        typing.Optional[bool], FieldMetadata(alias="soldInLot"), pydantic.Field(alias="soldInLot")
-    ] = None
+    ext: typing.Optional[Ext] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

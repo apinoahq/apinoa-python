@@ -41,7 +41,7 @@ class RedditClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AccountResponse:
         """
-        Returns `Account` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/reddit/profile
+        Returns `Account` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/reddit/profile
 
         Parameters
         ----------
@@ -412,7 +412,7 @@ class AsyncRedditClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AccountResponse:
         """
-        Returns `Account` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/reddit/profile
+        Returns `Account` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/reddit/profile
 
         Parameters
         ----------

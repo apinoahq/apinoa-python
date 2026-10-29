@@ -36,6 +36,7 @@ class Post(UncheckedBaseModel):
     edited_at: typing_extensions.Annotated[
         typing.Optional[dt.datetime], FieldMetadata(alias="editedAt"), pydantic.Field(alias="editedAt")
     ] = None
+    edited: typing.Optional[bool] = None
     lang: typing.Optional[str] = None
     media: typing.List[SocialMedia]
     metrics: typing.Optional[PostMetrics] = None

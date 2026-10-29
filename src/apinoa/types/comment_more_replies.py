@@ -9,7 +9,6 @@ from ..core.unchecked_base_model import UncheckedBaseModel
 
 class CommentMoreReplies(UncheckedBaseModel):
     count: typing.Optional[int] = None
-    ids: typing.Optional[typing.List[str]] = None
     cursor: typing.Optional[str] = None
     ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 

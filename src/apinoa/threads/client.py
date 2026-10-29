@@ -34,6 +34,7 @@ class ThreadsClient:
         *,
         username: typing.Optional[str] = None,
         user_id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AccountResponse:
         """
@@ -46,6 +47,9 @@ class ThreadsClient:
 
         user_id : typing.Optional[str]
             Numeric Threads user id.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            username only. Attach from the same page, at no extra cost: posts (the creator's latest threads, ext.posts).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -64,11 +68,17 @@ class ThreadsClient:
         )
         client.threads.profile()
         """
-        _response = self._raw_client.profile(username=username, user_id=user_id, request_options=request_options)
+        _response = self._raw_client.profile(
+            username=username, user_id=user_id, include=include, request_options=request_options
+        )
         return _response.data
 
     def post(
-        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
         Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/threads/post
@@ -77,6 +87,9 @@ class ThreadsClient:
         ----------
         id : typing.Optional[str]
             Post shortcode, or the post URL (…/@user/post/<code> or …/t/<code>).
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Attach from the same page, at no extra cost: comments (the first replies, top order, ext.comments), related (the related threads Threads suggests beside it, ext.related).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -95,7 +108,7 @@ class ThreadsClient:
         )
         client.threads.post()
         """
-        _response = self._raw_client.post(id=id, request_options=request_options)
+        _response = self._raw_client.post(id=id, include=include, request_options=request_options)
         return _response.data
 
     def posts(
@@ -106,6 +119,7 @@ class ThreadsClient:
         query: typing.Optional[str] = None,
         hashtag: typing.Optional[str] = None,
         sort: typing.Optional[PostsThreadsRequestSort] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostPageResponse:
@@ -128,6 +142,9 @@ class ThreadsClient:
 
         sort : typing.Optional[PostsThreadsRequestSort]
             query only: top (default) or recent.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            username only. Attach from the same page, at no extra cost: profile (the creator's profile, ext.profile).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -155,6 +172,7 @@ class ThreadsClient:
             query=query,
             hashtag=hashtag,
             sort=sort,
+            include=include,
             cursor=cursor,
             request_options=request_options,
         )
@@ -165,6 +183,7 @@ class ThreadsClient:
         *,
         post: typing.Optional[str] = None,
         sort: typing.Optional[CommentsThreadsRequestSort] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> CommentPageResponse:
@@ -178,6 +197,9 @@ class ThreadsClient:
 
         sort : typing.Optional[CommentsThreadsRequestSort]
             top (default) or recent.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Top order only. Attach from the same page, at no extra cost: post (the post itself, in `post`), related (the related threads Threads suggests beside it, ext.related).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -199,7 +221,9 @@ class ThreadsClient:
         )
         client.threads.comments()
         """
-        _response = self._raw_client.comments(post=post, sort=sort, cursor=cursor, request_options=request_options)
+        _response = self._raw_client.comments(
+            post=post, sort=sort, include=include, cursor=cursor, request_options=request_options
+        )
         return _response.data
 
 
@@ -223,6 +247,7 @@ class AsyncThreadsClient:
         *,
         username: typing.Optional[str] = None,
         user_id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AccountResponse:
         """
@@ -235,6 +260,9 @@ class AsyncThreadsClient:
 
         user_id : typing.Optional[str]
             Numeric Threads user id.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            username only. Attach from the same page, at no extra cost: posts (the creator's latest threads, ext.posts).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -261,11 +289,17 @@ class AsyncThreadsClient:
 
         asyncio.run(main())
         """
-        _response = await self._raw_client.profile(username=username, user_id=user_id, request_options=request_options)
+        _response = await self._raw_client.profile(
+            username=username, user_id=user_id, include=include, request_options=request_options
+        )
         return _response.data
 
     async def post(
-        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
         Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/threads/post
@@ -274,6 +308,9 @@ class AsyncThreadsClient:
         ----------
         id : typing.Optional[str]
             Post shortcode, or the post URL (…/@user/post/<code> or …/t/<code>).
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Attach from the same page, at no extra cost: comments (the first replies, top order, ext.comments), related (the related threads Threads suggests beside it, ext.related).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -300,7 +337,7 @@ class AsyncThreadsClient:
 
         asyncio.run(main())
         """
-        _response = await self._raw_client.post(id=id, request_options=request_options)
+        _response = await self._raw_client.post(id=id, include=include, request_options=request_options)
         return _response.data
 
     async def posts(
@@ -311,6 +348,7 @@ class AsyncThreadsClient:
         query: typing.Optional[str] = None,
         hashtag: typing.Optional[str] = None,
         sort: typing.Optional[PostsThreadsRequestSort] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostPageResponse:
@@ -333,6 +371,9 @@ class AsyncThreadsClient:
 
         sort : typing.Optional[PostsThreadsRequestSort]
             query only: top (default) or recent.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            username only. Attach from the same page, at no extra cost: profile (the creator's profile, ext.profile).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -368,6 +409,7 @@ class AsyncThreadsClient:
             query=query,
             hashtag=hashtag,
             sort=sort,
+            include=include,
             cursor=cursor,
             request_options=request_options,
         )
@@ -378,6 +420,7 @@ class AsyncThreadsClient:
         *,
         post: typing.Optional[str] = None,
         sort: typing.Optional[CommentsThreadsRequestSort] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> CommentPageResponse:
@@ -391,6 +434,9 @@ class AsyncThreadsClient:
 
         sort : typing.Optional[CommentsThreadsRequestSort]
             top (default) or recent.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Top order only. Attach from the same page, at no extra cost: post (the post itself, in `post`), related (the related threads Threads suggests beside it, ext.related).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -421,6 +467,6 @@ class AsyncThreadsClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.comments(
-            post=post, sort=sort, cursor=cursor, request_options=request_options
+            post=post, sort=sort, include=include, cursor=cursor, request_options=request_options
         )
         return _response.data

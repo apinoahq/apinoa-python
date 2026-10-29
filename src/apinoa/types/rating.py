@@ -3,7 +3,9 @@
 import typing
 
 import pydantic
+import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
+from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
 
 
@@ -11,6 +13,9 @@ class Rating(UncheckedBaseModel):
     average: float
     count: typing.Optional[int] = None
     distribution: typing.Optional[typing.Dict[str, float]] = None
+    star_counts: typing_extensions.Annotated[
+        typing.Optional[typing.Dict[str, int]], FieldMetadata(alias="starCounts"), pydantic.Field(alias="starCounts")
+    ] = None
     grouped: typing.Optional[bool] = None
 
     if IS_PYDANTIC_V2:

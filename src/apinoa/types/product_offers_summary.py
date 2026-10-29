@@ -7,6 +7,7 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .ext import Ext
 from .money import Money
 
 
@@ -15,7 +16,7 @@ class ProductOffersSummary(UncheckedBaseModel):
     from_price: typing_extensions.Annotated[
         typing.Optional[Money], FieldMetadata(alias="fromPrice"), pydantic.Field(alias="fromPrice")
     ] = None
-    url: typing.Optional[str] = None
+    ext: typing.Optional[Ext] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

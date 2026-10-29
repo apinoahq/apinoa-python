@@ -39,6 +39,7 @@ class RawThreadsClient:
         *,
         username: typing.Optional[str] = None,
         user_id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[AccountResponse]:
         """
@@ -51,6 +52,9 @@ class RawThreadsClient:
 
         user_id : typing.Optional[str]
             Numeric Threads user id.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            username only. Attach from the same page, at no extra cost: posts (the creator's latest threads, ext.posts).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -66,6 +70,7 @@ class RawThreadsClient:
             params={
                 "username": username,
                 "userId": user_id,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
         )
@@ -199,7 +204,11 @@ class RawThreadsClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
     def post(
-        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[PostResponse]:
         """
         Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/threads/post
@@ -208,6 +217,9 @@ class RawThreadsClient:
         ----------
         id : typing.Optional[str]
             Post shortcode, or the post URL (…/@user/post/<code> or …/t/<code>).
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Attach from the same page, at no extra cost: comments (the first replies, top order, ext.comments), related (the related threads Threads suggests beside it, ext.related).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -222,6 +234,7 @@ class RawThreadsClient:
             method="GET",
             params={
                 "id": id,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
         )
@@ -362,6 +375,7 @@ class RawThreadsClient:
         query: typing.Optional[str] = None,
         hashtag: typing.Optional[str] = None,
         sort: typing.Optional[PostsThreadsRequestSort] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[PostPageResponse]:
@@ -385,6 +399,9 @@ class RawThreadsClient:
         sort : typing.Optional[PostsThreadsRequestSort]
             query only: top (default) or recent.
 
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            username only. Attach from the same page, at no extra cost: profile (the creator's profile, ext.profile).
+
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
 
@@ -405,6 +422,7 @@ class RawThreadsClient:
                 "query": query,
                 "hashtag": hashtag,
                 "sort": sort,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -543,6 +561,7 @@ class RawThreadsClient:
         *,
         post: typing.Optional[str] = None,
         sort: typing.Optional[CommentsThreadsRequestSort] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[CommentPageResponse]:
@@ -556,6 +575,9 @@ class RawThreadsClient:
 
         sort : typing.Optional[CommentsThreadsRequestSort]
             top (default) or recent.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Top order only. Attach from the same page, at no extra cost: post (the post itself, in `post`), related (the related threads Threads suggests beside it, ext.related).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -574,6 +596,7 @@ class RawThreadsClient:
             params={
                 "post": post,
                 "sort": sort,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -717,6 +740,7 @@ class AsyncRawThreadsClient:
         *,
         username: typing.Optional[str] = None,
         user_id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[AccountResponse]:
         """
@@ -729,6 +753,9 @@ class AsyncRawThreadsClient:
 
         user_id : typing.Optional[str]
             Numeric Threads user id.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            username only. Attach from the same page, at no extra cost: posts (the creator's latest threads, ext.posts).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -744,6 +771,7 @@ class AsyncRawThreadsClient:
             params={
                 "username": username,
                 "userId": user_id,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
         )
@@ -877,7 +905,11 @@ class AsyncRawThreadsClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
     async def post(
-        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[PostResponse]:
         """
         Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/threads/post
@@ -886,6 +918,9 @@ class AsyncRawThreadsClient:
         ----------
         id : typing.Optional[str]
             Post shortcode, or the post URL (…/@user/post/<code> or …/t/<code>).
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Attach from the same page, at no extra cost: comments (the first replies, top order, ext.comments), related (the related threads Threads suggests beside it, ext.related).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -900,6 +935,7 @@ class AsyncRawThreadsClient:
             method="GET",
             params={
                 "id": id,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
         )
@@ -1040,6 +1076,7 @@ class AsyncRawThreadsClient:
         query: typing.Optional[str] = None,
         hashtag: typing.Optional[str] = None,
         sort: typing.Optional[PostsThreadsRequestSort] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[PostPageResponse]:
@@ -1063,6 +1100,9 @@ class AsyncRawThreadsClient:
         sort : typing.Optional[PostsThreadsRequestSort]
             query only: top (default) or recent.
 
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            username only. Attach from the same page, at no extra cost: profile (the creator's profile, ext.profile).
+
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
 
@@ -1083,6 +1123,7 @@ class AsyncRawThreadsClient:
                 "query": query,
                 "hashtag": hashtag,
                 "sort": sort,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -1221,6 +1262,7 @@ class AsyncRawThreadsClient:
         *,
         post: typing.Optional[str] = None,
         sort: typing.Optional[CommentsThreadsRequestSort] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[CommentPageResponse]:
@@ -1234,6 +1276,9 @@ class AsyncRawThreadsClient:
 
         sort : typing.Optional[CommentsThreadsRequestSort]
             top (default) or recent.
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Top order only. Attach from the same page, at no extra cost: post (the post itself, in `post`), related (the related threads Threads suggests beside it, ext.related).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -1252,6 +1297,7 @@ class AsyncRawThreadsClient:
             params={
                 "post": post,
                 "sort": sort,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
                 "cursor": cursor,
             },
             request_options=request_options,

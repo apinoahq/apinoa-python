@@ -7,12 +7,15 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .caption_track import CaptionTrack
+from .media_tag import MediaTag
 from .media_variant import MediaVariant
 from .social_media_type import SocialMediaType
 
 
 class SocialMedia(UncheckedBaseModel):
     type: SocialMediaType
+    id: typing.Optional[str] = None
     url: str
     width: typing.Optional[int] = None
     height: typing.Optional[int] = None
@@ -27,6 +30,12 @@ class SocialMedia(UncheckedBaseModel):
         typing.Optional[str], FieldMetadata(alias="altText"), pydantic.Field(alias="altText")
     ] = None
     caption: typing.Optional[str] = None
+    title: typing.Optional[str] = None
+    has_audio: typing_extensions.Annotated[
+        typing.Optional[bool], FieldMetadata(alias="hasAudio"), pydantic.Field(alias="hasAudio")
+    ] = None
+    tags: typing.Optional[typing.List[MediaTag]] = None
+    captions: typing.Optional[typing.List[CaptionTrack]] = None
     ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:

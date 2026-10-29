@@ -15,6 +15,7 @@ class Mention(UncheckedBaseModel):
     display_name: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="displayName"), pydantic.Field(alias="displayName")
     ] = None
+    ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

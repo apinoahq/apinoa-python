@@ -7,6 +7,7 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .ext import Ext
 from .money import Money
 
 
@@ -22,23 +23,19 @@ class ShippingOption(UncheckedBaseModel):
     max_days: typing_extensions.Annotated[
         typing.Optional[int], FieldMetadata(alias="maxDays"), pydantic.Field(alias="maxDays")
     ] = None
-    guaranteed_days: typing_extensions.Annotated[
-        typing.Optional[int], FieldMetadata(alias="guaranteedDays"), pydantic.Field(alias="guaranteedDays")
-    ] = None
     handling_days: typing_extensions.Annotated[
         typing.Optional[int], FieldMetadata(alias="handlingDays"), pydantic.Field(alias="handlingDays")
     ] = None
     cutoff: typing.Optional[str] = None
     condition: typing.Optional[str] = None
     available: typing.Optional[bool] = None
-    membership: typing.Optional[str] = None
     minimum_order: typing_extensions.Annotated[
         typing.Optional[Money], FieldMetadata(alias="minimumOrder"), pydantic.Field(alias="minimumOrder")
     ] = None
-    tracking: typing.Optional[bool] = None
     ships_from: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="shipsFrom"), pydantic.Field(alias="shipsFrom")
     ] = None
+    ext: typing.Optional[Ext] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

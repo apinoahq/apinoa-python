@@ -10,7 +10,6 @@ from ..core.unchecked_base_model import UncheckedBaseModel
 class FacetValue(UncheckedBaseModel):
     value: str
     name: str
-    count: typing.Optional[int] = None
     selected: typing.Optional[bool] = None
 
     if IS_PYDANTIC_V2:

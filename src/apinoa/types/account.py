@@ -36,6 +36,7 @@ class Account(UncheckedBaseModel):
     links: typing.Optional[typing.List[Link]] = None
     private: typing.Optional[bool] = None
     category: typing.Optional[str] = None
+    location: typing.Optional[str] = None
     ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:

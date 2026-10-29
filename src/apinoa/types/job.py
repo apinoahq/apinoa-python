@@ -7,6 +7,7 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .job_apply_method import JobApplyMethod
 from .job_company import JobCompany
 from .job_platform import JobPlatform
 
@@ -36,6 +37,9 @@ class Job(UncheckedBaseModel):
     description: typing.Optional[str] = None
     description_html: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="descriptionHtml"), pydantic.Field(alias="descriptionHtml")
+    ] = None
+    apply_method: typing_extensions.Annotated[
+        typing.Optional[JobApplyMethod], FieldMetadata(alias="applyMethod"), pydantic.Field(alias="applyMethod")
     ] = None
 
     if IS_PYDANTIC_V2:

@@ -15,7 +15,9 @@ class CommentPage(UncheckedBaseModel):
     items: typing.List["Comment"]
     cursor: typing.Optional[str] = None
     total: typing.Optional[int] = None
+    order: typing.Optional[str] = None
     ext: typing.Optional[typing.Dict[str, typing.Any]] = None
+    post: typing.Optional["Post"] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2
@@ -28,5 +30,6 @@ class CommentPage(UncheckedBaseModel):
 
 
 from .comment import Comment  # noqa: E402, I001
+from .post import Post  # noqa: E402, I001
 
-update_forward_refs(CommentPage, Comment=Comment)
+update_forward_refs(CommentPage, Comment=Comment, Post=Post)

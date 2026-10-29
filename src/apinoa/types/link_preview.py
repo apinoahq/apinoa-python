@@ -17,6 +17,7 @@ class LinkPreview(UncheckedBaseModel):
         typing.Optional[str], FieldMetadata(alias="thumbnailUrl"), pydantic.Field(alias="thumbnailUrl")
     ] = None
     domain: typing.Optional[str] = None
+    ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

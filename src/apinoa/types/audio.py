@@ -3,7 +3,9 @@
 import typing
 
 import pydantic
+import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
+from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
 
 
@@ -12,6 +14,15 @@ class Audio(UncheckedBaseModel):
     title: typing.Optional[str] = None
     artist: typing.Optional[str] = None
     url: typing.Optional[str] = None
+    cover_url: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="coverUrl"), pydantic.Field(alias="coverUrl")
+    ] = None
+    duration_sec: typing_extensions.Annotated[
+        typing.Optional[float], FieldMetadata(alias="durationSec"), pydantic.Field(alias="durationSec")
+    ] = None
+    original: typing.Optional[bool] = None
+    album: typing.Optional[str] = None
+    ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

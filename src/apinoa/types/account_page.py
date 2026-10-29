@@ -13,7 +13,6 @@ class AccountPage(UncheckedBaseModel):
     platform: AccountPagePlatform
     items: typing.List[Account]
     cursor: typing.Optional[str] = None
-    total: typing.Optional[int] = None
     ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:

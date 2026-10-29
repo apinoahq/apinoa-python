@@ -3,8 +3,11 @@
 import typing
 
 import pydantic
+import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
+from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .ext import Ext
 from .facet import Facet
 from .page import Page
 from .search_item import SearchItem
@@ -17,6 +20,12 @@ class SearchResult(UncheckedBaseModel):
     items: typing.List[SearchItem]
     cursor: typing.Optional[str] = None
     facets: typing.Optional[typing.List[Facet]] = None
+    related_searches: typing_extensions.Annotated[
+        typing.Optional[typing.List[str]],
+        FieldMetadata(alias="relatedSearches"),
+        pydantic.Field(alias="relatedSearches"),
+    ] = None
+    ext: typing.Optional[Ext] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

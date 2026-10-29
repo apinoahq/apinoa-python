@@ -14,6 +14,7 @@ from .account_ref import AccountRef
 from .comment_metrics import CommentMetrics
 from .comment_more_replies import CommentMoreReplies
 from .comment_platform import CommentPlatform
+from .entities import Entities
 from .social_media import SocialMedia
 
 
@@ -27,12 +28,14 @@ class Comment(UncheckedBaseModel):
     ] = None
     author: AccountRef
     text: str
+    entities: typing.Optional[Entities] = None
     created_at: typing_extensions.Annotated[
         typing.Optional[dt.datetime], FieldMetadata(alias="createdAt"), pydantic.Field(alias="createdAt")
     ] = None
     edited_at: typing_extensions.Annotated[
         typing.Optional[dt.datetime], FieldMetadata(alias="editedAt"), pydantic.Field(alias="editedAt")
     ] = None
+    edited: typing.Optional[bool] = None
     lang: typing.Optional[str] = None
     pinned: typing.Optional[bool] = None
     by_author: typing_extensions.Annotated[

@@ -13,7 +13,7 @@ class GroupPage(UncheckedBaseModel):
     platform: GroupPagePlatform
     items: typing.List[Group]
     cursor: typing.Optional[str] = None
-    total: typing.Optional[int] = None
+    order: typing.Optional[str] = None
     ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:

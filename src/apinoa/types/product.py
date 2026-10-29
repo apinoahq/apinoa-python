@@ -21,6 +21,7 @@ from .product_package import ProductPackage
 from .product_price_range import ProductPriceRange
 from .product_review_aspects_item import ProductReviewAspectsItem
 from .product_unit_price import ProductUnitPrice
+from .protection_plan import ProtectionPlan
 from .rating import Rating
 from .review import Review
 from .seller import Seller
@@ -37,10 +38,14 @@ class Product(UncheckedBaseModel):
     list_price: typing_extensions.Annotated[
         typing.Optional[Money], FieldMetadata(alias="listPrice"), pydantic.Field(alias="listPrice")
     ] = None
-    condition: typing.Optional[str] = None
-    condition_note: typing_extensions.Annotated[
-        typing.Optional[str], FieldMetadata(alias="conditionNote"), pydantic.Field(alias="conditionNote")
+    subscription_price: typing_extensions.Annotated[
+        typing.Optional[Money], FieldMetadata(alias="subscriptionPrice"), pydantic.Field(alias="subscriptionPrice")
     ] = None
+    description: typing.Optional[str] = None
+    fulfilled_by: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="fulfilledBy"), pydantic.Field(alias="fulfilledBy")
+    ] = None
+    condition: typing.Optional[str] = None
     unit_price: typing_extensions.Annotated[
         typing.Optional[ProductUnitPrice], FieldMetadata(alias="unitPrice"), pydantic.Field(alias="unitPrice")
     ] = None
@@ -91,25 +96,30 @@ class Product(UncheckedBaseModel):
     ends_at: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="endsAt"), pydantic.Field(alias="endsAt")
     ] = None
+    delivery_to: typing_extensions.Annotated[
+        typing.Optional[ProductDeliveryTo], FieldMetadata(alias="deliveryTo"), pydantic.Field(alias="deliveryTo")
+    ] = None
+    ext: typing.Optional[Ext] = None
+    condition_note: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="conditionNote"), pydantic.Field(alias="conditionNote")
+    ] = None
     purchase_limit: typing_extensions.Annotated[
         typing.Optional[int], FieldMetadata(alias="purchaseLimit"), pydantic.Field(alias="purchaseLimit")
     ] = None
     listed_at: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="listedAt"), pydantic.Field(alias="listedAt")
     ] = None
-    delivery_to: typing_extensions.Annotated[
-        typing.Optional[ProductDeliveryTo], FieldMetadata(alias="deliveryTo"), pydantic.Field(alias="deliveryTo")
-    ] = None
-    ext: typing.Optional[Ext] = None
-    description: typing.Optional[str] = None
     features: typing.List[str]
+    highlights: typing.Optional[typing.List[str]] = None
     media: Media
     category: typing.List[CategoryStep]
     options: typing.List[Option]
     variants: typing.List[Variant]
     offers: typing.List[Offer]
-    subscription_price: typing_extensions.Annotated[
-        typing.Optional[Money], FieldMetadata(alias="subscriptionPrice"), pydantic.Field(alias="subscriptionPrice")
+    protection_plans: typing_extensions.Annotated[
+        typing.Optional[typing.List[ProtectionPlan]],
+        FieldMetadata(alias="protectionPlans"),
+        pydantic.Field(alias="protectionPlans"),
     ] = None
     review_summary: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="reviewSummary"), pydantic.Field(alias="reviewSummary")
@@ -125,16 +135,11 @@ class Product(UncheckedBaseModel):
     brand_url: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="brandUrl"), pydantic.Field(alias="brandUrl")
     ] = None
-    fulfilled_by: typing_extensions.Annotated[
-        typing.Optional[str], FieldMetadata(alias="fulfilledBy"), pydantic.Field(alias="fulfilledBy")
-    ] = None
     replaced_by: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="replacedBy"), pydantic.Field(alias="replacedBy")
     ] = None
     reviews: typing.List[Review]
     package: typing.Optional[ProductPackage] = None
-    wholesale: typing.Optional[bool] = None
-    included: typing.Optional[typing.List[str]] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

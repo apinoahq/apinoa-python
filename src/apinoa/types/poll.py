@@ -19,6 +19,7 @@ class Poll(UncheckedBaseModel):
     ends_at: typing_extensions.Annotated[
         typing.Optional[dt.datetime], FieldMetadata(alias="endsAt"), pydantic.Field(alias="endsAt")
     ] = None
+    ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

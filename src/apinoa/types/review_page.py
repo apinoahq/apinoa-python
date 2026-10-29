@@ -11,6 +11,7 @@ from .ext import Ext
 from .page import Page
 from .rating import Rating
 from .review import Review
+from .review_page_review_aspects_item import ReviewPageReviewAspectsItem
 
 
 class ReviewPage(UncheckedBaseModel):
@@ -21,6 +22,14 @@ class ReviewPage(UncheckedBaseModel):
     reviews: typing.List[Review]
     cursor: typing.Optional[str] = None
     grouped: typing.Optional[bool] = None
+    review_summary: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="reviewSummary"), pydantic.Field(alias="reviewSummary")
+    ] = None
+    review_aspects: typing_extensions.Annotated[
+        typing.Optional[typing.List[ReviewPageReviewAspectsItem]],
+        FieldMetadata(alias="reviewAspects"),
+        pydantic.Field(alias="reviewAspects"),
+    ] = None
     ext: typing.Optional[Ext] = None
 
     if IS_PYDANTIC_V2:

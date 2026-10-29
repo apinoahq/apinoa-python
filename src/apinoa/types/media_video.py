@@ -7,6 +7,7 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .ext import Ext
 
 
 class MediaVideo(UncheckedBaseModel):
@@ -16,7 +17,7 @@ class MediaVideo(UncheckedBaseModel):
     url: typing.Optional[str] = None
     title: typing.Optional[str] = None
     duration: typing.Optional[str] = None
-    creator: typing.Optional[str] = None
+    ext: typing.Optional[Ext] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

@@ -7,12 +7,14 @@ from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.unchecked_base_model import UncheckedBaseModel
 from .category_node import CategoryNode
 from .category_step import CategoryStep
+from .ext import Ext
 
 
 class CategoryList(UncheckedBaseModel):
     marketplace: str
     path: typing.List[CategoryStep]
     categories: typing.List[CategoryNode]
+    ext: typing.Optional[Ext] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

@@ -18,19 +18,14 @@ class Variant(UncheckedBaseModel):
     product_id: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="productId"), pydantic.Field(alias="productId")
     ] = None
-    sku: typing.Optional[str] = None
+    name: typing.Optional[str] = None
+    images: typing.Optional[typing.List[str]] = None
     price: typing.Optional[Money] = None
     list_price: typing_extensions.Annotated[
         typing.Optional[Money], FieldMetadata(alias="listPrice"), pydantic.Field(alias="listPrice")
     ] = None
-    bulk_price: typing_extensions.Annotated[
-        typing.Optional[Money], FieldMetadata(alias="bulkPrice"), pydantic.Field(alias="bulkPrice")
-    ] = None
     purchase_limit: typing_extensions.Annotated[
         typing.Optional[int], FieldMetadata(alias="purchaseLimit"), pydantic.Field(alias="purchaseLimit")
-    ] = None
-    tax_included: typing_extensions.Annotated[
-        typing.Optional[bool], FieldMetadata(alias="taxIncluded"), pydantic.Field(alias="taxIncluded")
     ] = None
     in_stock: typing_extensions.Annotated[
         typing.Optional[bool], FieldMetadata(alias="inStock"), pydantic.Field(alias="inStock")

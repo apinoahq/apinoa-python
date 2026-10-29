@@ -3,9 +3,7 @@
 import typing
 
 import pydantic
-import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
-from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
 
 
@@ -16,11 +14,9 @@ class Place(UncheckedBaseModel):
     lng: typing.Optional[float] = None
     address: typing.Optional[str] = None
     city: typing.Optional[str] = None
-    region: typing.Optional[str] = None
-    postal_code: typing_extensions.Annotated[
-        typing.Optional[str], FieldMetadata(alias="postalCode"), pydantic.Field(alias="postalCode")
-    ] = None
+    type: typing.Optional[str] = None
     country: typing.Optional[str] = None
+    ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

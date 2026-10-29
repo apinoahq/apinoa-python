@@ -2328,7 +2328,7 @@ client.linkedin.jobs()
 <dl>
 <dd>
 
-Returns `Account` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/reddit/profile
+Returns `Account` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/reddit/profile
 </dd>
 </dl>
 </dd>
@@ -3651,6 +3651,14 @@ client.threads.profile()
 <dl>
 <dd>
 
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — username only. Attach from the same page, at no extra cost: posts (the creator's latest threads, ext.posts).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
     
 </dd>
@@ -3715,6 +3723,14 @@ client.threads.post()
 <dd>
 
 **id:** `typing.Optional[str]` — Post shortcode, or the post URL (…/@user/post/<code> or …/t/<code>).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Attach from the same page, at no extra cost: comments (the first replies, top order, ext.comments), related (the related threads Threads suggests beside it, ext.related).
     
 </dd>
 </dl>
@@ -3825,6 +3841,14 @@ client.threads.posts()
 <dl>
 <dd>
 
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — username only. Attach from the same page, at no extra cost: profile (the creator's profile, ext.profile).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
     
 </dd>
@@ -3905,6 +3929,14 @@ client.threads.comments()
 <dd>
 
 **sort:** `typing.Optional[CommentsThreadsRequestSort]` — top (default) or recent.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Top order only. Attach from the same page, at no extra cost: post (the post itself, in `post`), related (the related threads Threads suggests beside it, ext.related).
     
 </dd>
 </dl>

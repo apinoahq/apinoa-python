@@ -12,6 +12,7 @@ from .category_step import CategoryStep
 from .ext import Ext
 from .identifiers import Identifiers
 from .money import Money
+from .offer import Offer
 from .rating import Rating
 from .search_item_delivery_to import SearchItemDeliveryTo
 from .search_item_offers_summary import SearchItemOffersSummary
@@ -19,6 +20,7 @@ from .search_item_price_range import SearchItemPriceRange
 from .search_item_unit_price import SearchItemUnitPrice
 from .seller import Seller
 from .shipping_option import ShippingOption
+from .variant import Variant
 
 
 class SearchItem(UncheckedBaseModel):
@@ -30,10 +32,14 @@ class SearchItem(UncheckedBaseModel):
     list_price: typing_extensions.Annotated[
         typing.Optional[Money], FieldMetadata(alias="listPrice"), pydantic.Field(alias="listPrice")
     ] = None
-    condition: typing.Optional[str] = None
-    condition_note: typing_extensions.Annotated[
-        typing.Optional[str], FieldMetadata(alias="conditionNote"), pydantic.Field(alias="conditionNote")
+    subscription_price: typing_extensions.Annotated[
+        typing.Optional[Money], FieldMetadata(alias="subscriptionPrice"), pydantic.Field(alias="subscriptionPrice")
     ] = None
+    description: typing.Optional[str] = None
+    fulfilled_by: typing_extensions.Annotated[
+        typing.Optional[str], FieldMetadata(alias="fulfilledBy"), pydantic.Field(alias="fulfilledBy")
+    ] = None
+    condition: typing.Optional[str] = None
     unit_price: typing_extensions.Annotated[
         typing.Optional[SearchItemUnitPrice], FieldMetadata(alias="unitPrice"), pydantic.Field(alias="unitPrice")
     ] = None
@@ -84,12 +90,6 @@ class SearchItem(UncheckedBaseModel):
     ends_at: typing_extensions.Annotated[
         typing.Optional[str], FieldMetadata(alias="endsAt"), pydantic.Field(alias="endsAt")
     ] = None
-    purchase_limit: typing_extensions.Annotated[
-        typing.Optional[int], FieldMetadata(alias="purchaseLimit"), pydantic.Field(alias="purchaseLimit")
-    ] = None
-    listed_at: typing_extensions.Annotated[
-        typing.Optional[str], FieldMetadata(alias="listedAt"), pydantic.Field(alias="listedAt")
-    ] = None
     delivery_to: typing_extensions.Annotated[
         typing.Optional[SearchItemDeliveryTo], FieldMetadata(alias="deliveryTo"), pydantic.Field(alias="deliveryTo")
     ] = None
@@ -105,6 +105,8 @@ class SearchItem(UncheckedBaseModel):
     match_score: typing_extensions.Annotated[
         typing.Optional[float], FieldMetadata(alias="matchScore"), pydantic.Field(alias="matchScore")
     ] = None
+    offers: typing.Optional[typing.List[Offer]] = None
+    variants: typing.Optional[typing.List[Variant]] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

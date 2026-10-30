@@ -156,7 +156,7 @@ class GoogleShoppingClient:
         Parameters
         ----------
         id : typing.Optional[str]
-            The product, as a search item's `id` carries it.
+            The product, as a search item's `id` carries it. Only a product Google groups across stores (an id of digits only) has reviews.
 
         url : typing.Optional[str]
             A Google Shopping product link instead of `id` (the `url` a search item carries).
@@ -345,7 +345,7 @@ class AsyncGoogleShoppingClient:
         Parameters
         ----------
         id : typing.Optional[str]
-            The product, as a search item's `id` carries it.
+            The product, as a search item's `id` carries it. Only a product Google groups across stores (an id of digits only) has reviews.
 
         url : typing.Optional[str]
             A Google Shopping product link instead of `id` (the `url` a search item carries).

@@ -3863,7 +3863,7 @@ client.google_shopping.reviews()
 <dl>
 <dd>
 
-**id:** `typing.Optional[str]` — The product, as a search item's `id` carries it.
+**id:** `typing.Optional[str]` — The product, as a search item's `id` carries it. Only a product Google groups across stores (an id of digits only) has reviews.
     
 </dd>
 </dl>

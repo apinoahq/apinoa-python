@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.5
+
+Follows the API as of 2026-10-30:
+
+- `google-shopping` `reviews`: `id` now says which products have reviews: only a product Google groups across stores, whose id is digits only. Another id answers `404 REVIEWS_NOT_FOUND`, with a message naming it.
+
 ## 0.1.4
 
 Follows the API as of 2026-10-30:

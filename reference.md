@@ -1262,6 +1262,2910 @@ client.amazon.product(
 </dl>
 </details>
 
+## App Store
+<details><summary><code>client.app_store.<a href="src/apinoa/app_store/client.py">search</a>(...) -> AppsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AppsPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/app-store/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.app_store.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchAppStoreRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 50, at most 200). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.app_store.<a href="src/apinoa/app_store/client.py">app</a>(...) -> AppResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `App` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/app-store/app
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.app_store.app()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The app's App Store id: the number in its link (`…/id426826309`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — The app's App Store link, instead of `id`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[AppAppStoreRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.app_store.<a href="src/apinoa/app_store/client.py">reviews</a>(...) -> AppReviewsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AppReviewsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/app-store/reviews
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.app_store.reviews()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The app's App Store id: the number in its link (`…/id426826309`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — The app's App Store link, instead of `id`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[ReviewsAppStoreRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[ReviewsAppStoreRequestSort]` — Review order.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 20, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Baidu
+<details><summary><code>client.baidu.<a href="src/apinoa/baidu/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/baidu/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.baidu.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**image:** `typing.Optional[str]` — An image URL: a reverse-image search instead of `q` (`type=image`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchBaiduRequestType]` — What to search: web results (default), news, images, videos or `image` for a reverse-image search.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchBaiduRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchBaiduRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 50). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.baidu.<a href="src/apinoa/baidu/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/baidu/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.baidu.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsBaiduRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Bing
+<details><summary><code>client.bing.<a href="src/apinoa/bing/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/bing/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.bing.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**image:** `typing.Optional[str]` — An image URL: a reverse-image search instead of `q` (`type=image`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchBingRequestType]` — What to search: web results (default), news, images, videos or `image` for a reverse-image search.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchBingRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchBingRequestDevice]` — Which page to read: the desktop (default) or the mobile one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchBingRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**safe:** `typing.Optional[SearchBingRequestSafe]` — Safe search.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 50). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bing.<a href="src/apinoa/bing/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/bing/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.bing.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsBingRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## ChatGPT
+<details><summary><code>client.chatgpt.<a href="src/apinoa/chatgpt/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/chatgpt/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.chatgpt.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**conversation:** `typing.Optional[str]` — An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**photos:** `typing.Optional[typing.List[str]]` — Up to four photos to ask about: https URLs, or `data:image/…;base64,` URLs.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerChatgptRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Daum
+<details><summary><code>client.daum.<a href="src/apinoa/daum/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/daum/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.daum.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchDaumRequestType]` — What to search: web results (default), news, images or videos.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchDaumRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchDaumRequestDevice]` — Which page to read: the desktop (default) or the mobile one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchDaumRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 240). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.daum.<a href="src/apinoa/daum/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/daum/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.daum.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsDaumRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## DuckDuckGo
+<details><summary><code>client.duckduckgo.<a href="src/apinoa/duckduckgo/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 10 units. Reference: https://apinoa.com/docs/api-reference/duckduckgo/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.duckduckgo.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchDuckduckgoRequestType]` — What to search: web results (default), news, images or videos.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchDuckduckgoRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchDuckduckgoRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**safe:** `typing.Optional[SearchDuckduckgoRequestSafe]` — Safe search.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.duckduckgo.<a href="src/apinoa/duckduckgo/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/duckduckgo/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.duckduckgo.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsDuckduckgoRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Gemini
+<details><summary><code>client.gemini.<a href="src/apinoa/gemini/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/gemini/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.gemini.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**conversation:** `typing.Optional[str]` — An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerGeminiRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Google
+<details><summary><code>client.google.<a href="src/apinoa/google/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/google/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**image:** `typing.Optional[str]` — An image URL: a reverse-image search instead of `q` (`type=image`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchGoogleRequestType]` — What to search: web results (default), news, images, videos or `image` for a reverse-image search.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchGoogleRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchGoogleRequestDevice]` — Which page to read: the desktop (default) or the mobile one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchGoogleRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**safe:** `typing.Optional[SearchGoogleRequestSafe]` — Safe search.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 50). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google.<a href="src/apinoa/google/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsGoogleRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google.<a href="src/apinoa/google/client.py">places</a>(...) -> PlacesPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PlacesPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/google/places
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google.places()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**location:** `typing.Optional[str]` — Search as if from this point: `lat,lng`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**near:** `typing.Optional[str]` — Search around this place name, or a `lat,lng` point.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[PlacesGoogleRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 20, at most 60). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google.<a href="src/apinoa/google/client.py">place</a>(...) -> SerpPlaceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `SerpPlace` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google/place
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google.place()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The place's id, as `places` returns it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A Google Maps place URL.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Google AI Mode
+<details><summary><code>client.google_ai_mode.<a href="src/apinoa/google_ai_mode/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/google-ai-mode/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_ai_mode.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**language:** `typing.Optional[str]` — The language to answer in, as a language tag (`en`, `ko-KR`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**conversation:** `typing.Optional[str]` — An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerGoogleAiModeRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## GoogleAio
+<details><summary><code>client.google_aio.<a href="src/apinoa/google_aio/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/google-aio/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_aio.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**language:** `typing.Optional[str]` — The language to answer in, as a language tag (`en`, `ko-KR`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerGoogleAioRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Google Play
+<details><summary><code>client.google_play.<a href="src/apinoa/google_play/client.py">search</a>(...) -> AppsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AppsPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-play/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_play.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchGooglePlayRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 30, at most 30). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google_play.<a href="src/apinoa/google_play/client.py">app</a>(...) -> AppResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `App` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-play/app
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_play.app()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The app's Play id: its package name (`com.strava`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — The app's Play link, instead of `id`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[AppGooglePlayRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google_play.<a href="src/apinoa/google_play/client.py">reviews</a>(...) -> AppReviewsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AppReviewsPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-play/reviews
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_play.reviews()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The app's Play id: its package name (`com.strava`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — The app's Play link, instead of `id`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[ReviewsGooglePlayRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[ReviewsGooglePlayRequestSort]` — Review order.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**rating:** `typing.Optional[int]` — Only reviews with this many stars (1-5).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[ReviewsGooglePlayRequestDevice]` — Reviews written on this kind of device (default phone).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 40, at most 200). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Google Shopping
+<details><summary><code>client.google_shopping.<a href="src/apinoa/google_shopping/client.py">search</a>(...) -> SearchResultResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `SearchResult` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-shopping/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_shopping.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — Keywords to search for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**price_min:** `typing.Optional[float]` — Lowest price, in the market's currency (decimal major units).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**price_max:** `typing.Optional[float]` — Highest price, in the market's currency (decimal major units).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**facets:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — One value from a result's `facets` (include=facets), e.g. facets=Brand:<value>. Google applies one at a time.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — `facets` — the filter rail Google shows beside the results, on the same page (no extra request).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**region:** `typing.Optional[SearchGoogleShoppingRequestRegion]` — The market, ISO 3166-1 alpha-2: US (default), GB, CA, AU. Sets the shops, prices and currency.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — Next page: pass the previous result's `cursor` alone.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google_shopping.<a href="src/apinoa/google_shopping/client.py">product</a>(...) -> ProductResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Product` in `data`. Costs 1 unit, up to 21 units. Reference: https://apinoa.com/docs/api-reference/google-shopping/product
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_shopping.product()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The product, as a search item's `id` carries it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A Google Shopping product link instead of `id` (the `url` a search item carries).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[str]` — `offers` · `offers:5` · `offers:all` — every merchant selling the product, 10 per request after the 3 the page shows. Depth counts requests and each is charged; `all` walks to the end, capped at 20.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**region:** `typing.Optional[ProductGoogleShoppingRequestRegion]` — The market, ISO 3166-1 alpha-2: US (default), GB, CA, AU. Sets the shops, prices and currency.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google_shopping.<a href="src/apinoa/google_shopping/client.py">reviews</a>(...) -> ReviewPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ReviewPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-shopping/reviews
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_shopping.reviews()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The product, as a search item's `id` carries it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A Google Shopping product link instead of `id` (the `url` a search item carries).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — Next page: pass the previous result's `cursor` alone.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Google Trends
+<details><summary><code>client.google_trends.<a href="src/apinoa/google_trends/client.py">explore</a>(...) -> TrendsExploreResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `TrendsExplore` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-trends/explore
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_trends.explore(
+    terms="terms",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**terms:** `str` — Up to five search terms to compare, separated by commas.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[ExploreGoogleTrendsRequestCountry]` — The country, as an ISO 3166 code. Absent: worldwide.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**subregion:** `typing.Optional[str]` — A state, province or US metro inside `country` (`US-CA`, `US-CA-807`), instead of the whole country.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[ExploreGoogleTrendsRequestTimeRange]` — The period: the past hour, 4 hours, day, week (7 days), month, quarter (3 months), year (12 months, the default), 5 years, or `all` (since 2004).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**from:** `typing.Optional[str]` — A custom period's first day (`YYYY-MM-DD`), or hour within the past week (`YYYY-MM-DDTHH`), with `to`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to:** `typing.Optional[str]` — A custom period's last day (`YYYY-MM-DD`) or hour (`YYYY-MM-DDTHH`), with `from`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**category:** `typing.Optional[int]` — A Trends category id, to measure the terms within it (0 = all categories).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**property:** `typing.Optional[ExploreGoogleTrendsRequestProperty]` — Which Google search: web (default), images, news, shopping or youtube.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language: the language of topic names and labels (`en`, `pt-BR`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**resolution:** `typing.Optional[ExploreGoogleTrendsRequestResolution]` — Interest by region by country, region, metro (US only) or city. Default: the next level below the place asked.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**low_volume:** `typing.Optional[bool]` — Include regions with low search volume in interest by region.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google_trends.<a href="src/apinoa/google_trends/client.py">trending</a>(...) -> TrendingPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `TrendingPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/google-trends/trending
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_trends.trending(
+    country="AE",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**country:** `TrendingGoogleTrendsRequestCountry` — The country, as an ISO 3166 code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**subregion:** `typing.Optional[str]` — A state or province inside `country` (`US-CA`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**window:** `typing.Optional[TrendingGoogleTrendsRequestWindow]` — The period: past 4 hours, 24 hours (default), 48 hours or 7 days.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**category:** `typing.Optional[int]` — Only trends in this category (trending now's own 1-20; 0 = all).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language: the language of topic names and labels (`en`, `pt-BR`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[TrendingGoogleTrendsRequestInclude]` — `articles`: every news article Trends holds for each trend, for the first 300 trends (charged as one more unit).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Instagram
 <details><summary><code>client.instagram.<a href="src/apinoa/instagram/client.py">profile</a>(...) -> AccountResponse</code></summary>
 <dl>
@@ -2315,6 +5219,688 @@ client.linkedin.jobs()
 </dl>
 </details>
 
+## Naver
+<details><summary><code>client.naver.<a href="src/apinoa/naver/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/naver/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.naver.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchNaverRequestType]` — What to search: web results (default), news, images or videos.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchNaverRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchNaverRequestDevice]` — Which page to read: the desktop (default) or the mobile one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchNaverRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.naver.<a href="src/apinoa/naver/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/naver/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.naver.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsNaverRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.naver.<a href="src/apinoa/naver/client.py">places</a>(...) -> PlacesPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PlacesPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/naver/places
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.naver.places()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[PlacesNaverRequestType]` — The map's place list (the only one Naver has).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**location:** `typing.Optional[str]` — Search as if from this point: `lat,lng`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**near:** `typing.Optional[str]` — Search around this place name, or a `lat,lng` point.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[PlacesNaverRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 20, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.naver.<a href="src/apinoa/naver/client.py">place</a>(...) -> SerpPlaceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `SerpPlace` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/naver/place
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.naver.place()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The place's id, as `places` returns it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A Naver Map place URL.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.naver.<a href="src/apinoa/naver/client.py">reviews</a>(...) -> PlaceReviewsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PlaceReviewsPage` in `data`. Costs 1 unit, up to 10 units. Reference: https://apinoa.com/docs/api-reference/naver/reviews
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.naver.reviews()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**place:** `typing.Optional[str]` — The place's id, as `places` returns it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[ReviewsNaverRequestSort]` — Review order: Naver's recommended order (default) or newest first.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## NaverAiBrief
+<details><summary><code>client.naver_ai_brief.<a href="src/apinoa/naver_ai_brief/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/naver-ai-brief/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.naver_ai_brief.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerNaverAiBriefRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Naver AI Tab
+<details><summary><code>client.naver_ai_tab.<a href="src/apinoa/naver_ai_tab/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/naver-ai-tab/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.naver_ai_tab.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**conversation:** `typing.Optional[str]` — An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerNaverAiTabRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Reddit
 <details><summary><code>client.reddit.<a href="src/apinoa/reddit/client.py">profile</a>(...) -> AccountResponse</code></summary>
 <dl>
@@ -2997,6 +6583,207 @@ client.reddit.groups()
 </dl>
 </details>
 
+## Seznam
+<details><summary><code>client.seznam.<a href="src/apinoa/seznam/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/seznam/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.seznam.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchSeznamRequestType]` — What to search: web results (default), news, images or videos.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchSeznamRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchSeznamRequestDevice]` — Which page to read: the desktop (default) or the mobile one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchSeznamRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.seznam.<a href="src/apinoa/seznam/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/seznam/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.seznam.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsSeznamRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Shopify
 <details><summary><code>client.shopify.<a href="src/apinoa/shopify/client.py">search</a>(...) -> SearchResultResponse</code></summary>
 <dl>
@@ -3564,6 +7351,207 @@ client.shopify.reviews(
 <dd>
 
 **cursor:** `typing.Optional[str]` — Opaque cursor from the previous response; the only paging knob that works on every shop, and it wins if `page` is sent too. A page fetched with a cursor costs 1.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Sogou
+<details><summary><code>client.sogou.<a href="src/apinoa/sogou/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 10 units. Reference: https://apinoa.com/docs/api-reference/sogou/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.sogou.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchSogouRequestType]` — What to search: web results (default), news, images or videos.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchSogouRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchSogouRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchSogouRequestDevice]` — The page each tab is served as, and the only value it takes: mobile for web and news, desktop for images and videos.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default one page: 7-10 on web, 10 news, 48 images; at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sogou.<a href="src/apinoa/sogou/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/sogou/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.sogou.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsSogouRequestCountry]` — The market, as an ISO 3166 country code.
     
 </dd>
 </dl>
@@ -5186,6 +9174,364 @@ client.tiktokshop.reviews(
 </dl>
 </details>
 
+## Tripadvisor
+<details><summary><code>client.tripadvisor.<a href="src/apinoa/tripadvisor/client.py">places</a>(...) -> PlacesPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PlacesPage` in `data`. Costs 1 unit, up to 4 units. Reference: https://apinoa.com/docs/api-reference/tripadvisor/places
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.tripadvisor.places()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**category:** `typing.Optional[PlacesTripadvisorRequestCategory]` — What to list: everything (default), restaurants, hotels, attractions (things to do, tours included), tours, destinations or airlines.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**location:** `typing.Optional[str]` — Search as if from this point: `lat,lng`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**near:** `typing.Optional[str]` — Search around this place name, or a `lat,lng` point.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[PlacesTripadvisorRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 30, at most 120). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.tripadvisor.<a href="src/apinoa/tripadvisor/client.py">place</a>(...) -> SerpPlaceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `SerpPlace` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tripadvisor/place
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.tripadvisor.place()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The place's id, as `places` returns it (a Tripadvisor link is taken too).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A Tripadvisor place link.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[PlaceTripadvisorRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.tripadvisor.<a href="src/apinoa/tripadvisor/client.py">reviews</a>(...) -> PlaceReviewsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PlaceReviewsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/tripadvisor/reviews
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.tripadvisor.reviews()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**place:** `typing.Optional[str]` — The place's id, as `places` returns it (a Tripadvisor link is taken too).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[ReviewsTripadvisorRequestSort]` — Review order: Tripadvisor's own (default), newest first, or the most detailed first.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**rating:** `typing.Optional[str]` — Only reviews with these stars, e.g. `5` or `1,2`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**visit_type:** `typing.Optional[str]` — Only reviews by these travellers: families, couples, solo, business, friends (comma-separated).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**months:** `typing.Optional[str]` — Only reviews of visits in these months, e.g. `6,7,8` or `june`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — Only reviews that mention this text.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**language:** `typing.Optional[str]` — Only reviews in this language — Tripadvisor counts its machine translations into it (each review says when it is one). All languages by default.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 20, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Walmart
 <details><summary><code>client.walmart.<a href="src/apinoa/walmart/client.py">search</a>(...) -> SearchResultResponse</code></summary>
 <dl>
@@ -6000,6 +10346,926 @@ client.x.group()
 <dd>
 
 **community:** `typing.Optional[str]` — Numeric community id, or the community URL (x.com/i/communities/<id>).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Yahoo
+<details><summary><code>client.yahoo.<a href="src/apinoa/yahoo/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 9 units. Reference: https://apinoa.com/docs/api-reference/yahoo/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yahoo.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchYahooRequestType]` — What to search: web results (default), news, images or videos.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchYahooRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchYahooRequestDevice]` — Which page to read: the desktop (default) or the mobile one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchYahooRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**safe:** `typing.Optional[SearchYahooRequestSafe]` — Safe search.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 7, at most 60). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.yahoo.<a href="src/apinoa/yahoo/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/yahoo/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yahoo.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsYahooRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## YahooJapan
+<details><summary><code>client.yahoo_japan.<a href="src/apinoa/yahoo_japan/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 10 units. Reference: https://apinoa.com/docs/api-reference/yahoo-japan/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yahoo_japan.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchYahooJapanRequestType]` — What to search: web results (default), news, images or videos.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchYahooJapanRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchYahooJapanRequestDevice]` — Which page to read: the desktop (default) or the mobile one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchYahooJapanRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 10, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.yahoo_japan.<a href="src/apinoa/yahoo_japan/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/yahoo-japan/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yahoo_japan.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsYahooJapanRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Yandex
+<details><summary><code>client.yandex.<a href="src/apinoa/yandex/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/yandex/search
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yandex.search()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**image:** `typing.Optional[str]` — An image URL: a reverse-image search instead of `q` (`type=image`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[SearchYandexRequestType]` — What to search: news, images, videos, or `image` for a reverse-image search. Yandex's web results are not offered.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SearchYandexRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[SearchYandexRequestLang]` — Interface language: en (yandex.com, the default) or ru (yandex.ru).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**device:** `typing.Optional[SearchYandexRequestDevice]` — Which page to read: the desktop (default) or the mobile one.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_range:** `typing.Optional[SearchYandexRequestTimeRange]` — Only results from this past period.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 20, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.yandex.<a href="src/apinoa/yandex/client.py">suggestions</a>(...) -> SuggestionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Suggestions` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/yandex/suggestions
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yandex.suggestions(
+    q="q",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `str` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[SuggestionsYandexRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[SuggestionsYandexRequestLang]` — Interface language: en (yandex.com, the default) or ru (yandex.ru).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.yandex.<a href="src/apinoa/yandex/client.py">places</a>(...) -> PlacesPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PlacesPage` in `data`. Costs 1 unit, up to 4 units. Reference: https://apinoa.com/docs/api-reference/yandex/places
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yandex.places()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**q:** `typing.Optional[str]` — The query, search operators included.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[PlacesYandexRequestType]` — The map's list of places (the only one Yandex has).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**location:** `typing.Optional[str]` — Search as if from this point: `lat,lng`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**near:** `typing.Optional[str]` — Search around this place name, or a `lat,lng` point.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 20, at most 100). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.yandex.<a href="src/apinoa/yandex/client.py">place</a>(...) -> SerpPlaceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `SerpPlace` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/yandex/place
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yandex.place()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The place's id, as `places` returns it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A Yandex Maps organisation link.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.yandex.<a href="src/apinoa/yandex/client.py">reviews</a>(...) -> PlaceReviewsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PlaceReviewsPage` in `data`. Costs 1 unit, up to 4 units. Reference: https://apinoa.com/docs/api-reference/yandex/reviews
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.yandex.reviews()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**place:** `typing.Optional[str]` — The place's id, as `places` returns it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[ReviewsYandexRequestSort]` — Review order.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Results wanted (default 50, at most 200). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
     
 </dd>
 </dl>

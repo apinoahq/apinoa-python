@@ -14,17 +14,39 @@ from .environment import ApinoaEnvironment
 if typing.TYPE_CHECKING:
     from .aliexpress.client import AliexpressClient, AsyncAliexpressClient
     from .amazon.client import AmazonClient, AsyncAmazonClient
+    from .app_store.client import AppStoreClient, AsyncAppStoreClient
+    from .baidu.client import AsyncBaiduClient, BaiduClient
+    from .bing.client import AsyncBingClient, BingClient
+    from .chatgpt.client import AsyncChatgptClient, ChatgptClient
+    from .daum.client import AsyncDaumClient, DaumClient
+    from .duckduckgo.client import AsyncDuckduckgoClient, DuckduckgoClient
+    from .gemini.client import AsyncGeminiClient, GeminiClient
+    from .google.client import AsyncGoogleClient, GoogleClient
+    from .google_ai_mode.client import AsyncGoogleAiModeClient, GoogleAiModeClient
+    from .google_aio.client import AsyncGoogleAioClient, GoogleAioClient
+    from .google_play.client import AsyncGooglePlayClient, GooglePlayClient
+    from .google_shopping.client import AsyncGoogleShoppingClient, GoogleShoppingClient
+    from .google_trends.client import AsyncGoogleTrendsClient, GoogleTrendsClient
     from .image_translate.client import AsyncImageTranslateClient, ImageTranslateClient
     from .instagram.client import AsyncInstagramClient, InstagramClient
     from .linkedin.client import AsyncLinkedinClient, LinkedinClient
     from .marketplaces.client import AsyncMarketplacesClient, MarketplacesClient
+    from .naver.client import AsyncNaverClient, NaverClient
+    from .naver_ai_brief.client import AsyncNaverAiBriefClient, NaverAiBriefClient
+    from .naver_ai_tab.client import AsyncNaverAiTabClient, NaverAiTabClient
     from .reddit.client import AsyncRedditClient, RedditClient
+    from .seznam.client import AsyncSeznamClient, SeznamClient
     from .shopify.client import AsyncShopifyClient, ShopifyClient
+    from .sogou.client import AsyncSogouClient, SogouClient
     from .threads.client import AsyncThreadsClient, ThreadsClient
     from .tiktok.client import AsyncTiktokClient, TiktokClient
     from .tiktokshop.client import AsyncTiktokshopClient, TiktokshopClient
+    from .tripadvisor.client import AsyncTripadvisorClient, TripadvisorClient
     from .walmart.client import AsyncWalmartClient, WalmartClient
     from .x.client import AsyncXClient, XClient
+    from .yahoo.client import AsyncYahooClient, YahooClient
+    from .yahoo_japan.client import AsyncYahooJapanClient, YahooJapanClient
+    from .yandex.client import AsyncYandexClient, YandexClient
     from .youtube.client import AsyncYoutubeClient, YoutubeClient
 
 
@@ -119,15 +141,37 @@ class Apinoa:
         )
         self._aliexpress: typing.Optional[AliexpressClient] = None
         self._amazon: typing.Optional[AmazonClient] = None
+        self._app_store: typing.Optional[AppStoreClient] = None
+        self._baidu: typing.Optional[BaiduClient] = None
+        self._bing: typing.Optional[BingClient] = None
+        self._chatgpt: typing.Optional[ChatgptClient] = None
+        self._daum: typing.Optional[DaumClient] = None
+        self._duckduckgo: typing.Optional[DuckduckgoClient] = None
+        self._gemini: typing.Optional[GeminiClient] = None
+        self._google: typing.Optional[GoogleClient] = None
+        self._google_ai_mode: typing.Optional[GoogleAiModeClient] = None
+        self._google_aio: typing.Optional[GoogleAioClient] = None
+        self._google_play: typing.Optional[GooglePlayClient] = None
+        self._google_shopping: typing.Optional[GoogleShoppingClient] = None
+        self._google_trends: typing.Optional[GoogleTrendsClient] = None
         self._instagram: typing.Optional[InstagramClient] = None
         self._linkedin: typing.Optional[LinkedinClient] = None
+        self._naver: typing.Optional[NaverClient] = None
+        self._naver_ai_brief: typing.Optional[NaverAiBriefClient] = None
+        self._naver_ai_tab: typing.Optional[NaverAiTabClient] = None
         self._reddit: typing.Optional[RedditClient] = None
+        self._seznam: typing.Optional[SeznamClient] = None
         self._shopify: typing.Optional[ShopifyClient] = None
+        self._sogou: typing.Optional[SogouClient] = None
         self._threads: typing.Optional[ThreadsClient] = None
         self._tiktok: typing.Optional[TiktokClient] = None
         self._tiktokshop: typing.Optional[TiktokshopClient] = None
+        self._tripadvisor: typing.Optional[TripadvisorClient] = None
         self._walmart: typing.Optional[WalmartClient] = None
         self._x: typing.Optional[XClient] = None
+        self._yahoo: typing.Optional[YahooClient] = None
+        self._yahoo_japan: typing.Optional[YahooJapanClient] = None
+        self._yandex: typing.Optional[YandexClient] = None
         self._youtube: typing.Optional[YoutubeClient] = None
         self._marketplaces: typing.Optional[MarketplacesClient] = None
         self._image_translate: typing.Optional[ImageTranslateClient] = None
@@ -149,6 +193,110 @@ class Apinoa:
         return self._amazon
 
     @property
+    def app_store(self):
+        if self._app_store is None:
+            from .app_store.client import AppStoreClient  # noqa: E402
+
+            self._app_store = AppStoreClient(client_wrapper=self._client_wrapper)
+        return self._app_store
+
+    @property
+    def baidu(self):
+        if self._baidu is None:
+            from .baidu.client import BaiduClient  # noqa: E402
+
+            self._baidu = BaiduClient(client_wrapper=self._client_wrapper)
+        return self._baidu
+
+    @property
+    def bing(self):
+        if self._bing is None:
+            from .bing.client import BingClient  # noqa: E402
+
+            self._bing = BingClient(client_wrapper=self._client_wrapper)
+        return self._bing
+
+    @property
+    def chatgpt(self):
+        if self._chatgpt is None:
+            from .chatgpt.client import ChatgptClient  # noqa: E402
+
+            self._chatgpt = ChatgptClient(client_wrapper=self._client_wrapper)
+        return self._chatgpt
+
+    @property
+    def daum(self):
+        if self._daum is None:
+            from .daum.client import DaumClient  # noqa: E402
+
+            self._daum = DaumClient(client_wrapper=self._client_wrapper)
+        return self._daum
+
+    @property
+    def duckduckgo(self):
+        if self._duckduckgo is None:
+            from .duckduckgo.client import DuckduckgoClient  # noqa: E402
+
+            self._duckduckgo = DuckduckgoClient(client_wrapper=self._client_wrapper)
+        return self._duckduckgo
+
+    @property
+    def gemini(self):
+        if self._gemini is None:
+            from .gemini.client import GeminiClient  # noqa: E402
+
+            self._gemini = GeminiClient(client_wrapper=self._client_wrapper)
+        return self._gemini
+
+    @property
+    def google(self):
+        if self._google is None:
+            from .google.client import GoogleClient  # noqa: E402
+
+            self._google = GoogleClient(client_wrapper=self._client_wrapper)
+        return self._google
+
+    @property
+    def google_ai_mode(self):
+        if self._google_ai_mode is None:
+            from .google_ai_mode.client import GoogleAiModeClient  # noqa: E402
+
+            self._google_ai_mode = GoogleAiModeClient(client_wrapper=self._client_wrapper)
+        return self._google_ai_mode
+
+    @property
+    def google_aio(self):
+        if self._google_aio is None:
+            from .google_aio.client import GoogleAioClient  # noqa: E402
+
+            self._google_aio = GoogleAioClient(client_wrapper=self._client_wrapper)
+        return self._google_aio
+
+    @property
+    def google_play(self):
+        if self._google_play is None:
+            from .google_play.client import GooglePlayClient  # noqa: E402
+
+            self._google_play = GooglePlayClient(client_wrapper=self._client_wrapper)
+        return self._google_play
+
+    @property
+    def google_shopping(self):
+        if self._google_shopping is None:
+            from .google_shopping.client import GoogleShoppingClient  # noqa: E402
+
+            self._google_shopping = GoogleShoppingClient(client_wrapper=self._client_wrapper)
+        return self._google_shopping
+
+    @property
+    def google_trends(self):
+        if self._google_trends is None:
+            from .google_trends.client import GoogleTrendsClient  # noqa: E402
+
+            self._google_trends = GoogleTrendsClient(client_wrapper=self._client_wrapper)
+        return self._google_trends
+
+    @property
     def instagram(self):
         if self._instagram is None:
             from .instagram.client import InstagramClient  # noqa: E402
@@ -165,6 +313,30 @@ class Apinoa:
         return self._linkedin
 
     @property
+    def naver(self):
+        if self._naver is None:
+            from .naver.client import NaverClient  # noqa: E402
+
+            self._naver = NaverClient(client_wrapper=self._client_wrapper)
+        return self._naver
+
+    @property
+    def naver_ai_brief(self):
+        if self._naver_ai_brief is None:
+            from .naver_ai_brief.client import NaverAiBriefClient  # noqa: E402
+
+            self._naver_ai_brief = NaverAiBriefClient(client_wrapper=self._client_wrapper)
+        return self._naver_ai_brief
+
+    @property
+    def naver_ai_tab(self):
+        if self._naver_ai_tab is None:
+            from .naver_ai_tab.client import NaverAiTabClient  # noqa: E402
+
+            self._naver_ai_tab = NaverAiTabClient(client_wrapper=self._client_wrapper)
+        return self._naver_ai_tab
+
+    @property
     def reddit(self):
         if self._reddit is None:
             from .reddit.client import RedditClient  # noqa: E402
@@ -173,12 +345,28 @@ class Apinoa:
         return self._reddit
 
     @property
+    def seznam(self):
+        if self._seznam is None:
+            from .seznam.client import SeznamClient  # noqa: E402
+
+            self._seznam = SeznamClient(client_wrapper=self._client_wrapper)
+        return self._seznam
+
+    @property
     def shopify(self):
         if self._shopify is None:
             from .shopify.client import ShopifyClient  # noqa: E402
 
             self._shopify = ShopifyClient(client_wrapper=self._client_wrapper)
         return self._shopify
+
+    @property
+    def sogou(self):
+        if self._sogou is None:
+            from .sogou.client import SogouClient  # noqa: E402
+
+            self._sogou = SogouClient(client_wrapper=self._client_wrapper)
+        return self._sogou
 
     @property
     def threads(self):
@@ -205,6 +393,14 @@ class Apinoa:
         return self._tiktokshop
 
     @property
+    def tripadvisor(self):
+        if self._tripadvisor is None:
+            from .tripadvisor.client import TripadvisorClient  # noqa: E402
+
+            self._tripadvisor = TripadvisorClient(client_wrapper=self._client_wrapper)
+        return self._tripadvisor
+
+    @property
     def walmart(self):
         if self._walmart is None:
             from .walmart.client import WalmartClient  # noqa: E402
@@ -219,6 +415,30 @@ class Apinoa:
 
             self._x = XClient(client_wrapper=self._client_wrapper)
         return self._x
+
+    @property
+    def yahoo(self):
+        if self._yahoo is None:
+            from .yahoo.client import YahooClient  # noqa: E402
+
+            self._yahoo = YahooClient(client_wrapper=self._client_wrapper)
+        return self._yahoo
+
+    @property
+    def yahoo_japan(self):
+        if self._yahoo_japan is None:
+            from .yahoo_japan.client import YahooJapanClient  # noqa: E402
+
+            self._yahoo_japan = YahooJapanClient(client_wrapper=self._client_wrapper)
+        return self._yahoo_japan
+
+    @property
+    def yandex(self):
+        if self._yandex is None:
+            from .yandex.client import YandexClient  # noqa: E402
+
+            self._yandex = YandexClient(client_wrapper=self._client_wrapper)
+        return self._yandex
 
     @property
     def youtube(self):
@@ -352,15 +572,37 @@ class AsyncApinoa:
         )
         self._aliexpress: typing.Optional[AsyncAliexpressClient] = None
         self._amazon: typing.Optional[AsyncAmazonClient] = None
+        self._app_store: typing.Optional[AsyncAppStoreClient] = None
+        self._baidu: typing.Optional[AsyncBaiduClient] = None
+        self._bing: typing.Optional[AsyncBingClient] = None
+        self._chatgpt: typing.Optional[AsyncChatgptClient] = None
+        self._daum: typing.Optional[AsyncDaumClient] = None
+        self._duckduckgo: typing.Optional[AsyncDuckduckgoClient] = None
+        self._gemini: typing.Optional[AsyncGeminiClient] = None
+        self._google: typing.Optional[AsyncGoogleClient] = None
+        self._google_ai_mode: typing.Optional[AsyncGoogleAiModeClient] = None
+        self._google_aio: typing.Optional[AsyncGoogleAioClient] = None
+        self._google_play: typing.Optional[AsyncGooglePlayClient] = None
+        self._google_shopping: typing.Optional[AsyncGoogleShoppingClient] = None
+        self._google_trends: typing.Optional[AsyncGoogleTrendsClient] = None
         self._instagram: typing.Optional[AsyncInstagramClient] = None
         self._linkedin: typing.Optional[AsyncLinkedinClient] = None
+        self._naver: typing.Optional[AsyncNaverClient] = None
+        self._naver_ai_brief: typing.Optional[AsyncNaverAiBriefClient] = None
+        self._naver_ai_tab: typing.Optional[AsyncNaverAiTabClient] = None
         self._reddit: typing.Optional[AsyncRedditClient] = None
+        self._seznam: typing.Optional[AsyncSeznamClient] = None
         self._shopify: typing.Optional[AsyncShopifyClient] = None
+        self._sogou: typing.Optional[AsyncSogouClient] = None
         self._threads: typing.Optional[AsyncThreadsClient] = None
         self._tiktok: typing.Optional[AsyncTiktokClient] = None
         self._tiktokshop: typing.Optional[AsyncTiktokshopClient] = None
+        self._tripadvisor: typing.Optional[AsyncTripadvisorClient] = None
         self._walmart: typing.Optional[AsyncWalmartClient] = None
         self._x: typing.Optional[AsyncXClient] = None
+        self._yahoo: typing.Optional[AsyncYahooClient] = None
+        self._yahoo_japan: typing.Optional[AsyncYahooJapanClient] = None
+        self._yandex: typing.Optional[AsyncYandexClient] = None
         self._youtube: typing.Optional[AsyncYoutubeClient] = None
         self._marketplaces: typing.Optional[AsyncMarketplacesClient] = None
         self._image_translate: typing.Optional[AsyncImageTranslateClient] = None
@@ -382,6 +624,110 @@ class AsyncApinoa:
         return self._amazon
 
     @property
+    def app_store(self):
+        if self._app_store is None:
+            from .app_store.client import AsyncAppStoreClient  # noqa: E402
+
+            self._app_store = AsyncAppStoreClient(client_wrapper=self._client_wrapper)
+        return self._app_store
+
+    @property
+    def baidu(self):
+        if self._baidu is None:
+            from .baidu.client import AsyncBaiduClient  # noqa: E402
+
+            self._baidu = AsyncBaiduClient(client_wrapper=self._client_wrapper)
+        return self._baidu
+
+    @property
+    def bing(self):
+        if self._bing is None:
+            from .bing.client import AsyncBingClient  # noqa: E402
+
+            self._bing = AsyncBingClient(client_wrapper=self._client_wrapper)
+        return self._bing
+
+    @property
+    def chatgpt(self):
+        if self._chatgpt is None:
+            from .chatgpt.client import AsyncChatgptClient  # noqa: E402
+
+            self._chatgpt = AsyncChatgptClient(client_wrapper=self._client_wrapper)
+        return self._chatgpt
+
+    @property
+    def daum(self):
+        if self._daum is None:
+            from .daum.client import AsyncDaumClient  # noqa: E402
+
+            self._daum = AsyncDaumClient(client_wrapper=self._client_wrapper)
+        return self._daum
+
+    @property
+    def duckduckgo(self):
+        if self._duckduckgo is None:
+            from .duckduckgo.client import AsyncDuckduckgoClient  # noqa: E402
+
+            self._duckduckgo = AsyncDuckduckgoClient(client_wrapper=self._client_wrapper)
+        return self._duckduckgo
+
+    @property
+    def gemini(self):
+        if self._gemini is None:
+            from .gemini.client import AsyncGeminiClient  # noqa: E402
+
+            self._gemini = AsyncGeminiClient(client_wrapper=self._client_wrapper)
+        return self._gemini
+
+    @property
+    def google(self):
+        if self._google is None:
+            from .google.client import AsyncGoogleClient  # noqa: E402
+
+            self._google = AsyncGoogleClient(client_wrapper=self._client_wrapper)
+        return self._google
+
+    @property
+    def google_ai_mode(self):
+        if self._google_ai_mode is None:
+            from .google_ai_mode.client import AsyncGoogleAiModeClient  # noqa: E402
+
+            self._google_ai_mode = AsyncGoogleAiModeClient(client_wrapper=self._client_wrapper)
+        return self._google_ai_mode
+
+    @property
+    def google_aio(self):
+        if self._google_aio is None:
+            from .google_aio.client import AsyncGoogleAioClient  # noqa: E402
+
+            self._google_aio = AsyncGoogleAioClient(client_wrapper=self._client_wrapper)
+        return self._google_aio
+
+    @property
+    def google_play(self):
+        if self._google_play is None:
+            from .google_play.client import AsyncGooglePlayClient  # noqa: E402
+
+            self._google_play = AsyncGooglePlayClient(client_wrapper=self._client_wrapper)
+        return self._google_play
+
+    @property
+    def google_shopping(self):
+        if self._google_shopping is None:
+            from .google_shopping.client import AsyncGoogleShoppingClient  # noqa: E402
+
+            self._google_shopping = AsyncGoogleShoppingClient(client_wrapper=self._client_wrapper)
+        return self._google_shopping
+
+    @property
+    def google_trends(self):
+        if self._google_trends is None:
+            from .google_trends.client import AsyncGoogleTrendsClient  # noqa: E402
+
+            self._google_trends = AsyncGoogleTrendsClient(client_wrapper=self._client_wrapper)
+        return self._google_trends
+
+    @property
     def instagram(self):
         if self._instagram is None:
             from .instagram.client import AsyncInstagramClient  # noqa: E402
@@ -398,6 +744,30 @@ class AsyncApinoa:
         return self._linkedin
 
     @property
+    def naver(self):
+        if self._naver is None:
+            from .naver.client import AsyncNaverClient  # noqa: E402
+
+            self._naver = AsyncNaverClient(client_wrapper=self._client_wrapper)
+        return self._naver
+
+    @property
+    def naver_ai_brief(self):
+        if self._naver_ai_brief is None:
+            from .naver_ai_brief.client import AsyncNaverAiBriefClient  # noqa: E402
+
+            self._naver_ai_brief = AsyncNaverAiBriefClient(client_wrapper=self._client_wrapper)
+        return self._naver_ai_brief
+
+    @property
+    def naver_ai_tab(self):
+        if self._naver_ai_tab is None:
+            from .naver_ai_tab.client import AsyncNaverAiTabClient  # noqa: E402
+
+            self._naver_ai_tab = AsyncNaverAiTabClient(client_wrapper=self._client_wrapper)
+        return self._naver_ai_tab
+
+    @property
     def reddit(self):
         if self._reddit is None:
             from .reddit.client import AsyncRedditClient  # noqa: E402
@@ -406,12 +776,28 @@ class AsyncApinoa:
         return self._reddit
 
     @property
+    def seznam(self):
+        if self._seznam is None:
+            from .seznam.client import AsyncSeznamClient  # noqa: E402
+
+            self._seznam = AsyncSeznamClient(client_wrapper=self._client_wrapper)
+        return self._seznam
+
+    @property
     def shopify(self):
         if self._shopify is None:
             from .shopify.client import AsyncShopifyClient  # noqa: E402
 
             self._shopify = AsyncShopifyClient(client_wrapper=self._client_wrapper)
         return self._shopify
+
+    @property
+    def sogou(self):
+        if self._sogou is None:
+            from .sogou.client import AsyncSogouClient  # noqa: E402
+
+            self._sogou = AsyncSogouClient(client_wrapper=self._client_wrapper)
+        return self._sogou
 
     @property
     def threads(self):
@@ -438,6 +824,14 @@ class AsyncApinoa:
         return self._tiktokshop
 
     @property
+    def tripadvisor(self):
+        if self._tripadvisor is None:
+            from .tripadvisor.client import AsyncTripadvisorClient  # noqa: E402
+
+            self._tripadvisor = AsyncTripadvisorClient(client_wrapper=self._client_wrapper)
+        return self._tripadvisor
+
+    @property
     def walmart(self):
         if self._walmart is None:
             from .walmart.client import AsyncWalmartClient  # noqa: E402
@@ -452,6 +846,30 @@ class AsyncApinoa:
 
             self._x = AsyncXClient(client_wrapper=self._client_wrapper)
         return self._x
+
+    @property
+    def yahoo(self):
+        if self._yahoo is None:
+            from .yahoo.client import AsyncYahooClient  # noqa: E402
+
+            self._yahoo = AsyncYahooClient(client_wrapper=self._client_wrapper)
+        return self._yahoo
+
+    @property
+    def yahoo_japan(self):
+        if self._yahoo_japan is None:
+            from .yahoo_japan.client import AsyncYahooJapanClient  # noqa: E402
+
+            self._yahoo_japan = AsyncYahooJapanClient(client_wrapper=self._client_wrapper)
+        return self._yahoo_japan
+
+    @property
+    def yandex(self):
+        if self._yandex is None:
+            from .yandex.client import AsyncYandexClient  # noqa: E402
+
+            self._yandex = AsyncYandexClient(client_wrapper=self._client_wrapper)
+        return self._yandex
 
     @property
     def youtube(self):

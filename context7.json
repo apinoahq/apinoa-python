@@ -14,7 +14,9 @@
     "Methods and parameters are snake_case: /v1/amazon/image-search is client.amazon.image_search(...), priceMax is price_max.",
     "Authenticate with your apinoa API key; the client reads APINOA_API_KEY from the environment. Create a key at https://apinoa.com/en/dashboard/api-keys.",
     "Every call is <platform>.<operation>(params), named after its URL: GET https://gateway.apinoa.com/v1/{platform}/{operation}.",
-    "Platforms by family: marketplaces (amazon, walmart, shopify, aliexpress, tiktokshop), social (tiktok, instagram, youtube, reddit, x, threads, linkedin), search engines (google, bing, naver, baidu, yandex, yahoo, google-shopping, google-trends, app-store, google-play and more), AI answers (chatgpt, gemini, google-aio, google-ai-mode, naver-ai-brief, naver-ai-tab) and image translation.",
+    "Marketplace platforms: amazon, walmart, shopify (any store), aliexpress, tiktokshop. Social platforms: tiktok, instagram, youtube, reddit, x, threads, linkedin.",
+    "Search engines: google, bing, naver, baidu, yandex, yahoo, yahoo-japan, duckduckgo, daum, seznam, sogou, google-shopping, google-trends, app-store, google-play, tripadvisor.",
+    "AI answer engines: chatgpt, gemini, google-aio, google-ai-mode, naver-ai-brief, naver-ai-tab. Image translation: image-translate.",
     "Each family returns one normalized schema whatever the platform, so code written for one marketplace or one social platform works for the others.",
     "GET https://gateway.apinoa.com/v1/marketplaces (no key) lists every platform, operation, parameter and cost.",
     "A failed call is not billed. Branch on the stable error code (every code: https://apinoa.com/docs/errors), not on the message."

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.7
+
+- `examples/`: four programs to copy and adapt, each one file that runs with `python` (3.9 and later): a price tracker
+  (Amazon, Walmart, Shopify, AliExpress, TikTok Shop), a rank tracker (Google, Bing, DuckDuckGo, Naver),
+  social listening (Reddit, Threads, YouTube) and an AI-answer monitor (ChatGPT, Gemini, Google AI
+  Overviews, AI Mode).
+- The README's Walmart example uses a product that is listed; the old id answered `404 PRODUCT_NOT_FOUND`.
+
 ## 0.1.6
 
 - The README now covers every family the SDK reaches: search engines (`client.google.search`, `client.naver.search`, …) and AI answers (`client.chatgpt.answer`, `client.google_aio.answer`, …), next to marketplaces and social platforms.

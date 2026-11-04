@@ -37,7 +37,7 @@ on the object.
 Every marketplace answers in one commerce schema: a `Product` from Amazon reads like one from Shopify.
 
 ```python
-product = client.walmart.product(id="5089499913")
+product = client.walmart.product(id="18256507800")
 reviews = client.shopify.reviews(id="allbirds.com/products/mens-tree-runners")
 tree = client.amazon.categories()
 ```
@@ -135,6 +135,11 @@ per client or per call:
 client = Apinoa(max_retries=4, timeout=60)
 client.tiktok.posts(username="nasa", request_options={"max_retries": 0, "timeout_in_seconds": 10})
 ```
+
+## Examples
+
+[`examples/`](./examples) holds four small programs to copy and adapt: a price tracker, a rank tracker,
+social listening and an AI-answer monitor. Each is one file that runs with `python`.
 
 ## Reference
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.6
+
+- The README now covers every family the SDK reaches: search engines (`client.google.search`, `client.naver.search`, …) and AI answers (`client.chatgpt.answer`, `client.google_aio.answer`, …), next to marketplaces and social platforms.
+- The package description and keywords name search results and AI answers.
+
 ## 0.1.5
 
 Follows the API as of 2026-10-30:

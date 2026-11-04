@@ -1,8 +1,9 @@
 # apinoa
 
 The official Python SDK for [apinoa](https://apinoa.com): product data from Amazon, Walmart, Shopify,
-TikTok Shop and AliExpress, social data from TikTok, YouTube, Instagram, Threads, X, Reddit and LinkedIn,
-and image translation, through one API.
+TikTok Shop and AliExpress; posts, profiles and comments from TikTok, YouTube, Instagram, Threads, X, Reddit
+and LinkedIn; search results from Google, Bing, Naver and 13 more search engines; AI answers from ChatGPT,
+Gemini, Google AI Overviews, Google AI Mode and Naver; and image translation, through one API.
 
 ```sh
 pip install apinoa
@@ -50,6 +51,31 @@ platform has under `ext`.
 creator = client.tiktok.profile(username="khaby.lame")
 page = client.reddit.posts(community="python")
 next_page = client.reddit.posts(cursor=page.data.cursor)  # the next page: the cursor alone
+```
+
+### Search engines
+
+Every search engine answers in one results-page schema: Google, Bing, Naver, Baidu, Yandex, Yahoo and the
+rest return the same `items`.
+
+```python
+res = client.google.search(q="trail running shoes", country="US")
+for item in res.data.items:
+    if item.type == "organic":
+        print(item.position, item.title, item.url)
+naver = client.naver.search(q="러닝화 추천")
+```
+
+### AI answers
+
+What ChatGPT, Gemini, Google AI Overviews, Google AI Mode and Naver answer to a prompt, with its citations,
+sources and the brands it names, in one `Answer` type.
+
+```python
+ans = client.chatgpt.answer(prompt="Best running shoes for beginners?", country="US")
+print(ans.data.text)
+cited = [s.url for s in ans.data.sources if s.cited]
+aio = client.google_aio.answer(prompt="best running shoes for beginners")
 ```
 
 ### Image translation

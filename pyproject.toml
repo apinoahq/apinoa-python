@@ -1,13 +1,13 @@
 [project]
 name = "apinoa"
-version = "0.1.5"
-description = "Official Python SDK for the apinoa API: marketplace, social and image-translation data through one API."
+version = "0.1.6"
+description = "Official Python SDK for the apinoa API: marketplace products, social posts, search results and AI answers, plus image translation, through one API."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.9"
 authors = [{ name = "apinoa" }]
-keywords = ["apinoa", "amazon", "walmart", "shopify", "aliexpress", "tiktok", "reddit", "youtube", "instagram", "scraping", "api", "sdk"]
+keywords = ["apinoa", "amazon", "walmart", "shopify", "aliexpress", "tiktok", "reddit", "youtube", "instagram", "scraping", "api", "sdk", "serp", "search-api", "google", "bing", "naver", "ai-answers", "chatgpt", "gemini", "ai-overviews", "tiktokshop", "x", "threads", "linkedin", "social-media", "web-scraping"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",

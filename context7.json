@@ -1,0 +1,22 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "url": "https://context7.com/apinoahq/apinoa-python",
+  "public_key": "pk_AeV8CupDqHA7Bwl4UcpH4",
+  "projectTitle": "apinoa Python SDK",
+  "description": "Python SDK for apinoa: marketplace products, social posts, search results and AI answers as normalized JSON through one API.",
+  "excludeFolders": [
+    "src/apinoa/core",
+    "tests",
+    "dist"
+  ],
+  "rules": [
+    "Install with pip install apinoa and create the client with Apinoa() (AsyncApinoa for asyncio).",
+    "Methods and parameters are snake_case: /v1/amazon/image-search is client.amazon.image_search(...), priceMax is price_max.",
+    "Authenticate with your apinoa API key; the client reads APINOA_API_KEY from the environment. Create a key at https://apinoa.com/en/dashboard/api-keys.",
+    "Every call is <platform>.<operation>(params), named after its URL: GET https://gateway.apinoa.com/v1/{platform}/{operation}.",
+    "Platforms by family: marketplaces (amazon, walmart, shopify, aliexpress, tiktokshop), social (tiktok, instagram, youtube, reddit, x, threads, linkedin), search engines (google, bing, naver, baidu, yandex, yahoo, google-shopping, google-trends, app-store, google-play and more), AI answers (chatgpt, gemini, google-aio, google-ai-mode, naver-ai-brief, naver-ai-tab) and image translation.",
+    "Each family returns one normalized schema whatever the platform, so code written for one marketplace or one social platform works for the others.",
+    "GET https://gateway.apinoa.com/v1/marketplaces (no key) lists every platform, operation, parameter and cost.",
+    "A failed call is not billed. Branch on the stable error code (every code: https://apinoa.com/docs/errors), not on the message."
+  ]
+}

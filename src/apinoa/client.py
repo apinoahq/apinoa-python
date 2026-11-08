@@ -18,8 +18,11 @@ if typing.TYPE_CHECKING:
     from .baidu.client import AsyncBaiduClient, BaiduClient
     from .bing.client import AsyncBingClient, BingClient
     from .chatgpt.client import AsyncChatgptClient, ChatgptClient
+    from .company.client import AsyncCompanyClient, CompanyClient
+    from .copilot.client import AsyncCopilotClient, CopilotClient
     from .daum.client import AsyncDaumClient, DaumClient
     from .duckduckgo.client import AsyncDuckduckgoClient, DuckduckgoClient
+    from .facebook.client import AsyncFacebookClient, FacebookClient
     from .gemini.client import AsyncGeminiClient, GeminiClient
     from .google.client import AsyncGoogleClient, GoogleClient
     from .google_ai_mode.client import AsyncGoogleAiModeClient, GoogleAiModeClient
@@ -145,8 +148,11 @@ class Apinoa:
         self._baidu: typing.Optional[BaiduClient] = None
         self._bing: typing.Optional[BingClient] = None
         self._chatgpt: typing.Optional[ChatgptClient] = None
+        self._company: typing.Optional[CompanyClient] = None
+        self._copilot: typing.Optional[CopilotClient] = None
         self._daum: typing.Optional[DaumClient] = None
         self._duckduckgo: typing.Optional[DuckduckgoClient] = None
+        self._facebook: typing.Optional[FacebookClient] = None
         self._gemini: typing.Optional[GeminiClient] = None
         self._google: typing.Optional[GoogleClient] = None
         self._google_ai_mode: typing.Optional[GoogleAiModeClient] = None
@@ -225,6 +231,22 @@ class Apinoa:
         return self._chatgpt
 
     @property
+    def company(self):
+        if self._company is None:
+            from .company.client import CompanyClient  # noqa: E402
+
+            self._company = CompanyClient(client_wrapper=self._client_wrapper)
+        return self._company
+
+    @property
+    def copilot(self):
+        if self._copilot is None:
+            from .copilot.client import CopilotClient  # noqa: E402
+
+            self._copilot = CopilotClient(client_wrapper=self._client_wrapper)
+        return self._copilot
+
+    @property
     def daum(self):
         if self._daum is None:
             from .daum.client import DaumClient  # noqa: E402
@@ -239,6 +261,14 @@ class Apinoa:
 
             self._duckduckgo = DuckduckgoClient(client_wrapper=self._client_wrapper)
         return self._duckduckgo
+
+    @property
+    def facebook(self):
+        if self._facebook is None:
+            from .facebook.client import FacebookClient  # noqa: E402
+
+            self._facebook = FacebookClient(client_wrapper=self._client_wrapper)
+        return self._facebook
 
     @property
     def gemini(self):
@@ -576,8 +606,11 @@ class AsyncApinoa:
         self._baidu: typing.Optional[AsyncBaiduClient] = None
         self._bing: typing.Optional[AsyncBingClient] = None
         self._chatgpt: typing.Optional[AsyncChatgptClient] = None
+        self._company: typing.Optional[AsyncCompanyClient] = None
+        self._copilot: typing.Optional[AsyncCopilotClient] = None
         self._daum: typing.Optional[AsyncDaumClient] = None
         self._duckduckgo: typing.Optional[AsyncDuckduckgoClient] = None
+        self._facebook: typing.Optional[AsyncFacebookClient] = None
         self._gemini: typing.Optional[AsyncGeminiClient] = None
         self._google: typing.Optional[AsyncGoogleClient] = None
         self._google_ai_mode: typing.Optional[AsyncGoogleAiModeClient] = None
@@ -656,6 +689,22 @@ class AsyncApinoa:
         return self._chatgpt
 
     @property
+    def company(self):
+        if self._company is None:
+            from .company.client import AsyncCompanyClient  # noqa: E402
+
+            self._company = AsyncCompanyClient(client_wrapper=self._client_wrapper)
+        return self._company
+
+    @property
+    def copilot(self):
+        if self._copilot is None:
+            from .copilot.client import AsyncCopilotClient  # noqa: E402
+
+            self._copilot = AsyncCopilotClient(client_wrapper=self._client_wrapper)
+        return self._copilot
+
+    @property
     def daum(self):
         if self._daum is None:
             from .daum.client import AsyncDaumClient  # noqa: E402
@@ -670,6 +719,14 @@ class AsyncApinoa:
 
             self._duckduckgo = AsyncDuckduckgoClient(client_wrapper=self._client_wrapper)
         return self._duckduckgo
+
+    @property
+    def facebook(self):
+        if self._facebook is None:
+            from .facebook.client import AsyncFacebookClient  # noqa: E402
+
+            self._facebook = AsyncFacebookClient(client_wrapper=self._client_wrapper)
+        return self._facebook
 
     @property
     def gemini(self):

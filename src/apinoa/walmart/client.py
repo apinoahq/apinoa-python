@@ -230,7 +230,12 @@ class WalmartClient:
         return _response.data
 
     def product(
-        self, *, id: str, region: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: str,
+        seller: typing.Optional[str] = None,
+        region: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> ProductResponse:
         """
         Returns `Product` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/walmart/product
@@ -239,6 +244,9 @@ class WalmartClient:
         ----------
         id : str
             Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+
+        seller : typing.Optional[str]
+            Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
 
         region : typing.Optional[str]
             Buyer country as ISO 3166-1 alpha-2; sets availability, shipping and price.
@@ -262,7 +270,7 @@ class WalmartClient:
             id="id",
         )
         """
-        _response = self._raw_client.product(id=id, region=region, request_options=request_options)
+        _response = self._raw_client.product(id=id, seller=seller, region=region, request_options=request_options)
         return _response.data
 
     def reviews(
@@ -545,7 +553,12 @@ class AsyncWalmartClient:
         return _response.data
 
     async def product(
-        self, *, id: str, region: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: str,
+        seller: typing.Optional[str] = None,
+        region: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> ProductResponse:
         """
         Returns `Product` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/walmart/product
@@ -554,6 +567,9 @@ class AsyncWalmartClient:
         ----------
         id : str
             Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+
+        seller : typing.Optional[str]
+            Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
 
         region : typing.Optional[str]
             Buyer country as ISO 3166-1 alpha-2; sets availability, shipping and price.
@@ -585,7 +601,7 @@ class AsyncWalmartClient:
 
         asyncio.run(main())
         """
-        _response = await self._raw_client.product(id=id, region=region, request_options=request_options)
+        _response = await self._raw_client.product(id=id, seller=seller, region=region, request_options=request_options)
         return _response.data
 
     async def reviews(

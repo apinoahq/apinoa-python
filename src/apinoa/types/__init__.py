@@ -92,13 +92,31 @@ if typing.TYPE_CHECKING:
     from .comment_page_platform import CommentPagePlatform
     from .comment_page_response import CommentPageResponse
     from .comment_platform import CommentPlatform
+    from .company_page import CompanyPage
+    from .company_page_error import CompanyPageError
     from .conversation import Conversation
     from .delivery_option import DeliveryOption
     from .developer import Developer
+    from .dns import Dns
+    from .dns_mx_item import DnsMxItem
+    from .dns_soa import DnsSoa
     from .entities import Entities
     from .error_response import ErrorResponse
     from .error_response_error import ErrorResponseError
+    from .evidence import Evidence
+    from .evidence_source import EvidenceSource
     from .ext import Ext
+    from .facebook_ad import FacebookAd
+    from .facebook_ad_card import FacebookAdCard
+    from .facebook_ad_disclaimer import FacebookAdDisclaimer
+    from .facebook_ad_image import FacebookAdImage
+    from .facebook_ad_page import FacebookAdPage
+    from .facebook_ad_platform import FacebookAdPlatform
+    from .facebook_ad_video import FacebookAdVideo
+    from .facebook_ads_page import FacebookAdsPage
+    from .facebook_ads_page_platform import FacebookAdsPagePlatform
+    from .facebook_ads_page_response import FacebookAdsPageResponse
+    from .facebook_range import FacebookRange
     from .facet import Facet
     from .facet_kind import FacetKind
     from .facet_value import FacetValue
@@ -175,6 +193,7 @@ if typing.TYPE_CHECKING:
     from .product_unit_price import ProductUnitPrice
     from .protection_plan import ProtectionPlan
     from .rating import Rating
+    from .redirect import Redirect
     from .related import Related
     from .related_item import RelatedItem
     from .related_queries import RelatedQueries
@@ -194,6 +213,7 @@ if typing.TYPE_CHECKING:
     from .review_page_response import ReviewPageResponse
     from .review_page_review_aspects_item import ReviewPageReviewAspectsItem
     from .review_reply import ReviewReply
+    from .robots import Robots
     from .search_item import SearchItem
     from .search_item_delivery_to import SearchItemDeliveryTo
     from .search_item_offers_summary import SearchItemOffersSummary
@@ -256,6 +276,9 @@ if typing.TYPE_CHECKING:
     from .suggestions_suggestions_item import SuggestionsSuggestionsItem
     from .supported_fonts import SupportedFonts
     from .supported_fonts_response import SupportedFontsResponse
+    from .technologies_result import TechnologiesResult
+    from .technologies_result_response import TechnologiesResultResponse
+    from .technology import Technology
     from .text_region import TextRegion
     from .text_region_bbox import TextRegionBbox
     from .text_region_bg_color import TextRegionBgColor
@@ -374,13 +397,31 @@ _dynamic_imports: typing.Dict[str, str] = {
     "CommentPagePlatform": ".comment_page_platform",
     "CommentPageResponse": ".comment_page_response",
     "CommentPlatform": ".comment_platform",
+    "CompanyPage": ".company_page",
+    "CompanyPageError": ".company_page_error",
     "Conversation": ".conversation",
     "DeliveryOption": ".delivery_option",
     "Developer": ".developer",
+    "Dns": ".dns",
+    "DnsMxItem": ".dns_mx_item",
+    "DnsSoa": ".dns_soa",
     "Entities": ".entities",
     "ErrorResponse": ".error_response",
     "ErrorResponseError": ".error_response_error",
+    "Evidence": ".evidence",
+    "EvidenceSource": ".evidence_source",
     "Ext": ".ext",
+    "FacebookAd": ".facebook_ad",
+    "FacebookAdCard": ".facebook_ad_card",
+    "FacebookAdDisclaimer": ".facebook_ad_disclaimer",
+    "FacebookAdImage": ".facebook_ad_image",
+    "FacebookAdPage": ".facebook_ad_page",
+    "FacebookAdPlatform": ".facebook_ad_platform",
+    "FacebookAdVideo": ".facebook_ad_video",
+    "FacebookAdsPage": ".facebook_ads_page",
+    "FacebookAdsPagePlatform": ".facebook_ads_page_platform",
+    "FacebookAdsPageResponse": ".facebook_ads_page_response",
+    "FacebookRange": ".facebook_range",
     "Facet": ".facet",
     "FacetKind": ".facet_kind",
     "FacetValue": ".facet_value",
@@ -457,6 +498,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ProductUnitPrice": ".product_unit_price",
     "ProtectionPlan": ".protection_plan",
     "Rating": ".rating",
+    "Redirect": ".redirect",
     "Related": ".related",
     "RelatedItem": ".related_item",
     "RelatedQueries": ".related_queries",
@@ -476,6 +518,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ReviewPageResponse": ".review_page_response",
     "ReviewPageReviewAspectsItem": ".review_page_review_aspects_item",
     "ReviewReply": ".review_reply",
+    "Robots": ".robots",
     "SearchItem": ".search_item",
     "SearchItemDeliveryTo": ".search_item_delivery_to",
     "SearchItemOffersSummary": ".search_item_offers_summary",
@@ -538,6 +581,9 @@ _dynamic_imports: typing.Dict[str, str] = {
     "SuggestionsSuggestionsItem": ".suggestions_suggestions_item",
     "SupportedFonts": ".supported_fonts",
     "SupportedFontsResponse": ".supported_fonts_response",
+    "TechnologiesResult": ".technologies_result",
+    "TechnologiesResultResponse": ".technologies_result_response",
+    "Technology": ".technology",
     "TextRegion": ".text_region",
     "TextRegionBbox": ".text_region_bbox",
     "TextRegionBgColor": ".text_region_bg_color",
@@ -680,13 +726,31 @@ __all__ = [
     "CommentPagePlatform",
     "CommentPageResponse",
     "CommentPlatform",
+    "CompanyPage",
+    "CompanyPageError",
     "Conversation",
     "DeliveryOption",
     "Developer",
+    "Dns",
+    "DnsMxItem",
+    "DnsSoa",
     "Entities",
     "ErrorResponse",
     "ErrorResponseError",
+    "Evidence",
+    "EvidenceSource",
     "Ext",
+    "FacebookAd",
+    "FacebookAdCard",
+    "FacebookAdDisclaimer",
+    "FacebookAdImage",
+    "FacebookAdPage",
+    "FacebookAdPlatform",
+    "FacebookAdVideo",
+    "FacebookAdsPage",
+    "FacebookAdsPagePlatform",
+    "FacebookAdsPageResponse",
+    "FacebookRange",
     "Facet",
     "FacetKind",
     "FacetValue",
@@ -763,6 +827,7 @@ __all__ = [
     "ProductUnitPrice",
     "ProtectionPlan",
     "Rating",
+    "Redirect",
     "Related",
     "RelatedItem",
     "RelatedQueries",
@@ -782,6 +847,7 @@ __all__ = [
     "ReviewPageResponse",
     "ReviewPageReviewAspectsItem",
     "ReviewReply",
+    "Robots",
     "SearchItem",
     "SearchItemDeliveryTo",
     "SearchItemOffersSummary",
@@ -844,6 +910,9 @@ __all__ = [
     "SuggestionsSuggestionsItem",
     "SupportedFonts",
     "SupportedFontsResponse",
+    "TechnologiesResult",
+    "TechnologiesResultResponse",
+    "Technology",
     "TextRegion",
     "TextRegionBbox",
     "TextRegionBgColor",

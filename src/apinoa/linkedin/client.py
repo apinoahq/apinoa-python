@@ -239,17 +239,21 @@ class LinkedinClient:
         self,
         *,
         query: typing.Optional[str] = None,
+        company: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> JobPageResponse:
         """
-        Returns `JobPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
+        Returns `JobPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
 
         Parameters
         ----------
         query : typing.Optional[str]
             Job search keywords (e.g. software engineer).
+
+        company : typing.Optional[str]
+            Only this company's jobs: its vanity name (e.g. stripe), its company URL, or its numeric LinkedIn company id.
 
         location : typing.Optional[str]
             Location name (e.g. United States). Default: worldwide.
@@ -275,7 +279,7 @@ class LinkedinClient:
         client.linkedin.jobs()
         """
         _response = self._raw_client.jobs(
-            query=query, location=location, cursor=cursor, request_options=request_options
+            query=query, company=company, location=location, cursor=cursor, request_options=request_options
         )
         return _response.data
 
@@ -553,17 +557,21 @@ class AsyncLinkedinClient:
         self,
         *,
         query: typing.Optional[str] = None,
+        company: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> JobPageResponse:
         """
-        Returns `JobPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
+        Returns `JobPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
 
         Parameters
         ----------
         query : typing.Optional[str]
             Job search keywords (e.g. software engineer).
+
+        company : typing.Optional[str]
+            Only this company's jobs: its vanity name (e.g. stripe), its company URL, or its numeric LinkedIn company id.
 
         location : typing.Optional[str]
             Location name (e.g. United States). Default: worldwide.
@@ -597,6 +605,6 @@ class AsyncLinkedinClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.jobs(
-            query=query, location=location, cursor=cursor, request_options=request_options
+            query=query, company=company, location=location, cursor=cursor, request_options=request_options
         )
         return _response.data

@@ -601,7 +601,12 @@ class RawWalmartClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
     def product(
-        self, *, id: str, region: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: str,
+        seller: typing.Optional[str] = None,
+        region: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[ProductResponse]:
         """
         Returns `Product` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/walmart/product
@@ -610,6 +615,9 @@ class RawWalmartClient:
         ----------
         id : str
             Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+
+        seller : typing.Optional[str]
+            Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
 
         region : typing.Optional[str]
             Buyer country as ISO 3166-1 alpha-2; sets availability, shipping and price.
@@ -627,6 +635,7 @@ class RawWalmartClient:
             method="GET",
             params={
                 "id": id,
+                "seller": seller,
                 "region": region,
             },
             request_options=request_options,
@@ -1493,7 +1502,12 @@ class AsyncRawWalmartClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
     async def product(
-        self, *, id: str, region: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: str,
+        seller: typing.Optional[str] = None,
+        region: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[ProductResponse]:
         """
         Returns `Product` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/walmart/product
@@ -1502,6 +1516,9 @@ class AsyncRawWalmartClient:
         ----------
         id : str
             Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+
+        seller : typing.Optional[str]
+            Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
 
         region : typing.Optional[str]
             Buyer country as ISO 3166-1 alpha-2; sets availability, shipping and price.
@@ -1519,6 +1536,7 @@ class AsyncRawWalmartClient:
             method="GET",
             params={
                 "id": id,
+                "seller": seller,
                 "region": region,
             },
             request_options=request_options,

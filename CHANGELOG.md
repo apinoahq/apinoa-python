@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.8
+
+Follows the API as of 2026-11-08:
+
+- New operations: `GET /v1/company/technologies`, `POST /v1/copilot/answer`, `GET /v1/facebook/profile`, `GET /v1/facebook/ads`.
+- New type `CompanyPage`.
+- New type `Dns`.
+- New type `Evidence`.
+- New type `FacebookAd`.
+- New type `FacebookAdCard`.
+- New type `FacebookAdDisclaimer`.
+- New type `FacebookAdImage`.
+- New type `FacebookAdPage`.
+- New type `FacebookAdVideo`.
+- New type `FacebookAdsPage`.
+- New type `FacebookAdsPageResponse`.
+- New type `FacebookRange`.
+- New type `Redirect`.
+- New type `Robots`.
+- New type `TechnologiesResult`.
+- New type `TechnologiesResultResponse`.
+- New type `Technology`.
+
 ## 0.1.7
 
 - `examples/`: four programs to copy and adapt, each one file that runs with `python` (3.9 and later): a price tracker

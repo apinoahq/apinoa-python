@@ -3,5 +3,5 @@
 import typing
 
 AccountRefPlatform = typing.Union[
-    typing.Literal["reddit", "linkedin", "tiktok", "youtube", "instagram", "threads", "x"], typing.Any
+    typing.Literal["reddit", "linkedin", "tiktok", "youtube", "instagram", "threads", "x", "facebook"], typing.Any
 ]

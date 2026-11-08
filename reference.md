@@ -2120,6 +2120,170 @@ client.chatgpt.answer(
 </dl>
 </details>
 
+## Company
+<details><summary><code>client.company.<a href="src/apinoa/company/client.py">technologies</a>(...) -> TechnologiesResultResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `TechnologiesResult` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/company/technologies
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.company.technologies(
+    domain="domain",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**domain:** `str` — The company's domain, e.g. stripe.com. A web address (https://stripe.com/pricing) is accepted and read as its host.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Copilot
+<details><summary><code>client.copilot.<a href="src/apinoa/copilot/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/copilot/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.copilot.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerCopilotRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Daum
 <details><summary><code>client.daum.<a href="src/apinoa/daum/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
 <dl>
@@ -2503,6 +2667,245 @@ client.duckduckgo.suggestions(
 <dd>
 
 **country:** `typing.Optional[SuggestionsDuckduckgoRequestCountry]` — The market, as an ISO 3166 country code.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Facebook
+<details><summary><code>client.facebook.<a href="src/apinoa/facebook/client.py">profile</a>(...) -> AccountResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Account` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/profile
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.facebook.profile()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**username:** `typing.Optional[str]` — The Page's vanity name (e.g. nasa), its numeric id, or the Page URL.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.facebook.<a href="src/apinoa/facebook/client.py">ads</a>(...) -> FacebookAdsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `FacebookAdsPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/ads
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.facebook.ads()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — Keywords to search the Ad Library for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_id:** `typing.Optional[str]` — Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**exact:** `typing.Optional[bool]` — query: match the exact phrase instead of any of its words.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**status:** `typing.Optional[AdsFacebookRequestStatus]` — active (default), inactive or all.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**ad_type:** `typing.Optional[AdsFacebookRequestAdType]` — all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**media_type:** `typing.Optional[AdsFacebookRequestMediaType]` — all (default), image, video, meme, image_and_meme, none.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**platforms:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Only ads that ran on these platforms.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**languages:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Only ads in these languages (ISO 639-1).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**start_date:** `typing.Optional[str]` — Only ads that started running on or after this day (YYYY-MM-DD).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**end_date:** `typing.Optional[str]` — Only ads that started running on or before this day (YYYY-MM-DD).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[AdsFacebookRequestSort]` — relevance (default), or impressions (highest first; Facebook states impressions for political ads).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
     
 </dd>
 </dl>
@@ -5144,7 +5547,7 @@ client.linkedin.job()
 <dl>
 <dd>
 
-Returns `JobPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
+Returns `JobPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
 </dd>
 </dl>
 </dd>
@@ -5184,6 +5587,14 @@ client.linkedin.jobs()
 <dd>
 
 **query:** `typing.Optional[str]` — Job search keywords (e.g. software engineer).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**company:** `typing.Optional[str]` — Only this company's jobs: its vanity name (e.g. stripe), its company URL, or its numeric LinkedIn company id.
     
 </dd>
 </dl>
@@ -9948,6 +10359,14 @@ client.walmart.product(
 <dd>
 
 **id:** `str` — Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**seller:** `typing.Optional[str]` — Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
     
 </dd>
 </dl>

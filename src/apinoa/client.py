@@ -37,6 +37,7 @@ if typing.TYPE_CHECKING:
     from .naver.client import AsyncNaverClient, NaverClient
     from .naver_ai_brief.client import AsyncNaverAiBriefClient, NaverAiBriefClient
     from .naver_ai_tab.client import AsyncNaverAiTabClient, NaverAiTabClient
+    from .ocr.client import AsyncOcrClient, OcrClient
     from .reddit.client import AsyncRedditClient, RedditClient
     from .seznam.client import AsyncSeznamClient, SeznamClient
     from .shopify.client import AsyncShopifyClient, ShopifyClient
@@ -181,6 +182,7 @@ class Apinoa:
         self._youtube: typing.Optional[YoutubeClient] = None
         self._marketplaces: typing.Optional[MarketplacesClient] = None
         self._image_translate: typing.Optional[ImageTranslateClient] = None
+        self._ocr: typing.Optional[OcrClient] = None
 
     @property
     def aliexpress(self):
@@ -494,6 +496,14 @@ class Apinoa:
             self._image_translate = ImageTranslateClient(client_wrapper=self._client_wrapper)
         return self._image_translate
 
+    @property
+    def ocr(self):
+        if self._ocr is None:
+            from .ocr.client import OcrClient  # noqa: E402
+
+            self._ocr = OcrClient(client_wrapper=self._client_wrapper)
+        return self._ocr
+
 
 def _make_default_async_client(
     timeout: typing.Optional[float],
@@ -639,6 +649,7 @@ class AsyncApinoa:
         self._youtube: typing.Optional[AsyncYoutubeClient] = None
         self._marketplaces: typing.Optional[AsyncMarketplacesClient] = None
         self._image_translate: typing.Optional[AsyncImageTranslateClient] = None
+        self._ocr: typing.Optional[AsyncOcrClient] = None
 
     @property
     def aliexpress(self):
@@ -951,6 +962,14 @@ class AsyncApinoa:
 
             self._image_translate = AsyncImageTranslateClient(client_wrapper=self._client_wrapper)
         return self._image_translate
+
+    @property
+    def ocr(self):
+        if self._ocr is None:
+            from .ocr.client import AsyncOcrClient  # noqa: E402
+
+            self._ocr = AsyncOcrClient(client_wrapper=self._client_wrapper)
+        return self._ocr
 
 
 def _get_base_url(*, base_url: typing.Optional[str] = None, environment: ApinoaEnvironment) -> str:

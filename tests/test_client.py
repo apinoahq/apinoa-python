@@ -117,6 +117,23 @@ def test_image_translation_uploads_raw_bytes_and_returns_the_image() -> None:
     assert out == bytes([0xFF, 0xD8, 9, 9])
 
 
+def test_ocr_uploads_raw_bytes_and_returns_the_regions() -> None:
+    png = bytes([0x89, 0x50, 0x4E, 0x47, 1, 2, 3])
+    regions = {"regions": [{"index": 0, "text": "限时特价", "confidence": 0.99}], "regions_found": 1, "src_w": 750, "src_h": 750}
+    fake = Fake(lambda r, n: ok(regions))
+    res = client(fake).ocr.read(request=png)
+    [req] = fake.seen
+    assert req.method == "POST"
+    assert req.url.path == "/v1/ocr"
+    assert "language" not in req.url.params
+    assert req.content == png
+    assert res.data.regions[0].text == "限时特价"
+
+    fake = Fake(lambda r, n: ok(regions))
+    client(fake).ocr.read(request=png, language="ja")
+    assert fake.seen[0].url.params["language"] == "ja"
+
+
 def test_catalog_lists_platforms() -> None:
     fake = Fake(lambda r, n: ok({"marketplaces": [{"id": "walmart", "kind": "marketplace", "operations": ["search"]}]}))
     assert client(fake).marketplaces.list().data.marketplaces[0].id == "walmart"

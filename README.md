@@ -91,6 +91,18 @@ with open("translated.jpg", "wb") as f:
     f.write(translated)
 ```
 
+### OCR
+
+```python
+with open("product.jpg", "rb") as f:
+    result = client.ocr.read(request=f.read())
+
+for region in result.data.regions:
+    print(region.text, region.confidence)
+```
+
+`language` (`zh-CN`, `zh-TW`, `ja`, `en`) keeps only the text in that language; the default, `auto`, returns all of it.
+
 ## Async
 
 `AsyncApinoa` has the same methods, awaitable:

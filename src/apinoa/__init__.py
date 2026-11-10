@@ -350,6 +350,7 @@ if typing.TYPE_CHECKING:
         naver,
         naver_ai_brief,
         naver_ai_tab,
+        ocr,
         reddit,
         seznam,
         shopify,
@@ -469,6 +470,7 @@ if typing.TYPE_CHECKING:
     )
     from .naver_ai_brief import AnswerNaverAiBriefRequestInclude, AnswerNaverAiBriefRequestIncludeZeroItem
     from .naver_ai_tab import AnswerNaverAiTabRequestInclude, AnswerNaverAiTabRequestIncludeZeroItem
+    from .ocr import ReadOcrRequestLanguage
     from .reddit import (
         CommentsRedditRequestPeriod,
         CommentsRedditRequestSort,
@@ -792,6 +794,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ProfilesTiktokRequestType": ".tiktok",
     "ProtectionPlan": ".types",
     "Rating": ".types",
+    "ReadOcrRequestLanguage": ".ocr",
     "Redirect": ".types",
     "Related": ".types",
     "RelatedItem": ".types",
@@ -1019,6 +1022,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "naver": ".naver",
     "naver_ai_brief": ".naver_ai_brief",
     "naver_ai_tab": ".naver_ai_tab",
+    "ocr": ".ocr",
     "reddit": ".reddit",
     "seznam": ".seznam",
     "shopify": ".shopify",
@@ -1317,6 +1321,7 @@ __all__ = [
     "ProfilesTiktokRequestType",
     "ProtectionPlan",
     "Rating",
+    "ReadOcrRequestLanguage",
     "Redirect",
     "Related",
     "RelatedItem",
@@ -1544,6 +1549,7 @@ __all__ = [
     "naver",
     "naver_ai_brief",
     "naver_ai_tab",
+    "ocr",
     "reddit",
     "seznam",
     "shopify",

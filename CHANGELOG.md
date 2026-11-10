@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.9
+
+Follows the API as of 2026-11-10:
+
+- New operations: `POST /v1/ocr`.
+- `image_translate.ocr` is deprecated: OCR is its own API now. Use `ocr.read` (`POST /v1/ocr`): the same result at the same price.
+
 ## 0.1.8
 
 Follows the API as of 2026-11-08:

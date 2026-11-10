@@ -238,7 +238,7 @@ class RawImageTranslateClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[OcrResultResponse]:
         """
-        Detects every text region without translating. Reference: https://apinoa.com/docs/api-reference/image-translate/ocr
+        The OCR API's old address: the same call as POST /v1/ocr, at the same price. Use POST /v1/ocr. Reference: https://apinoa.com/docs/api-reference/ocr
 
         Parameters
         ----------
@@ -755,7 +755,7 @@ class AsyncRawImageTranslateClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[OcrResultResponse]:
         """
-        Detects every text region without translating. Reference: https://apinoa.com/docs/api-reference/image-translate/ocr
+        The OCR API's old address: the same call as POST /v1/ocr, at the same price. Use POST /v1/ocr. Reference: https://apinoa.com/docs/api-reference/ocr
 
         Parameters
         ----------

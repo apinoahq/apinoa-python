@@ -12430,7 +12430,7 @@ client.image_translate.translate(...)
 <dl>
 <dd>
 
-Detects every text region without translating. Reference: https://apinoa.com/docs/api-reference/image-translate/ocr
+The OCR API's old address: the same call as POST /v1/ocr, at the same price. Use POST /v1/ocr. Reference: https://apinoa.com/docs/api-reference/ocr
 </dd>
 </dl>
 </dd>
@@ -12535,6 +12535,77 @@ client.image_translate.supported_fonts()
 
 <dl>
 <dd>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## OCR
+<details><summary><code>client.ocr.<a href="src/apinoa/ocr/client.py">read</a>(...) -> OcrResultResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns every text region in the image with its polygon, bounding box, text and confidence. Reads Chinese (Simplified and Traditional), Japanese, English and other Latin-script languages. One credit per image; an image whose long side is 2.5 times its short side or more is read in sections of twice its short side, one credit each. Reference: https://apinoa.com/docs/api-reference/ocr
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+client.ocr.read(...)
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `typing.Union[bytes, typing.Iterator[bytes], typing.AsyncIterator[bytes]]` — The image as raw bytes (not JSON, not base64). JPEG, PNG or WebP, up to 20 MB and 8192 × 8192 px.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**language:** `typing.Optional[ReadOcrRequestLanguage]` — auto (default) returns all the text. Any other value returns only the regions with text in that language's script, and leaves out regions that are only numbers or symbols.
+    
+</dd>
+</dl>
 
 <dl>
 <dd>

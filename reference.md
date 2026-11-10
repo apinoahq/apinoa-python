@@ -4661,7 +4661,7 @@ client.instagram.profile()
 <dl>
 <dd>
 
-Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/instagram/post
+Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
 </dd>
 </dl>
 </dd>
@@ -11891,7 +11891,7 @@ client.youtube.profiles()
 <dl>
 <dd>
 
-Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
+Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
 </dd>
 </dl>
 </dd>
@@ -11931,6 +11931,14 @@ client.youtube.post()
 <dd>
 
 **id:** `typing.Optional[str]` — Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — watch: also read the watch page — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song (+1 unit).
     
 </dd>
 </dl>

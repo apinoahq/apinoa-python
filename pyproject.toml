@@ -1,6 +1,6 @@
 [project]
 name = "apinoa"
-version = "0.1.10"
+version = "0.1.11"
 description = "Official Python SDK for the apinoa API: marketplace products, social posts, search results and AI answers, plus image translation, through one API."
 readme = "README.md"
 license = "MIT"

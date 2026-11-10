@@ -208,7 +208,7 @@ class RawInstagramClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[PostResponse]:
         """
-        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/instagram/post
+        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
 
         Parameters
         ----------
@@ -1227,7 +1227,7 @@ class AsyncRawInstagramClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[PostResponse]:
         """
-        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/instagram/post
+        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
 
         Parameters
         ----------

@@ -13,6 +13,8 @@ AnswerEngine = typing.Union[
         "naver-ai-brief",
         "naver-ai-tab",
         "qwen",
+        "yuanbao",
+        "dola",
     ],
     typing.Any,
 ]

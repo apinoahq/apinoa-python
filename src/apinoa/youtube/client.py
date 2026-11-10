@@ -113,15 +113,22 @@ class YoutubeClient:
         return _response.data
 
     def post(
-        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
-        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
+        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
 
         Parameters
         ----------
         id : typing.Optional[str]
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            watch: also read the watch page — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song (+1 unit).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -140,7 +147,7 @@ class YoutubeClient:
         )
         client.youtube.post()
         """
-        _response = self._raw_client.post(id=id, request_options=request_options)
+        _response = self._raw_client.post(id=id, include=include, request_options=request_options)
         return _response.data
 
     def posts(
@@ -422,15 +429,22 @@ class AsyncYoutubeClient:
         return _response.data
 
     async def post(
-        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
-        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
+        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
 
         Parameters
         ----------
         id : typing.Optional[str]
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            watch: also read the watch page — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song (+1 unit).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -457,7 +471,7 @@ class AsyncYoutubeClient:
 
         asyncio.run(main())
         """
-        _response = await self._raw_client.post(id=id, request_options=request_options)
+        _response = await self._raw_client.post(id=id, include=include, request_options=request_options)
         return _response.data
 
     async def posts(

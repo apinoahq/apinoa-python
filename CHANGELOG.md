@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.10
+
+Follows the API as of 2026-11-10:
+
+- `Group`: new `audio`.
+
 ## 0.1.9
 
 Follows the API as of 2026-11-10:

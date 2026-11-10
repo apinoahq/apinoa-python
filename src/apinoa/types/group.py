@@ -8,6 +8,7 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .audio import Audio
 from .group_counts import GroupCounts
 from .group_kind import GroupKind
 from .group_platform import GroupPlatform
@@ -31,6 +32,7 @@ class Group(UncheckedBaseModel):
     ] = None
     counts: typing.Optional[GroupCounts] = None
     sensitive: typing.Optional[bool] = None
+    audio: typing.Optional[Audio] = None
     ext: typing.Optional[typing.Dict[str, typing.Any]] = None
 
     if IS_PYDANTIC_V2:

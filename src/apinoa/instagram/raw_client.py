@@ -717,6 +717,7 @@ class RawInstagramClient:
         *,
         hashtag: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
+        sound: typing.Optional[str] = None,
         include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[GroupResponse]:
@@ -731,8 +732,11 @@ class RawInstagramClient:
         location : typing.Optional[str]
             A location: numeric id or URL (…/explore/locations/<id>/).
 
+        sound : typing.Optional[str]
+            A sound: audio id or its page URL (…/reels/audio/<id>/). Returns the track — `audio.url` is the full-length audio file, with title, artist and length — licensed music or a creator's original audio.
+
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Attach from the same page, at no extra cost: posts (the tag's top posts / the location's posts, ext.posts).
+            Attach from the same page, at no extra cost: posts (the tag's top posts / the location's posts / the reels using the sound, ext.posts).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -748,6 +752,7 @@ class RawInstagramClient:
             params={
                 "hashtag": hashtag,
                 "location": location,
+                "sound": sound,
                 "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
@@ -1731,6 +1736,7 @@ class AsyncRawInstagramClient:
         *,
         hashtag: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
+        sound: typing.Optional[str] = None,
         include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[GroupResponse]:
@@ -1745,8 +1751,11 @@ class AsyncRawInstagramClient:
         location : typing.Optional[str]
             A location: numeric id or URL (…/explore/locations/<id>/).
 
+        sound : typing.Optional[str]
+            A sound: audio id or its page URL (…/reels/audio/<id>/). Returns the track — `audio.url` is the full-length audio file, with title, artist and length — licensed music or a creator's original audio.
+
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Attach from the same page, at no extra cost: posts (the tag's top posts / the location's posts, ext.posts).
+            Attach from the same page, at no extra cost: posts (the tag's top posts / the location's posts / the reels using the sound, ext.posts).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1762,6 +1771,7 @@ class AsyncRawInstagramClient:
             params={
                 "hashtag": hashtag,
                 "location": location,
+                "sound": sound,
                 "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,

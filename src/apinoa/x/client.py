@@ -98,7 +98,7 @@ class XClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostPageResponse:
         """
-        Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/x/posts
+        Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/x/posts
 
         Parameters
         ----------
@@ -271,7 +271,7 @@ class AsyncXClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostPageResponse:
         """
-        Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/x/posts
+        Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/x/posts
 
         Parameters
         ----------

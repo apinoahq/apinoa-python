@@ -4708,7 +4708,7 @@ client.instagram.post()
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — comments (the first comments, ext.comments) and authorPosts (the author's other recent posts, ext.authorPosts) come from the same page at no extra cost · audio: also read the post's sound — the audio file (audio.url), its full length (audio.durationSec) and cover art (+1 unit).
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Attach from the same page, at no extra cost: comments (the first comments, ext.comments), authorPosts (the author's other recent posts, ext.authorPosts).
     
 </dd>
 </dl>
@@ -5555,7 +5555,7 @@ client.linkedin.job()
 <dl>
 <dd>
 
-Returns `JobPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
+Returns `JobPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
 </dd>
 </dl>
 </dd>
@@ -8455,7 +8455,7 @@ client.tiktok.profile()
 <dl>
 <dd>
 
-Returns `AccountPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/profiles
+Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/profiles
 </dd>
 </dl>
 </dd>
@@ -8629,7 +8629,7 @@ client.tiktok.post()
 <dl>
 <dd>
 
-Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/posts
+Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/posts
 </dd>
 </dl>
 </dd>
@@ -8938,7 +8938,7 @@ client.tiktok.group()
 <dl>
 <dd>
 
-Returns `GroupPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/groups
+Returns `GroupPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/groups
 </dd>
 </dl>
 </dd>
@@ -10638,7 +10638,7 @@ client.x.post()
 <dl>
 <dd>
 
-Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/x/posts
+Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/x/posts
 </dd>
 </dl>
 </dd>
@@ -11725,7 +11725,7 @@ client.yandex.reviews()
 <dl>
 <dd>
 
-Returns `Account` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/profile
+Returns `Account` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/profile
 </dd>
 </dl>
 </dd>
@@ -11780,7 +11780,7 @@ client.youtube.profile()
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — about: also read the channel's About panel — join date (createdAt), exact video count, total views, country and every link (+1 unit).
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Deprecated, accepted and ignored: the About panel — join date (createdAt), exact video count, total views, country and every link — is always read.
     
 </dd>
 </dl>
@@ -11938,7 +11938,7 @@ client.youtube.post()
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Always included now; the value is accepted so existing calls keep working.
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Deprecated, accepted and ignored: always included.
     
 </dd>
 </dl>
@@ -11970,7 +11970,7 @@ client.youtube.post()
 <dl>
 <dd>
 
-Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/posts
+Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/posts
 </dd>
 </dl>
 </dd>
@@ -12097,7 +12097,7 @@ client.youtube.posts()
 <dl>
 <dd>
 
-Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+Returns `CommentPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 </dd>
 </dl>
 </dd>
@@ -12192,7 +12192,7 @@ client.youtube.comments()
 <dl>
 <dd>
 
-Returns `GroupPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/groups
+Returns `GroupPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/groups
 </dd>
 </dl>
 </dd>

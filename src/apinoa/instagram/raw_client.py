@@ -216,7 +216,7 @@ class RawInstagramClient:
             Post shortcode, or the post URL (…/p/<code>/, …/reel/<code>/, …/tv/<code>/).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            comments (the first comments, ext.comments) and authorPosts (the author's other recent posts, ext.authorPosts) come from the same page at no extra cost · audio: also read the post's sound — the audio file (audio.url), its full length (audio.durationSec) and cover art (+1 unit).
+            Attach from the same page, at no extra cost: comments (the first comments, ext.comments), authorPosts (the author's other recent posts, ext.authorPosts).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1235,7 +1235,7 @@ class AsyncRawInstagramClient:
             Post shortcode, or the post URL (…/p/<code>/, …/reel/<code>/, …/tv/<code>/).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            comments (the first comments, ext.comments) and authorPosts (the author's other recent posts, ext.authorPosts) come from the same page at no extra cost · audio: also read the post's sound — the audio file (audio.url), its full length (audio.durationSec) and cover art (+1 unit).
+            Attach from the same page, at no extra cost: comments (the first comments, ext.comments), authorPosts (the author's other recent posts, ext.authorPosts).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.

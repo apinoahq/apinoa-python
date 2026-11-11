@@ -75,7 +75,7 @@ class TiktokClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AccountPageResponse:
         """
-        Returns `AccountPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/profiles
+        Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/profiles
 
         Parameters
         ----------
@@ -162,7 +162,7 @@ class TiktokClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostPageResponse:
         """
-        Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/posts
+        Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/posts
 
         Parameters
         ----------
@@ -321,7 +321,7 @@ class TiktokClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> GroupPageResponse:
         """
-        Returns `GroupPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/groups
+        Returns `GroupPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/groups
 
         Parameters
         ----------
@@ -466,7 +466,7 @@ class AsyncTiktokClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AccountPageResponse:
         """
-        Returns `AccountPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/profiles
+        Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/profiles
 
         Parameters
         ----------
@@ -569,7 +569,7 @@ class AsyncTiktokClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostPageResponse:
         """
-        Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/posts
+        Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/posts
 
         Parameters
         ----------
@@ -752,7 +752,7 @@ class AsyncTiktokClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> GroupPageResponse:
         """
-        Returns `GroupPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/tiktok/groups
+        Returns `GroupPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok/groups
 
         Parameters
         ----------

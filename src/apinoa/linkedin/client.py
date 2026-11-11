@@ -245,7 +245,7 @@ class LinkedinClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> JobPageResponse:
         """
-        Returns `JobPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
+        Returns `JobPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
 
         Parameters
         ----------
@@ -563,7 +563,7 @@ class AsyncLinkedinClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> JobPageResponse:
         """
-        Returns `JobPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
+        Returns `JobPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/linkedin/jobs
 
         Parameters
         ----------

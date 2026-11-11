@@ -45,7 +45,7 @@ class RawYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[AccountResponse]:
         """
-        Returns `Account` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/profile
+        Returns `Account` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/profile
 
         Parameters
         ----------
@@ -56,7 +56,7 @@ class RawYoutubeClient:
             Channel id (UC…).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            about: also read the channel's About panel — join date (createdAt), exact video count, total views, country and every link (+1 unit).
+            Deprecated, accepted and ignored: the About panel — join date (createdAt), exact video count, total views, country and every link — is always read.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -385,7 +385,7 @@ class RawYoutubeClient:
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Always included now; the value is accepted so existing calls keep working.
+            watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Deprecated, accepted and ignored: always included.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -547,7 +547,7 @@ class RawYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[PostPageResponse]:
         """
-        Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/posts
+        Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/posts
 
         Parameters
         ----------
@@ -737,7 +737,7 @@ class RawYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[CommentPageResponse]:
         """
-        Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+        Returns `CommentPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 
         Parameters
         ----------
@@ -911,7 +911,7 @@ class RawYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[GroupPageResponse]:
         """
-        Returns `GroupPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/groups
+        Returns `GroupPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/groups
 
         Parameters
         ----------
@@ -1089,7 +1089,7 @@ class AsyncRawYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[AccountResponse]:
         """
-        Returns `Account` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/profile
+        Returns `Account` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/profile
 
         Parameters
         ----------
@@ -1100,7 +1100,7 @@ class AsyncRawYoutubeClient:
             Channel id (UC…).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            about: also read the channel's About panel — join date (createdAt), exact video count, total views, country and every link (+1 unit).
+            Deprecated, accepted and ignored: the About panel — join date (createdAt), exact video count, total views, country and every link — is always read.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1429,7 +1429,7 @@ class AsyncRawYoutubeClient:
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Always included now; the value is accepted so existing calls keep working.
+            watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Deprecated, accepted and ignored: always included.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1591,7 +1591,7 @@ class AsyncRawYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[PostPageResponse]:
         """
-        Returns `PostPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/posts
+        Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/posts
 
         Parameters
         ----------
@@ -1781,7 +1781,7 @@ class AsyncRawYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[CommentPageResponse]:
         """
-        Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+        Returns `CommentPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 
         Parameters
         ----------
@@ -1955,7 +1955,7 @@ class AsyncRawYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[GroupPageResponse]:
         """
-        Returns `GroupPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/groups
+        Returns `GroupPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/groups
 
         Parameters
         ----------

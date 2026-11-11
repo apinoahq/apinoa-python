@@ -41,7 +41,6 @@ class RawYoutubeClient:
         *,
         username: typing.Optional[str] = None,
         user_id: typing.Optional[str] = None,
-        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[AccountResponse]:
         """
@@ -54,9 +53,6 @@ class RawYoutubeClient:
 
         user_id : typing.Optional[str]
             Channel id (UC…).
-
-        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Deprecated, accepted and ignored: the About panel — join date (createdAt), exact video count, total views, country and every link — is always read.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -72,7 +68,6 @@ class RawYoutubeClient:
             params={
                 "username": username,
                 "userId": user_id,
-                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
         )
@@ -370,11 +365,7 @@ class RawYoutubeClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
     def post(
-        self,
-        *,
-        id: typing.Optional[str] = None,
-        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
-        request_options: typing.Optional[RequestOptions] = None,
+        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
     ) -> HttpResponse[PostResponse]:
         """
         Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
@@ -383,9 +374,6 @@ class RawYoutubeClient:
         ----------
         id : typing.Optional[str]
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
-
-        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Deprecated, accepted and ignored: always included.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -400,7 +388,6 @@ class RawYoutubeClient:
             method="GET",
             params={
                 "id": id,
-                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
         )
@@ -1085,7 +1072,6 @@ class AsyncRawYoutubeClient:
         *,
         username: typing.Optional[str] = None,
         user_id: typing.Optional[str] = None,
-        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[AccountResponse]:
         """
@@ -1098,9 +1084,6 @@ class AsyncRawYoutubeClient:
 
         user_id : typing.Optional[str]
             Channel id (UC…).
-
-        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Deprecated, accepted and ignored: the About panel — join date (createdAt), exact video count, total views, country and every link — is always read.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1116,7 +1099,6 @@ class AsyncRawYoutubeClient:
             params={
                 "username": username,
                 "userId": user_id,
-                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
         )
@@ -1414,11 +1396,7 @@ class AsyncRawYoutubeClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
     async def post(
-        self,
-        *,
-        id: typing.Optional[str] = None,
-        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
-        request_options: typing.Optional[RequestOptions] = None,
+        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
     ) -> AsyncHttpResponse[PostResponse]:
         """
         Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
@@ -1427,9 +1405,6 @@ class AsyncRawYoutubeClient:
         ----------
         id : typing.Optional[str]
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
-
-        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Deprecated, accepted and ignored: always included.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1444,7 +1419,6 @@ class AsyncRawYoutubeClient:
             method="GET",
             params={
                 "id": id,
-                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
             },
             request_options=request_options,
         )

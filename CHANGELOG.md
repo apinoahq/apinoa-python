@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.15
+
+Follows the API as of 2026-11-11.
+
 ## 0.1.14
 
 Follows the API as of 2026-11-11.

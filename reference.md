@@ -11780,14 +11780,6 @@ client.youtube.profile()
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Deprecated, accepted and ignored: the About panel — join date (createdAt), exact video count, total views, country and every link — is always read.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
     
 </dd>
@@ -11931,14 +11923,6 @@ client.youtube.post()
 <dd>
 
 **id:** `typing.Optional[str]` — Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Deprecated, accepted and ignored: always included.
     
 </dd>
 </dl>

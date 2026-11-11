@@ -6,9 +6,11 @@ import typing
 from importlib import import_module
 
 if typing.TYPE_CHECKING:
+    from .comments_youtube_request_sort import CommentsYoutubeRequestSort
     from .groups_youtube_request_type import GroupsYoutubeRequestType
     from .posts_youtube_request_type import PostsYoutubeRequestType
 _dynamic_imports: typing.Dict[str, str] = {
+    "CommentsYoutubeRequestSort": ".comments_youtube_request_sort",
     "GroupsYoutubeRequestType": ".groups_youtube_request_type",
     "PostsYoutubeRequestType": ".posts_youtube_request_type",
 }
@@ -35,4 +37,4 @@ def __dir__():
     return sorted(lazy_attrs)
 
 
-__all__ = ["GroupsYoutubeRequestType", "PostsYoutubeRequestType"]
+__all__ = ["CommentsYoutubeRequestSort", "GroupsYoutubeRequestType", "PostsYoutubeRequestType"]

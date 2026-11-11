@@ -26,6 +26,7 @@ from ..types.error_response import ErrorResponse
 from ..types.group_page_response import GroupPageResponse
 from ..types.post_page_response import PostPageResponse
 from ..types.post_response import PostResponse
+from .types.comments_youtube_request_sort import CommentsYoutubeRequestSort
 from .types.groups_youtube_request_type import GroupsYoutubeRequestType
 from .types.posts_youtube_request_type import PostsYoutubeRequestType
 from pydantic import ValidationError
@@ -731,11 +732,12 @@ class RawYoutubeClient:
         *,
         post: typing.Optional[str] = None,
         comment: typing.Optional[str] = None,
+        sort: typing.Optional[CommentsYoutubeRequestSort] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[CommentPageResponse]:
         """
-        Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+        Returns `CommentPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 
         Parameters
         ----------
@@ -744,6 +746,9 @@ class RawYoutubeClient:
 
         comment : typing.Optional[str]
             A comment's replies: the comment's `moreReplies.cursor`.
+
+        sort : typing.Optional[CommentsYoutubeRequestSort]
+            post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first, +1 unit). First page only; the cursor keeps its order.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -762,6 +767,7 @@ class RawYoutubeClient:
             params={
                 "post": post,
                 "comment": comment,
+                "sort": sort,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -1770,11 +1776,12 @@ class AsyncRawYoutubeClient:
         *,
         post: typing.Optional[str] = None,
         comment: typing.Optional[str] = None,
+        sort: typing.Optional[CommentsYoutubeRequestSort] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[CommentPageResponse]:
         """
-        Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+        Returns `CommentPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 
         Parameters
         ----------
@@ -1783,6 +1790,9 @@ class AsyncRawYoutubeClient:
 
         comment : typing.Optional[str]
             A comment's replies: the comment's `moreReplies.cursor`.
+
+        sort : typing.Optional[CommentsYoutubeRequestSort]
+            post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first, +1 unit). First page only; the cursor keeps its order.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -1801,6 +1811,7 @@ class AsyncRawYoutubeClient:
             params={
                 "post": post,
                 "comment": comment,
+                "sort": sort,
                 "cursor": cursor,
             },
             request_options=request_options,

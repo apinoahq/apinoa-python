@@ -77,7 +77,7 @@ class InstagramClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
-        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
+        Returns `Post` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
 
         Parameters
         ----------
@@ -85,7 +85,7 @@ class InstagramClient:
             Post shortcode, or the post URL (…/p/<code>/, …/reel/<code>/, …/tv/<code>/).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Attach from the same page, at no extra cost: comments (the first comments, ext.comments), authorPosts (the author's other recent posts, ext.authorPosts).
+            comments (the first comments, ext.comments) and authorPosts (the author's other recent posts, ext.authorPosts) come from the same page at no extra cost · audio: also read the post's sound — the audio file (audio.url), its full length (audio.durationSec) and cover art (+1 unit).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -362,7 +362,7 @@ class AsyncInstagramClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
-        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
+        Returns `Post` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
 
         Parameters
         ----------
@@ -370,7 +370,7 @@ class AsyncInstagramClient:
             Post shortcode, or the post URL (…/p/<code>/, …/reel/<code>/, …/tv/<code>/).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Attach from the same page, at no extra cost: comments (the first comments, ext.comments), authorPosts (the author's other recent posts, ext.authorPosts).
+            comments (the first comments, ext.comments) and authorPosts (the author's other recent posts, ext.authorPosts) come from the same page at no extra cost · audio: also read the post's sound — the audio file (audio.url), its full length (audio.durationSec) and cover art (+1 unit).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.

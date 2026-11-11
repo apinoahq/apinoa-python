@@ -4661,7 +4661,7 @@ client.instagram.profile()
 <dl>
 <dd>
 
-Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
+Returns `Post` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
 </dd>
 </dl>
 </dd>
@@ -4708,7 +4708,7 @@ client.instagram.post()
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Attach from the same page, at no extra cost: comments (the first comments, ext.comments), authorPosts (the author's other recent posts, ext.authorPosts).
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — comments (the first comments, ext.comments) and authorPosts (the author's other recent posts, ext.authorPosts) come from the same page at no extra cost · audio: also read the post's sound — the audio file (audio.url), its full length (audio.durationSec) and cover art (+1 unit).
     
 </dd>
 </dl>
@@ -12097,7 +12097,7 @@ client.youtube.posts()
 <dl>
 <dd>
 
-Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+Returns `CommentPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 </dd>
 </dl>
 </dd>
@@ -12145,6 +12145,14 @@ client.youtube.comments()
 <dd>
 
 **comment:** `typing.Optional[str]` — A comment's replies: the comment's `moreReplies.cursor`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[CommentsYoutubeRequestSort]` — post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first, +1 unit). First page only; the cursor keeps its order.
     
 </dd>
 </dl>

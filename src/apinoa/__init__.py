@@ -533,7 +533,7 @@ if typing.TYPE_CHECKING:
         SuggestionsYandexRequestCountry,
         SuggestionsYandexRequestLang,
     )
-    from .youtube import GroupsYoutubeRequestType, PostsYoutubeRequestType
+    from .youtube import CommentsYoutubeRequestSort, GroupsYoutubeRequestType, PostsYoutubeRequestType
 _dynamic_imports: typing.Dict[str, str] = {
     "Account": ".types",
     "AccountCounts": ".types",
@@ -653,6 +653,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "CommentsRedditRequestPeriod": ".reddit",
     "CommentsRedditRequestSort": ".reddit",
     "CommentsThreadsRequestSort": ".threads",
+    "CommentsYoutubeRequestSort": ".youtube",
     "CompanyPage": ".types",
     "CompanyPageError": ".types",
     "Conversation": ".types",
@@ -1180,6 +1181,7 @@ __all__ = [
     "CommentsRedditRequestPeriod",
     "CommentsRedditRequestSort",
     "CommentsThreadsRequestSort",
+    "CommentsYoutubeRequestSort",
     "CompanyPage",
     "CompanyPageError",
     "Conversation",

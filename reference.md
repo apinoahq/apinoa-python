@@ -2485,6 +2485,104 @@ client.daum.suggestions(
 </dl>
 </details>
 
+## Dola
+<details><summary><code>client.dola.<a href="src/apinoa/dola/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/dola/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.dola.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**conversation:** `typing.Optional[str]` — An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerDolaRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## DuckDuckGo
 <details><summary><code>client.duckduckgo.<a href="src/apinoa/duckduckgo/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
 <dl>

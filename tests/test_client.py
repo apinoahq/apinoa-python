@@ -157,3 +157,33 @@ def test_a_social_page_serializes_to_json() -> None:
         assert item["metrics"]["views"] == 30
         assert item["media"][0]["variants"][0]["url"] == "https://cdn/i-s.jpg"
     assert json.loads(res.model_dump_json(by_alias=True))["data"]["items"][0]["createdAt"].startswith("2026-10-20T23:24:11")
+
+
+def test_feedback_send_posts_the_report_and_get_reads_the_reply() -> None:
+    fid = "fb_0123456789abcdef0123456789abcdef"
+
+    def respond(r: httpx.Request, n: int) -> httpx.Response:
+        if r.method == "POST":
+            return httpx.Response(201, json={"success": True, "data": {"id": fid, "status": "received", "createdAt": "2026-11-11T10:00:00Z"}})
+        return ok({"id": fid, "type": "error", "status": "resolved", "reply": None, "repliedAt": None, "createdAt": "2026-11-11T10:00:00Z", "updatedAt": "2026-11-11T10:00:00Z"})
+
+    fake = Fake(respond)
+    c = client(fake)
+    sent = c.feedback.send(type="error", message="search returned no prices", platform="amazon", operation="search", params={"query": "socks"}, request_id="r1")
+    post = fake.seen[0]
+    assert post.method == "POST"
+    assert post.url.path == "/v1/feedback"
+    assert post.headers["x-api-key"] == "ak_test"
+    assert json.loads(post.content) == {
+        "type": "error",
+        "message": "search returned no prices",
+        "platform": "amazon",
+        "operation": "search",
+        "params": {"query": "socks"},
+        "requestId": "r1",
+    }
+    assert sent.data.id == fid
+    status = c.feedback.get(fid)
+    assert fake.seen[1].url.path == f"/v1/feedback/{fid}"
+    assert status.data.status == "resolved"
+    assert status.data.reply is None

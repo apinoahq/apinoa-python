@@ -120,6 +120,13 @@ if typing.TYPE_CHECKING:
     from .facet import Facet
     from .facet_kind import FacetKind
     from .facet_value import FacetValue
+    from .feedback_receipt import FeedbackReceipt
+    from .feedback_receipt_response import FeedbackReceiptResponse
+    from .feedback_receipt_status import FeedbackReceiptStatus
+    from .feedback_status import FeedbackStatus
+    from .feedback_status_response import FeedbackStatusResponse
+    from .feedback_status_status import FeedbackStatusStatus
+    from .feedback_status_type import FeedbackStatusType
     from .group import Group
     from .group_counts import GroupCounts
     from .group_kind import GroupKind
@@ -425,6 +432,13 @@ _dynamic_imports: typing.Dict[str, str] = {
     "Facet": ".facet",
     "FacetKind": ".facet_kind",
     "FacetValue": ".facet_value",
+    "FeedbackReceipt": ".feedback_receipt",
+    "FeedbackReceiptResponse": ".feedback_receipt_response",
+    "FeedbackReceiptStatus": ".feedback_receipt_status",
+    "FeedbackStatus": ".feedback_status",
+    "FeedbackStatusResponse": ".feedback_status_response",
+    "FeedbackStatusStatus": ".feedback_status_status",
+    "FeedbackStatusType": ".feedback_status_type",
     "Group": ".group",
     "GroupCounts": ".group_counts",
     "GroupKind": ".group_kind",
@@ -754,6 +768,13 @@ __all__ = [
     "Facet",
     "FacetKind",
     "FacetValue",
+    "FeedbackReceipt",
+    "FeedbackReceiptResponse",
+    "FeedbackReceiptStatus",
+    "FeedbackStatus",
+    "FeedbackStatusResponse",
+    "FeedbackStatusStatus",
+    "FeedbackStatusType",
     "Group",
     "GroupCounts",
     "GroupKind",

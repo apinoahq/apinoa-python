@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.17
+
+- `client.feedback.send(type=..., message=...)` reports a failed call, wrong or missing data, or an API you need; `client.feedback.get(id)` reads the status and our reply. Free.
+
+Follows the API as of 2026-11-11:
+
+- New operations: `POST /v1/feedback`, `GET /v1/feedback/{id}`.
+- New type `FeedbackInput`.
+- New type `FeedbackReceipt`.
+- New type `FeedbackReceiptResponse`.
+- New type `FeedbackStatus`.
+- New type `FeedbackStatusResponse`.
+
 ## 0.1.16
 
 Follows the API as of 2026-11-11:

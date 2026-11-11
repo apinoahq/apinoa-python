@@ -24,6 +24,7 @@ if typing.TYPE_CHECKING:
     from .dola.client import AsyncDolaClient, DolaClient
     from .duckduckgo.client import AsyncDuckduckgoClient, DuckduckgoClient
     from .facebook.client import AsyncFacebookClient, FacebookClient
+    from .feedback.client import AsyncFeedbackClient, FeedbackClient
     from .gemini.client import AsyncGeminiClient, GeminiClient
     from .google.client import AsyncGoogleClient, GoogleClient
     from .google_ai_mode.client import AsyncGoogleAiModeClient, GoogleAiModeClient
@@ -185,6 +186,7 @@ class Apinoa:
         self._marketplaces: typing.Optional[MarketplacesClient] = None
         self._image_translate: typing.Optional[ImageTranslateClient] = None
         self._ocr: typing.Optional[OcrClient] = None
+        self._feedback: typing.Optional[FeedbackClient] = None
 
     @property
     def aliexpress(self):
@@ -514,6 +516,14 @@ class Apinoa:
             self._ocr = OcrClient(client_wrapper=self._client_wrapper)
         return self._ocr
 
+    @property
+    def feedback(self):
+        if self._feedback is None:
+            from .feedback.client import FeedbackClient  # noqa: E402
+
+            self._feedback = FeedbackClient(client_wrapper=self._client_wrapper)
+        return self._feedback
+
 
 def _make_default_async_client(
     timeout: typing.Optional[float],
@@ -661,6 +671,7 @@ class AsyncApinoa:
         self._marketplaces: typing.Optional[AsyncMarketplacesClient] = None
         self._image_translate: typing.Optional[AsyncImageTranslateClient] = None
         self._ocr: typing.Optional[AsyncOcrClient] = None
+        self._feedback: typing.Optional[AsyncFeedbackClient] = None
 
     @property
     def aliexpress(self):
@@ -989,6 +1000,14 @@ class AsyncApinoa:
 
             self._ocr = AsyncOcrClient(client_wrapper=self._client_wrapper)
         return self._ocr
+
+    @property
+    def feedback(self):
+        if self._feedback is None:
+            from .feedback.client import AsyncFeedbackClient  # noqa: E402
+
+            self._feedback = AsyncFeedbackClient(client_wrapper=self._client_wrapper)
+        return self._feedback
 
 
 def _get_base_url(*, base_url: typing.Optional[str] = None, environment: ApinoaEnvironment) -> str:

@@ -12728,3 +12728,231 @@ client.ocr.read(...)
 </dl>
 </details>
 
+## Feedback
+<details><summary><code>client.feedback.<a href="src/apinoa/feedback/client.py">send</a>(...) -> FeedbackReceiptResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Tell us something is wrong or missing, or ask for something new. Free, and works without an API key; send your key and the report is linked to your account, so we can look at the call you name in requestId. For a problem, include platform, operation, the params you sent and the requestId of the response; for wrong or missing data, also what you received and what you expected (or a url that shows it). For a feature request, describe what you need in message. Give contact to get our reply by email; the reply and status are also at GET /v1/feedback/{id}. Sending the same message again within a day returns the first report (200) rather than a new one (201). Reference: https://apinoa.com/docs/api-reference/feedback
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.feedback.send(
+    type="feature_request",
+    message="message",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**type:** `FeedbackInputType` — feature_request: an API or option we do not have. error: a call failed or behaved wrongly. wrong_data: a field holds the wrong value. missing_data: something on the page is not in the response. other: anything else.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**message:** `str` — What happened, or what you need, in your own words.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**platform:** `typing.Optional[str]` — The platform it is about, as in the path: amazon, tiktok, google…
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation:** `typing.Optional[str]` — The operation it is about, as in the path: search, product, posts…
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**params:** `typing.Optional[typing.Dict[str, typing.Any]]` — The parameters you called it with. At most 8 KB.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_id:** `typing.Optional[str]` — The requestId of the response you are reporting. Sent with your key, it lets us look at that call.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A page showing the right data, or the item the report is about.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received:** `typing.Optional[typing.Any]` — What you received: the part of the response that is wrong, as text or as the JSON value itself. At most 16 KB.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**expected:** `typing.Optional[typing.Any]` — What you expected instead, as text or as a JSON value. At most 4,000 characters.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contact:** `typing.Optional[str]` — Where to email our reply. Without it, a report sent with a key is answered at the account's email.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**source:** `typing.Optional[str]` — What sent it, such as your agent's or app's name.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.feedback.<a href="src/apinoa/feedback/client.py">get</a>(...) -> FeedbackStatusResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The status of a report and our reply, for anyone holding its id. Nothing you sent is returned. Free. Reference: https://apinoa.com/docs/api-reference/feedback
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.feedback.get(
+    id="id",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `str` — The id POST /v1/feedback returned.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+

@@ -121,7 +121,7 @@ class YoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
-        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
+        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
 
         Parameters
         ----------
@@ -129,7 +129,7 @@ class YoutubeClient:
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            watch: also read the watch page — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song (+1 unit).
+            watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Always included now; the value is accepted so existing calls keep working.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -233,7 +233,7 @@ class YoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> CommentPageResponse:
         """
-        Returns `CommentPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+        Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 
         Parameters
         ----------
@@ -244,7 +244,7 @@ class YoutubeClient:
             A comment's replies: the comment's `moreReplies.cursor`.
 
         sort : typing.Optional[CommentsYoutubeRequestSort]
-            post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first, +1 unit). First page only; the cursor keeps its order.
+            post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first). First page only; the cursor keeps its order.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -441,7 +441,7 @@ class AsyncYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
-        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
+        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
 
         Parameters
         ----------
@@ -449,7 +449,7 @@ class AsyncYoutubeClient:
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            watch: also read the watch page — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song (+1 unit).
+            watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Always included now; the value is accepted so existing calls keep working.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -569,7 +569,7 @@ class AsyncYoutubeClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> CommentPageResponse:
         """
-        Returns `CommentPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+        Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 
         Parameters
         ----------
@@ -580,7 +580,7 @@ class AsyncYoutubeClient:
             A comment's replies: the comment's `moreReplies.cursor`.
 
         sort : typing.Optional[CommentsYoutubeRequestSort]
-            post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first, +1 unit). First page only; the cursor keeps its order.
+            post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first). First page only; the cursor keeps its order.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.

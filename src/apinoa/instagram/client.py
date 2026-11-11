@@ -77,7 +77,7 @@ class InstagramClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
-        Returns `Post` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
+        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/instagram/post
 
         Parameters
         ----------
@@ -362,7 +362,7 @@ class AsyncInstagramClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
-        Returns `Post` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
+        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/instagram/post
 
         Parameters
         ----------

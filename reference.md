@@ -4661,7 +4661,7 @@ client.instagram.profile()
 <dl>
 <dd>
 
-Returns `Post` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/instagram/post
+Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/instagram/post
 </dd>
 </dl>
 </dd>
@@ -11891,7 +11891,7 @@ client.youtube.profiles()
 <dl>
 <dd>
 
-Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
+Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
 </dd>
 </dl>
 </dd>
@@ -11938,7 +11938,7 @@ client.youtube.post()
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — watch: also read the watch page — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song (+1 unit).
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — watch: the watch page's reading — the channel's subscriber count (author.counts.followers), the comment count (metrics.comments, abbreviated as the page shows it; comments gives the exact total), the description's #hashtags / @mentions / links (entities), chapters and the song. Always included now; the value is accepted so existing calls keep working.
     
 </dd>
 </dl>
@@ -12097,7 +12097,7 @@ client.youtube.posts()
 <dl>
 <dd>
 
-Returns `CommentPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
+Returns `CommentPage` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/comments
 </dd>
 </dl>
 </dd>
@@ -12152,7 +12152,7 @@ client.youtube.comments()
 <dl>
 <dd>
 
-**sort:** `typing.Optional[CommentsYoutubeRequestSort]` — post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first, +1 unit). First page only; the cursor keeps its order.
+**sort:** `typing.Optional[CommentsYoutubeRequestSort]` — post: top (default — YouTube's most-liked first, with each comment's likes) or recent (newest first). First page only; the cursor keeps its order.
     
 </dd>
 </dl>

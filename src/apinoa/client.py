@@ -40,6 +40,7 @@ if typing.TYPE_CHECKING:
     from .naver_ai_brief.client import AsyncNaverAiBriefClient, NaverAiBriefClient
     from .naver_ai_tab.client import AsyncNaverAiTabClient, NaverAiTabClient
     from .ocr.client import AsyncOcrClient, OcrClient
+    from .qwen.client import AsyncQwenClient, QwenClient
     from .reddit.client import AsyncRedditClient, RedditClient
     from .seznam.client import AsyncSeznamClient, SeznamClient
     from .shopify.client import AsyncShopifyClient, ShopifyClient
@@ -169,6 +170,7 @@ class Apinoa:
         self._naver: typing.Optional[NaverClient] = None
         self._naver_ai_brief: typing.Optional[NaverAiBriefClient] = None
         self._naver_ai_tab: typing.Optional[NaverAiTabClient] = None
+        self._qwen: typing.Optional[QwenClient] = None
         self._reddit: typing.Optional[RedditClient] = None
         self._seznam: typing.Optional[SeznamClient] = None
         self._shopify: typing.Optional[ShopifyClient] = None
@@ -379,6 +381,14 @@ class Apinoa:
 
             self._naver_ai_tab = NaverAiTabClient(client_wrapper=self._client_wrapper)
         return self._naver_ai_tab
+
+    @property
+    def qwen(self):
+        if self._qwen is None:
+            from .qwen.client import QwenClient  # noqa: E402
+
+            self._qwen = QwenClient(client_wrapper=self._client_wrapper)
+        return self._qwen
 
     @property
     def reddit(self):
@@ -654,6 +664,7 @@ class AsyncApinoa:
         self._naver: typing.Optional[AsyncNaverClient] = None
         self._naver_ai_brief: typing.Optional[AsyncNaverAiBriefClient] = None
         self._naver_ai_tab: typing.Optional[AsyncNaverAiTabClient] = None
+        self._qwen: typing.Optional[AsyncQwenClient] = None
         self._reddit: typing.Optional[AsyncRedditClient] = None
         self._seznam: typing.Optional[AsyncSeznamClient] = None
         self._shopify: typing.Optional[AsyncShopifyClient] = None
@@ -864,6 +875,14 @@ class AsyncApinoa:
 
             self._naver_ai_tab = AsyncNaverAiTabClient(client_wrapper=self._client_wrapper)
         return self._naver_ai_tab
+
+    @property
+    def qwen(self):
+        if self._qwen is None:
+            from .qwen.client import AsyncQwenClient  # noqa: E402
+
+            self._qwen = AsyncQwenClient(client_wrapper=self._client_wrapper)
+        return self._qwen
 
     @property
     def reddit(self):

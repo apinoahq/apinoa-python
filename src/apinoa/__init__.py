@@ -361,6 +361,7 @@ if typing.TYPE_CHECKING:
         naver_ai_brief,
         naver_ai_tab,
         ocr,
+        qwen,
         reddit,
         seznam,
         shopify,
@@ -483,6 +484,7 @@ if typing.TYPE_CHECKING:
     from .naver_ai_brief import AnswerNaverAiBriefRequestInclude, AnswerNaverAiBriefRequestIncludeZeroItem
     from .naver_ai_tab import AnswerNaverAiTabRequestInclude, AnswerNaverAiTabRequestIncludeZeroItem
     from .ocr import ReadOcrRequestLanguage
+    from .qwen import AnswerQwenRequestInclude, AnswerQwenRequestIncludeZeroItem
     from .reddit import (
         CommentsRedditRequestPeriod,
         CommentsRedditRequestSort,
@@ -583,6 +585,8 @@ _dynamic_imports: typing.Dict[str, str] = {
     "AnswerNaverAiTabRequestInclude": ".naver_ai_tab",
     "AnswerNaverAiTabRequestIncludeZeroItem": ".naver_ai_tab",
     "AnswerOutcome": ".types",
+    "AnswerQwenRequestInclude": ".qwen",
+    "AnswerQwenRequestIncludeZeroItem": ".qwen",
     "AnswerResponse": ".types",
     "Apinoa": ".client",
     "ApinoaEnvironment": ".environment",
@@ -1049,6 +1053,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "naver_ai_brief": ".naver_ai_brief",
     "naver_ai_tab": ".naver_ai_tab",
     "ocr": ".ocr",
+    "qwen": ".qwen",
     "reddit": ".reddit",
     "seznam": ".seznam",
     "shopify": ".shopify",
@@ -1124,6 +1129,8 @@ __all__ = [
     "AnswerNaverAiTabRequestInclude",
     "AnswerNaverAiTabRequestIncludeZeroItem",
     "AnswerOutcome",
+    "AnswerQwenRequestInclude",
+    "AnswerQwenRequestIncludeZeroItem",
     "AnswerResponse",
     "Apinoa",
     "ApinoaEnvironment",
@@ -1590,6 +1597,7 @@ __all__ = [
     "naver_ai_brief",
     "naver_ai_tab",
     "ocr",
+    "qwen",
     "reddit",
     "seznam",
     "shopify",

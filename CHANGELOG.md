@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.18
+
+Follows the API as of 2026-11-16:
+
+- New operations: `POST /v1/qwen/answer`.
+
 ## 0.1.17
 
 - `client.feedback.send(type=..., message=...)` reports a failed call, wrong or missing data, or an API you need; `client.feedback.get(id)` reads the status and our reply. Free.

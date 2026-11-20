@@ -24,6 +24,18 @@ class ReaderPage(UncheckedBaseModel):
     The address that answered, after redirects.
     """
 
+    frame_url: typing_extensions.Annotated[
+        typing.Optional[str],
+        FieldMetadata(alias="frameUrl"),
+        pydantic.Field(
+            alias="frameUrl",
+            description="Present when the page is a shell whose content sits in a frame on the same site (Naver Blog): the frame's address, which the content was read from.",
+        ),
+    ] = None
+    """
+    Present when the page is a shell whose content sits in a frame on the same site (Naver Blog): the frame's address, which the content was read from.
+    """
+
     status: int = pydantic.Field()
     """
     The site's HTTP status. A 404 page is still a page.

@@ -432,9 +432,11 @@ class RawGoogleClient:
         q: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
         near: typing.Optional[str] = None,
+        uule: typing.Optional[str] = None,
         country: typing.Optional[PlacesGoogleRequestCountry] = None,
         lang: typing.Optional[str] = None,
         limit: typing.Optional[int] = None,
+        pages: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[PlacesPageResponse]:
@@ -452,6 +454,9 @@ class RawGoogleClient:
         near : typing.Optional[str]
             Search around this place name, or a `lat,lng` point.
 
+        uule : typing.Optional[str]
+            Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+
         country : typing.Optional[PlacesGoogleRequestCountry]
             The market, as an ISO 3166 country code.
 
@@ -460,6 +465,9 @@ class RawGoogleClient:
 
         limit : typing.Optional[int]
             Results wanted (default 20, at most 60). More than one page is charged per page.
+
+        pages : typing.Optional[int]
+            Pages of 20 places to read in one call (1-3), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
 
         cursor : typing.Optional[str]
             The previous page's `cursor`. Pass it alone for the next page.
@@ -479,9 +487,11 @@ class RawGoogleClient:
                 "q": q,
                 "location": location,
                 "near": near,
+                "uule": uule,
                 "country": country,
                 "lang": lang,
                 "limit": limit,
+                "pages": pages,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -1183,9 +1193,11 @@ class AsyncRawGoogleClient:
         q: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
         near: typing.Optional[str] = None,
+        uule: typing.Optional[str] = None,
         country: typing.Optional[PlacesGoogleRequestCountry] = None,
         lang: typing.Optional[str] = None,
         limit: typing.Optional[int] = None,
+        pages: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[PlacesPageResponse]:
@@ -1203,6 +1215,9 @@ class AsyncRawGoogleClient:
         near : typing.Optional[str]
             Search around this place name, or a `lat,lng` point.
 
+        uule : typing.Optional[str]
+            Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+
         country : typing.Optional[PlacesGoogleRequestCountry]
             The market, as an ISO 3166 country code.
 
@@ -1211,6 +1226,9 @@ class AsyncRawGoogleClient:
 
         limit : typing.Optional[int]
             Results wanted (default 20, at most 60). More than one page is charged per page.
+
+        pages : typing.Optional[int]
+            Pages of 20 places to read in one call (1-3), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
 
         cursor : typing.Optional[str]
             The previous page's `cursor`. Pass it alone for the next page.
@@ -1230,9 +1248,11 @@ class AsyncRawGoogleClient:
                 "q": q,
                 "location": location,
                 "near": near,
+                "uule": uule,
                 "country": country,
                 "lang": lang,
                 "limit": limit,
+                "pages": pages,
                 "cursor": cursor,
             },
             request_options=request_options,

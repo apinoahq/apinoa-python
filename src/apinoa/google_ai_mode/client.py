@@ -35,6 +35,8 @@ class GoogleAiModeClient:
         language: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
         include: typing.Optional[AnswerGoogleAiModeRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
+        uule: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
@@ -56,6 +58,12 @@ class GoogleAiModeClient:
 
         include : typing.Optional[AnswerGoogleAiModeRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
+
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
+
+        uule : typing.Optional[str]
+            Ask as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -82,6 +90,8 @@ class GoogleAiModeClient:
             language=language,
             conversation=conversation,
             include=include,
+            near=near,
+            uule=uule,
             request_options=request_options,
         )
         return _response.data
@@ -110,6 +120,8 @@ class AsyncGoogleAiModeClient:
         language: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
         include: typing.Optional[AnswerGoogleAiModeRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
+        uule: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
@@ -131,6 +143,12 @@ class AsyncGoogleAiModeClient:
 
         include : typing.Optional[AnswerGoogleAiModeRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
+
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
+
+        uule : typing.Optional[str]
+            Ask as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -165,6 +183,8 @@ class AsyncGoogleAiModeClient:
             language=language,
             conversation=conversation,
             include=include,
+            near=near,
+            uule=uule,
             request_options=request_options,
         )
         return _response.data

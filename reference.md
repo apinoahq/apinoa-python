@@ -3554,6 +3554,14 @@ client.google.places()
 <dl>
 <dd>
 
+**uule:** `typing.Optional[str]` — Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **country:** `typing.Optional[PlacesGoogleRequestCountry]` — The market, as an ISO 3166 country code.
     
 </dd>
@@ -3571,6 +3579,14 @@ client.google.places()
 <dd>
 
 **limit:** `typing.Optional[int]` — Results wanted (default 20, at most 60). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**pages:** `typing.Optional[int]` — Pages of 20 places to read in one call (1-3), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
     
 </dd>
 </dl>
@@ -3779,6 +3795,22 @@ client.google_ai_mode.answer(
 <dl>
 <dd>
 
+**near:** `typing.Optional[str]` — Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**uule:** `typing.Optional[str]` — Ask as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
     
 </dd>
@@ -3870,6 +3902,22 @@ client.google_aio.answer(
 <dd>
 
 **include:** `typing.Optional[AnswerGoogleAioRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**near:** `typing.Optional[str]` — Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**uule:** `typing.Optional[str]` — Ask as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
     
 </dd>
 </dl>

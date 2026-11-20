@@ -19,6 +19,9 @@ if typing.TYPE_CHECKING:
     from .address import Address
     from .answer import Answer
     from .answer_engine import AnswerEngine
+    from .answer_follow_ups_item import AnswerFollowUpsItem
+    from .answer_follow_ups_item_engine import AnswerFollowUpsItemEngine
+    from .answer_follow_ups_item_outcome import AnswerFollowUpsItemOutcome
     from .answer_mention import AnswerMention
     from .answer_mention_kind import AnswerMentionKind
     from .answer_outcome import AnswerOutcome
@@ -338,6 +341,9 @@ _dynamic_imports: typing.Dict[str, str] = {
     "Address": ".address",
     "Answer": ".answer",
     "AnswerEngine": ".answer_engine",
+    "AnswerFollowUpsItem": ".answer_follow_ups_item",
+    "AnswerFollowUpsItemEngine": ".answer_follow_ups_item_engine",
+    "AnswerFollowUpsItemOutcome": ".answer_follow_ups_item_outcome",
     "AnswerMention": ".answer_mention",
     "AnswerMentionKind": ".answer_mention_kind",
     "AnswerOutcome": ".answer_outcome",
@@ -679,6 +685,9 @@ __all__ = [
     "Address",
     "Answer",
     "AnswerEngine",
+    "AnswerFollowUpsItem",
+    "AnswerFollowUpsItemEngine",
+    "AnswerFollowUpsItemOutcome",
     "AnswerMention",
     "AnswerMentionKind",
     "AnswerOutcome",

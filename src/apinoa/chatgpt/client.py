@@ -35,11 +35,12 @@ class ChatgptClient:
         conversation: typing.Optional[str] = OMIT,
         photos: typing.Optional[typing.Sequence[str]] = OMIT,
         web_search: typing.Optional[bool] = OMIT,
+        follow_ups: typing.Optional[typing.Sequence[str]] = OMIT,
         include: typing.Optional[AnswerChatgptRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
-        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/chatgpt/answer
+        Returns `Answer` in `data`. Costs 1 unit, up to 5 units. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/chatgpt/answer
 
         Parameters
         ----------
@@ -57,6 +58,9 @@ class ChatgptClient:
 
         web_search : typing.Optional[bool]
             Let the engine search the web for the answer.
+
+        follow_ups : typing.Optional[typing.Sequence[str]]
+            Up to 4 further questions, asked in order in the same conversation after `prompt`. Each answer is returned in `followUps` and billed like the first.
 
         include : typing.Optional[AnswerChatgptRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
@@ -86,6 +90,7 @@ class ChatgptClient:
             conversation=conversation,
             photos=photos,
             web_search=web_search,
+            follow_ups=follow_ups,
             include=include,
             request_options=request_options,
         )
@@ -115,11 +120,12 @@ class AsyncChatgptClient:
         conversation: typing.Optional[str] = OMIT,
         photos: typing.Optional[typing.Sequence[str]] = OMIT,
         web_search: typing.Optional[bool] = OMIT,
+        follow_ups: typing.Optional[typing.Sequence[str]] = OMIT,
         include: typing.Optional[AnswerChatgptRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
-        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/chatgpt/answer
+        Returns `Answer` in `data`. Costs 1 unit, up to 5 units. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/chatgpt/answer
 
         Parameters
         ----------
@@ -137,6 +143,9 @@ class AsyncChatgptClient:
 
         web_search : typing.Optional[bool]
             Let the engine search the web for the answer.
+
+        follow_ups : typing.Optional[typing.Sequence[str]]
+            Up to 4 further questions, asked in order in the same conversation after `prompt`. Each answer is returned in `followUps` and billed like the first.
 
         include : typing.Optional[AnswerChatgptRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
@@ -174,6 +183,7 @@ class AsyncChatgptClient:
             conversation=conversation,
             photos=photos,
             web_search=web_search,
+            follow_ups=follow_ups,
             include=include,
             request_options=request_options,
         )

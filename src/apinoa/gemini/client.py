@@ -33,11 +33,12 @@ class GeminiClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
+        follow_ups: typing.Optional[typing.Sequence[str]] = OMIT,
         include: typing.Optional[AnswerGeminiRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
-        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/gemini/answer
+        Returns `Answer` in `data`. Costs 1 unit, up to 5 units. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/gemini/answer
 
         Parameters
         ----------
@@ -49,6 +50,9 @@ class GeminiClient:
 
         conversation : typing.Optional[str]
             An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
+
+        follow_ups : typing.Optional[typing.Sequence[str]]
+            Up to 4 further questions, asked in order in the same conversation after `prompt`. Each answer is returned in `followUps` and billed like the first.
 
         include : typing.Optional[AnswerGeminiRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
@@ -73,7 +77,12 @@ class GeminiClient:
         )
         """
         _response = self._raw_client.answer(
-            prompt=prompt, country=country, conversation=conversation, include=include, request_options=request_options
+            prompt=prompt,
+            country=country,
+            conversation=conversation,
+            follow_ups=follow_ups,
+            include=include,
+            request_options=request_options,
         )
         return _response.data
 
@@ -99,11 +108,12 @@ class AsyncGeminiClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
+        follow_ups: typing.Optional[typing.Sequence[str]] = OMIT,
         include: typing.Optional[AnswerGeminiRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
-        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/gemini/answer
+        Returns `Answer` in `data`. Costs 1 unit, up to 5 units. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/gemini/answer
 
         Parameters
         ----------
@@ -115,6 +125,9 @@ class AsyncGeminiClient:
 
         conversation : typing.Optional[str]
             An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
+
+        follow_ups : typing.Optional[typing.Sequence[str]]
+            Up to 4 further questions, asked in order in the same conversation after `prompt`. Each answer is returned in `followUps` and billed like the first.
 
         include : typing.Optional[AnswerGeminiRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
@@ -147,6 +160,11 @@ class AsyncGeminiClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.answer(
-            prompt=prompt, country=country, conversation=conversation, include=include, request_options=request_options
+            prompt=prompt,
+            country=country,
+            conversation=conversation,
+            follow_ups=follow_ups,
+            include=include,
+            request_options=request_options,
         )
         return _response.data

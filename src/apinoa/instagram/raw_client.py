@@ -371,6 +371,7 @@ class RawInstagramClient:
         type: typing.Optional[PostsInstagramRequestType] = None,
         hashtag: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
+        query: typing.Optional[str] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[PostPageResponse]:
@@ -391,6 +392,9 @@ class RawInstagramClient:
         location : typing.Optional[str]
             Posts at a location: numeric location id or URL (…/explore/locations/<id>/). One page: Instagram shows the rest only to signed-in users.
 
+        query : typing.Optional[str]
+            Search posts by keyword — a word, a phrase, a hashtag word or a brand name (mostly reels, Instagram's top results). `ext` carries Instagram's description of the keyword and its related searches. Some keywords Instagram shows only to signed-in users.
+
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
 
@@ -410,6 +414,7 @@ class RawInstagramClient:
                 "type": type,
                 "hashtag": hashtag,
                 "location": location,
+                "query": query,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -1390,6 +1395,7 @@ class AsyncRawInstagramClient:
         type: typing.Optional[PostsInstagramRequestType] = None,
         hashtag: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
+        query: typing.Optional[str] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[PostPageResponse]:
@@ -1410,6 +1416,9 @@ class AsyncRawInstagramClient:
         location : typing.Optional[str]
             Posts at a location: numeric location id or URL (…/explore/locations/<id>/). One page: Instagram shows the rest only to signed-in users.
 
+        query : typing.Optional[str]
+            Search posts by keyword — a word, a phrase, a hashtag word or a brand name (mostly reels, Instagram's top results). `ext` carries Instagram's description of the keyword and its related searches. Some keywords Instagram shows only to signed-in users.
+
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
 
@@ -1429,6 +1438,7 @@ class AsyncRawInstagramClient:
                 "type": type,
                 "hashtag": hashtag,
                 "location": location,
+                "query": query,
                 "cursor": cursor,
             },
             request_options=request_options,

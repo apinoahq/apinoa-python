@@ -2033,7 +2033,7 @@ client.bing.suggestions(
 <dl>
 <dd>
 
-Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/chatgpt/answer
+Returns `Answer` in `data`. Costs 1 unit, up to 5 units. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/chatgpt/answer
 </dd>
 </dl>
 </dd>
@@ -2107,6 +2107,14 @@ client.chatgpt.answer(
 <dd>
 
 **web_search:** `typing.Optional[bool]` — Let the engine search the web for the answer.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**follow_ups:** `typing.Optional[typing.List[str]]` — Up to 4 further questions, asked in order in the same conversation after `prompt`. Each answer is returned in `followUps` and billed like the first.
     
 </dd>
 </dl>
@@ -3137,7 +3145,7 @@ client.facebook.ads()
 <dl>
 <dd>
 
-Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/gemini/answer
+Returns `Answer` in `data`. Costs 1 unit, up to 5 units. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/gemini/answer
 </dd>
 </dl>
 </dd>
@@ -3195,6 +3203,14 @@ client.gemini.answer(
 <dd>
 
 **conversation:** `typing.Optional[str]` — An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**follow_ups:** `typing.Optional[typing.List[str]]` — Up to 4 further questions, asked in order in the same conversation after `prompt`. Each answer is returned in `followUps` and billed like the first.
     
 </dd>
 </dl>
@@ -5075,6 +5091,14 @@ client.instagram.posts()
 <dd>
 
 **location:** `typing.Optional[str]` — Posts at a location: numeric location id or URL (…/explore/locations/<id>/). One page: Instagram shows the rest only to signed-in users.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — Search posts by keyword — a word, a phrase, a hashtag word or a brand name (mostly reels, Instagram's top results). `ext` carries Instagram's description of the keyword and its related searches. Some keywords Instagram shows only to signed-in users.
     
 </dd>
 </dl>
@@ -12454,6 +12478,22 @@ client.youtube.profiles()
 <dl>
 <dd>
 
+**country:** `typing.Optional[str]` — The country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**exact_spelling:** `typing.Optional[bool]` — Search the query exactly as typed: no "Showing results for" spelling correction (when YouTube does correct, page 1's ext.correctedQuery names what it searched).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
     
 </dd>
@@ -12660,7 +12700,7 @@ client.youtube.posts()
 <dl>
 <dd>
 
-**type:** `typing.Optional[PostsYoutubeRequestType]` — username/userId: which channel tab — videos (default), shorts, live or community · query: videos (default) or shorts.
+**type:** `typing.Optional[PostsYoutubeRequestType]` — username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included).
     
 </dd>
 </dl>
@@ -12668,7 +12708,47 @@ client.youtube.posts()
 <dl>
 <dd>
 
-**country:** `typing.Optional[str]` — Default feed only: the country whose trending feed to read (ISO alpha-2, default US).
+**sort:** `typing.Optional[PostsYoutubeRequestSort]` — query only: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**period:** `typing.Optional[PostsYoutubeRequestPeriod]` — query only: uploaded within the last hour, today, this week, this month or this year (YouTube's upload-date filter; it has no other windows).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**duration:** `typing.Optional[PostsYoutubeRequestDuration]` — query only: short (under 3 minutes), medium (3–20 minutes) or long (over 20 minutes).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**features:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — query only: results that have every one of these (comma-separated) — live, hd, 4k, subtitles (subtitles/CC), creative_commons, 360, vr180, 3d, hdr, location, purchased.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**exact_spelling:** `typing.Optional[bool]` — Search the query exactly as typed: no "Showing results for" spelling correction (when YouTube does correct, page 1's ext.correctedQuery names what it searched).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — query: the country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
     
 </dd>
 </dl>
@@ -12858,7 +12938,31 @@ client.youtube.groups()
 <dl>
 <dd>
 
-**type:** `typing.Optional[GroupsYoutubeRequestType]` — playlists (a channel's playlists).
+**query:** `typing.Optional[str]` — Search playlists by keyword (playlists, Mixes and podcasts).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[GroupsYoutubeRequestType]` — playlists (a channel's playlists, or the playlists a search finds).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — query only: the country YouTube ranks the search for (ISO alpha-2, default US; it biases, it does not restrict).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**exact_spelling:** `typing.Optional[bool]` — query only: search the query exactly as typed (no "Showing results for" correction).
     
 </dd>
 </dl>

@@ -13,6 +13,9 @@ from ..types.post_response import PostResponse
 from .raw_client import AsyncRawYoutubeClient, RawYoutubeClient
 from .types.comments_youtube_request_sort import CommentsYoutubeRequestSort
 from .types.groups_youtube_request_type import GroupsYoutubeRequestType
+from .types.posts_youtube_request_duration import PostsYoutubeRequestDuration
+from .types.posts_youtube_request_period import PostsYoutubeRequestPeriod
+from .types.posts_youtube_request_sort import PostsYoutubeRequestSort
 from .types.posts_youtube_request_type import PostsYoutubeRequestType
 
 
@@ -73,6 +76,8 @@ class YoutubeClient:
         self,
         *,
         query: typing.Optional[str] = None,
+        country: typing.Optional[str] = None,
+        exact_spelling: typing.Optional[bool] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AccountPageResponse:
@@ -83,6 +88,12 @@ class YoutubeClient:
         ----------
         query : typing.Optional[str]
             Search channels by keyword.
+
+        country : typing.Optional[str]
+            The country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it).
+
+        exact_spelling : typing.Optional[bool]
+            Search the query exactly as typed: no "Showing results for" spelling correction (when YouTube does correct, page 1's ext.correctedQuery names what it searched).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -104,7 +115,9 @@ class YoutubeClient:
         )
         client.youtube.profiles()
         """
-        _response = self._raw_client.profiles(query=query, cursor=cursor, request_options=request_options)
+        _response = self._raw_client.profiles(
+            query=query, country=country, exact_spelling=exact_spelling, cursor=cursor, request_options=request_options
+        )
         return _response.data
 
     def post(
@@ -164,6 +177,11 @@ class YoutubeClient:
         hashtag: typing.Optional[str] = None,
         related_to: typing.Optional[str] = None,
         type: typing.Optional[PostsYoutubeRequestType] = None,
+        sort: typing.Optional[PostsYoutubeRequestSort] = None,
+        period: typing.Optional[PostsYoutubeRequestPeriod] = None,
+        duration: typing.Optional[PostsYoutubeRequestDuration] = None,
+        features: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        exact_spelling: typing.Optional[bool] = None,
         country: typing.Optional[str] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -189,10 +207,25 @@ class YoutubeClient:
             A video id or URL; returns the videos YouTube recommends beside it.
 
         type : typing.Optional[PostsYoutubeRequestType]
-            username/userId: which channel tab — videos (default), shorts, live or community · query: videos (default) or shorts.
+            username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included).
+
+        sort : typing.Optional[PostsYoutubeRequestSort]
+            query only: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort).
+
+        period : typing.Optional[PostsYoutubeRequestPeriod]
+            query only: uploaded within the last hour, today, this week, this month or this year (YouTube's upload-date filter; it has no other windows).
+
+        duration : typing.Optional[PostsYoutubeRequestDuration]
+            query only: short (under 3 minutes), medium (3–20 minutes) or long (over 20 minutes).
+
+        features : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            query only: results that have every one of these (comma-separated) — live, hd, 4k, subtitles (subtitles/CC), creative_commons, 360, vr180, 3d, hdr, location, purchased.
+
+        exact_spelling : typing.Optional[bool]
+            Search the query exactly as typed: no "Showing results for" spelling correction (when YouTube does correct, page 1's ext.correctedQuery names what it searched).
 
         country : typing.Optional[str]
-            Default feed only: the country whose trending feed to read (ISO alpha-2, default US).
+            query: the country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -221,6 +254,11 @@ class YoutubeClient:
             hashtag=hashtag,
             related_to=related_to,
             type=type,
+            sort=sort,
+            period=period,
+            duration=duration,
+            features=features,
+            exact_spelling=exact_spelling,
             country=country,
             cursor=cursor,
             request_options=request_options,
@@ -280,7 +318,10 @@ class YoutubeClient:
         *,
         username: typing.Optional[str] = None,
         user_id: typing.Optional[str] = None,
+        query: typing.Optional[str] = None,
         type: typing.Optional[GroupsYoutubeRequestType] = None,
+        country: typing.Optional[str] = None,
+        exact_spelling: typing.Optional[bool] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> GroupPageResponse:
@@ -295,8 +336,17 @@ class YoutubeClient:
         user_id : typing.Optional[str]
             Channel id (UC…).
 
+        query : typing.Optional[str]
+            Search playlists by keyword (playlists, Mixes and podcasts).
+
         type : typing.Optional[GroupsYoutubeRequestType]
-            playlists (a channel's playlists).
+            playlists (a channel's playlists, or the playlists a search finds).
+
+        country : typing.Optional[str]
+            query only: the country YouTube ranks the search for (ISO alpha-2, default US; it biases, it does not restrict).
+
+        exact_spelling : typing.Optional[bool]
+            query only: search the query exactly as typed (no "Showing results for" correction).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -319,7 +369,14 @@ class YoutubeClient:
         client.youtube.groups()
         """
         _response = self._raw_client.groups(
-            username=username, user_id=user_id, type=type, cursor=cursor, request_options=request_options
+            username=username,
+            user_id=user_id,
+            query=query,
+            type=type,
+            country=country,
+            exact_spelling=exact_spelling,
+            cursor=cursor,
+            request_options=request_options,
         )
         return _response.data
 
@@ -389,6 +446,8 @@ class AsyncYoutubeClient:
         self,
         *,
         query: typing.Optional[str] = None,
+        country: typing.Optional[str] = None,
+        exact_spelling: typing.Optional[bool] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AccountPageResponse:
@@ -399,6 +458,12 @@ class AsyncYoutubeClient:
         ----------
         query : typing.Optional[str]
             Search channels by keyword.
+
+        country : typing.Optional[str]
+            The country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it).
+
+        exact_spelling : typing.Optional[bool]
+            Search the query exactly as typed: no "Showing results for" spelling correction (when YouTube does correct, page 1's ext.correctedQuery names what it searched).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -428,7 +493,9 @@ class AsyncYoutubeClient:
 
         asyncio.run(main())
         """
-        _response = await self._raw_client.profiles(query=query, cursor=cursor, request_options=request_options)
+        _response = await self._raw_client.profiles(
+            query=query, country=country, exact_spelling=exact_spelling, cursor=cursor, request_options=request_options
+        )
         return _response.data
 
     async def post(
@@ -496,6 +563,11 @@ class AsyncYoutubeClient:
         hashtag: typing.Optional[str] = None,
         related_to: typing.Optional[str] = None,
         type: typing.Optional[PostsYoutubeRequestType] = None,
+        sort: typing.Optional[PostsYoutubeRequestSort] = None,
+        period: typing.Optional[PostsYoutubeRequestPeriod] = None,
+        duration: typing.Optional[PostsYoutubeRequestDuration] = None,
+        features: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        exact_spelling: typing.Optional[bool] = None,
         country: typing.Optional[str] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -521,10 +593,25 @@ class AsyncYoutubeClient:
             A video id or URL; returns the videos YouTube recommends beside it.
 
         type : typing.Optional[PostsYoutubeRequestType]
-            username/userId: which channel tab — videos (default), shorts, live or community · query: videos (default) or shorts.
+            username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included).
+
+        sort : typing.Optional[PostsYoutubeRequestSort]
+            query only: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort).
+
+        period : typing.Optional[PostsYoutubeRequestPeriod]
+            query only: uploaded within the last hour, today, this week, this month or this year (YouTube's upload-date filter; it has no other windows).
+
+        duration : typing.Optional[PostsYoutubeRequestDuration]
+            query only: short (under 3 minutes), medium (3–20 minutes) or long (over 20 minutes).
+
+        features : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            query only: results that have every one of these (comma-separated) — live, hd, 4k, subtitles (subtitles/CC), creative_commons, 360, vr180, 3d, hdr, location, purchased.
+
+        exact_spelling : typing.Optional[bool]
+            Search the query exactly as typed: no "Showing results for" spelling correction (when YouTube does correct, page 1's ext.correctedQuery names what it searched).
 
         country : typing.Optional[str]
-            Default feed only: the country whose trending feed to read (ISO alpha-2, default US).
+            query: the country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -561,6 +648,11 @@ class AsyncYoutubeClient:
             hashtag=hashtag,
             related_to=related_to,
             type=type,
+            sort=sort,
+            period=period,
+            duration=duration,
+            features=features,
+            exact_spelling=exact_spelling,
             country=country,
             cursor=cursor,
             request_options=request_options,
@@ -628,7 +720,10 @@ class AsyncYoutubeClient:
         *,
         username: typing.Optional[str] = None,
         user_id: typing.Optional[str] = None,
+        query: typing.Optional[str] = None,
         type: typing.Optional[GroupsYoutubeRequestType] = None,
+        country: typing.Optional[str] = None,
+        exact_spelling: typing.Optional[bool] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> GroupPageResponse:
@@ -643,8 +738,17 @@ class AsyncYoutubeClient:
         user_id : typing.Optional[str]
             Channel id (UC…).
 
+        query : typing.Optional[str]
+            Search playlists by keyword (playlists, Mixes and podcasts).
+
         type : typing.Optional[GroupsYoutubeRequestType]
-            playlists (a channel's playlists).
+            playlists (a channel's playlists, or the playlists a search finds).
+
+        country : typing.Optional[str]
+            query only: the country YouTube ranks the search for (ISO alpha-2, default US; it biases, it does not restrict).
+
+        exact_spelling : typing.Optional[bool]
+            query only: search the query exactly as typed (no "Showing results for" correction).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -675,6 +779,13 @@ class AsyncYoutubeClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.groups(
-            username=username, user_id=user_id, type=type, cursor=cursor, request_options=request_options
+            username=username,
+            user_id=user_id,
+            query=query,
+            type=type,
+            country=country,
+            exact_spelling=exact_spelling,
+            cursor=cursor,
+            request_options=request_options,
         )
         return _response.data

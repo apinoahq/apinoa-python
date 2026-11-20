@@ -9,6 +9,7 @@ from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
 from .answer_engine import AnswerEngine
+from .answer_follow_ups_item import AnswerFollowUpsItem
 from .answer_mention import AnswerMention
 from .answer_outcome import AnswerOutcome
 from .block import Block
@@ -40,6 +41,11 @@ class Answer(UncheckedBaseModel):
     results: typing.Optional[typing.List[Result]] = None
     page: typing.Optional[str] = None
     ext: typing.Optional[typing.Dict[str, typing.Any]] = None
+    follow_ups: typing_extensions.Annotated[
+        typing.Optional[typing.List[AnswerFollowUpsItem]],
+        FieldMetadata(alias="followUps"),
+        pydantic.Field(alias="followUps"),
+    ] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

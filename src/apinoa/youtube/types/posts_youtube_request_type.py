@@ -2,4 +2,4 @@
 
 import typing
 
-PostsYoutubeRequestType = typing.Union[typing.Literal["videos", "shorts", "live", "community"], typing.Any]
+PostsYoutubeRequestType = typing.Union[typing.Literal["videos", "shorts", "movies", "live", "community"], typing.Any]

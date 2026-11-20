@@ -8,10 +8,16 @@ from importlib import import_module
 if typing.TYPE_CHECKING:
     from .comments_youtube_request_sort import CommentsYoutubeRequestSort
     from .groups_youtube_request_type import GroupsYoutubeRequestType
+    from .posts_youtube_request_duration import PostsYoutubeRequestDuration
+    from .posts_youtube_request_period import PostsYoutubeRequestPeriod
+    from .posts_youtube_request_sort import PostsYoutubeRequestSort
     from .posts_youtube_request_type import PostsYoutubeRequestType
 _dynamic_imports: typing.Dict[str, str] = {
     "CommentsYoutubeRequestSort": ".comments_youtube_request_sort",
     "GroupsYoutubeRequestType": ".groups_youtube_request_type",
+    "PostsYoutubeRequestDuration": ".posts_youtube_request_duration",
+    "PostsYoutubeRequestPeriod": ".posts_youtube_request_period",
+    "PostsYoutubeRequestSort": ".posts_youtube_request_sort",
     "PostsYoutubeRequestType": ".posts_youtube_request_type",
 }
 
@@ -37,4 +43,11 @@ def __dir__():
     return sorted(lazy_attrs)
 
 
-__all__ = ["CommentsYoutubeRequestSort", "GroupsYoutubeRequestType", "PostsYoutubeRequestType"]
+__all__ = [
+    "CommentsYoutubeRequestSort",
+    "GroupsYoutubeRequestType",
+    "PostsYoutubeRequestDuration",
+    "PostsYoutubeRequestPeriod",
+    "PostsYoutubeRequestSort",
+    "PostsYoutubeRequestType",
+]

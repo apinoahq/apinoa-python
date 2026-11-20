@@ -22,14 +22,14 @@ from ..errors.too_many_requests_error import TooManyRequestsError
 from ..errors.unauthorized_error import UnauthorizedError
 from ..types.answer_response import AnswerResponse
 from ..types.error_response import ErrorResponse
-from .types.answer_dola_request_include import AnswerDolaRequestInclude
+from .types.answer_doubao_request_include import AnswerDoubaoRequestInclude
 from pydantic import ValidationError
 
 # this is used as the default value for optional parameters
 OMIT = typing.cast(typing.Any, ...)
 
 
-class RawDolaClient:
+class RawDoubaoClient:
     def __init__(self, *, client_wrapper: SyncClientWrapper):
         self._client_wrapper = client_wrapper
 
@@ -39,11 +39,11 @@ class RawDolaClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
-        include: typing.Optional[AnswerDolaRequestInclude] = OMIT,
+        include: typing.Optional[AnswerDoubaoRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[AnswerResponse]:
         """
-        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/dola/answer
+        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/doubao/answer
 
         Parameters
         ----------
@@ -56,7 +56,7 @@ class RawDolaClient:
         conversation : typing.Optional[str]
             An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
 
-        include : typing.Optional[AnswerDolaRequestInclude]
+        include : typing.Optional[AnswerDoubaoRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
 
         request_options : typing.Optional[RequestOptions]
@@ -68,14 +68,14 @@ class RawDolaClient:
             `Answer`
         """
         _response = self._client_wrapper.httpx_client.request(
-            "v1/dola/answer",
+            "v1/doubao/answer",
             method="POST",
             json={
                 "prompt": prompt,
                 "country": country,
                 "conversation": conversation,
                 "include": convert_and_respect_annotation_metadata(
-                    object_=include, annotation=AnswerDolaRequestInclude, direction="write"
+                    object_=include, annotation=AnswerDoubaoRequestInclude, direction="write"
                 ),
             },
             headers={
@@ -214,7 +214,7 @@ class RawDolaClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
 
-class AsyncRawDolaClient:
+class AsyncRawDoubaoClient:
     def __init__(self, *, client_wrapper: AsyncClientWrapper):
         self._client_wrapper = client_wrapper
 
@@ -224,11 +224,11 @@ class AsyncRawDolaClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
-        include: typing.Optional[AnswerDolaRequestInclude] = OMIT,
+        include: typing.Optional[AnswerDoubaoRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[AnswerResponse]:
         """
-        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/dola/answer
+        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/doubao/answer
 
         Parameters
         ----------
@@ -241,7 +241,7 @@ class AsyncRawDolaClient:
         conversation : typing.Optional[str]
             An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
 
-        include : typing.Optional[AnswerDolaRequestInclude]
+        include : typing.Optional[AnswerDoubaoRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
 
         request_options : typing.Optional[RequestOptions]
@@ -253,14 +253,14 @@ class AsyncRawDolaClient:
             `Answer`
         """
         _response = await self._client_wrapper.httpx_client.request(
-            "v1/dola/answer",
+            "v1/doubao/answer",
             method="POST",
             json={
                 "prompt": prompt,
                 "country": country,
                 "conversation": conversation,
                 "include": convert_and_respect_annotation_metadata(
-                    object_=include, annotation=AnswerDolaRequestInclude, direction="write"
+                    object_=include, annotation=AnswerDoubaoRequestInclude, direction="write"
                 ),
             },
             headers={

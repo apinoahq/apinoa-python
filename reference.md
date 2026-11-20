@@ -2507,8 +2507,8 @@ client.daum.suggestions(
 </dl>
 </details>
 
-## Dola
-<details><summary><code>client.dola.<a href="src/apinoa/dola/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+## Doubao
+<details><summary><code>client.doubao.<a href="src/apinoa/doubao/client.py">answer</a>(...) -> AnswerResponse</code></summary>
 <dl>
 <dd>
 
@@ -2520,7 +2520,7 @@ client.daum.suggestions(
 <dl>
 <dd>
 
-Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/dola/answer
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/doubao/answer
 </dd>
 </dl>
 </dd>
@@ -2543,7 +2543,7 @@ client = Apinoa(
     environment=ApinoaEnvironment.DEFAULT,
 )
 
-client.dola.answer(
+client.doubao.answer(
     prompt="prompt",
 )
 
@@ -2585,7 +2585,7 @@ client.dola.answer(
 <dl>
 <dd>
 
-**include:** `typing.Optional[AnswerDolaRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+**include:** `typing.Optional[AnswerDoubaoRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
     
 </dd>
 </dl>

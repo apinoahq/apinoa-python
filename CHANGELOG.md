@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.22
+
+Follows the API as of 2026-11-20:
+
+- ByteDance's engine is named Doubao: `client.dola.answer` is now `client.doubao.answer` (`POST /v1/doubao/answer`), and an answer's `engine` is `"doubao"`. The server still answers `/v1/dola/answer`, so an older version keeps working.
+
 ## 0.1.21
 
 Follows the API as of 2026-11-20:

@@ -14,7 +14,7 @@ AnswerFollowUpsItemEngine = typing.Union[
         "naver-ai-tab",
         "qwen",
         "yuanbao",
-        "dola",
+        "doubao",
     ],
     typing.Any,
 ]

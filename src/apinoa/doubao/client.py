@@ -5,25 +5,25 @@ import typing
 from ..core.client_wrapper import AsyncClientWrapper, SyncClientWrapper
 from ..core.request_options import RequestOptions
 from ..types.answer_response import AnswerResponse
-from .raw_client import AsyncRawDolaClient, RawDolaClient
-from .types.answer_dola_request_include import AnswerDolaRequestInclude
+from .raw_client import AsyncRawDoubaoClient, RawDoubaoClient
+from .types.answer_doubao_request_include import AnswerDoubaoRequestInclude
 
 # this is used as the default value for optional parameters
 OMIT = typing.cast(typing.Any, ...)
 
 
-class DolaClient:
+class DoubaoClient:
     def __init__(self, *, client_wrapper: SyncClientWrapper):
-        self._raw_client = RawDolaClient(client_wrapper=client_wrapper)
+        self._raw_client = RawDoubaoClient(client_wrapper=client_wrapper)
 
     @property
-    def with_raw_response(self) -> RawDolaClient:
+    def with_raw_response(self) -> RawDoubaoClient:
         """
         Retrieves a raw implementation of this client that returns raw responses.
 
         Returns
         -------
-        RawDolaClient
+        RawDoubaoClient
         """
         return self._raw_client
 
@@ -33,11 +33,11 @@ class DolaClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
-        include: typing.Optional[AnswerDolaRequestInclude] = OMIT,
+        include: typing.Optional[AnswerDoubaoRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
-        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/dola/answer
+        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/doubao/answer
 
         Parameters
         ----------
@@ -50,7 +50,7 @@ class DolaClient:
         conversation : typing.Optional[str]
             An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
 
-        include : typing.Optional[AnswerDolaRequestInclude]
+        include : typing.Optional[AnswerDoubaoRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
 
         request_options : typing.Optional[RequestOptions]
@@ -68,7 +68,7 @@ class DolaClient:
         client = Apinoa(
             api_key="YOUR_API_KEY",
         )
-        client.dola.answer(
+        client.doubao.answer(
             prompt="prompt",
         )
         """
@@ -78,18 +78,18 @@ class DolaClient:
         return _response.data
 
 
-class AsyncDolaClient:
+class AsyncDoubaoClient:
     def __init__(self, *, client_wrapper: AsyncClientWrapper):
-        self._raw_client = AsyncRawDolaClient(client_wrapper=client_wrapper)
+        self._raw_client = AsyncRawDoubaoClient(client_wrapper=client_wrapper)
 
     @property
-    def with_raw_response(self) -> AsyncRawDolaClient:
+    def with_raw_response(self) -> AsyncRawDoubaoClient:
         """
         Retrieves a raw implementation of this client that returns raw responses.
 
         Returns
         -------
-        AsyncRawDolaClient
+        AsyncRawDoubaoClient
         """
         return self._raw_client
 
@@ -99,11 +99,11 @@ class AsyncDolaClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
-        include: typing.Optional[AnswerDolaRequestInclude] = OMIT,
+        include: typing.Optional[AnswerDoubaoRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
-        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/dola/answer
+        Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/doubao/answer
 
         Parameters
         ----------
@@ -116,7 +116,7 @@ class AsyncDolaClient:
         conversation : typing.Optional[str]
             An earlier answer's `conversation.id`: ask a follow-up in the same conversation.
 
-        include : typing.Optional[AnswerDolaRequestInclude]
+        include : typing.Optional[AnswerDoubaoRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
 
         request_options : typing.Optional[RequestOptions]
@@ -139,7 +139,7 @@ class AsyncDolaClient:
 
 
         async def main() -> None:
-            await client.dola.answer(
+            await client.doubao.answer(
                 prompt="prompt",
             )
 

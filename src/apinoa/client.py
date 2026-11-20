@@ -21,7 +21,7 @@ if typing.TYPE_CHECKING:
     from .company.client import AsyncCompanyClient, CompanyClient
     from .copilot.client import AsyncCopilotClient, CopilotClient
     from .daum.client import AsyncDaumClient, DaumClient
-    from .dola.client import AsyncDolaClient, DolaClient
+    from .doubao.client import AsyncDoubaoClient, DoubaoClient
     from .duckduckgo.client import AsyncDuckduckgoClient, DuckduckgoClient
     from .facebook.client import AsyncFacebookClient, FacebookClient
     from .feedback.client import AsyncFeedbackClient, FeedbackClient
@@ -157,7 +157,7 @@ class Apinoa:
         self._company: typing.Optional[CompanyClient] = None
         self._copilot: typing.Optional[CopilotClient] = None
         self._daum: typing.Optional[DaumClient] = None
-        self._dola: typing.Optional[DolaClient] = None
+        self._doubao: typing.Optional[DoubaoClient] = None
         self._duckduckgo: typing.Optional[DuckduckgoClient] = None
         self._facebook: typing.Optional[FacebookClient] = None
         self._gemini: typing.Optional[GeminiClient] = None
@@ -267,12 +267,12 @@ class Apinoa:
         return self._daum
 
     @property
-    def dola(self):
-        if self._dola is None:
-            from .dola.client import DolaClient  # noqa: E402
+    def doubao(self):
+        if self._doubao is None:
+            from .doubao.client import DoubaoClient  # noqa: E402
 
-            self._dola = DolaClient(client_wrapper=self._client_wrapper)
-        return self._dola
+            self._doubao = DoubaoClient(client_wrapper=self._client_wrapper)
+        return self._doubao
 
     @property
     def duckduckgo(self):
@@ -669,7 +669,7 @@ class AsyncApinoa:
         self._company: typing.Optional[AsyncCompanyClient] = None
         self._copilot: typing.Optional[AsyncCopilotClient] = None
         self._daum: typing.Optional[AsyncDaumClient] = None
-        self._dola: typing.Optional[AsyncDolaClient] = None
+        self._doubao: typing.Optional[AsyncDoubaoClient] = None
         self._duckduckgo: typing.Optional[AsyncDuckduckgoClient] = None
         self._facebook: typing.Optional[AsyncFacebookClient] = None
         self._gemini: typing.Optional[AsyncGeminiClient] = None
@@ -779,12 +779,12 @@ class AsyncApinoa:
         return self._daum
 
     @property
-    def dola(self):
-        if self._dola is None:
-            from .dola.client import AsyncDolaClient  # noqa: E402
+    def doubao(self):
+        if self._doubao is None:
+            from .doubao.client import AsyncDoubaoClient  # noqa: E402
 
-            self._dola = AsyncDolaClient(client_wrapper=self._client_wrapper)
-        return self._dola
+            self._doubao = AsyncDoubaoClient(client_wrapper=self._client_wrapper)
+        return self._doubao
 
     @property
     def duckduckgo(self):

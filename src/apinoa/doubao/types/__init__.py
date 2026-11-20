@@ -6,11 +6,11 @@ import typing
 from importlib import import_module
 
 if typing.TYPE_CHECKING:
-    from .answer_dola_request_include import AnswerDolaRequestInclude
-    from .answer_dola_request_include_zero_item import AnswerDolaRequestIncludeZeroItem
+    from .answer_doubao_request_include import AnswerDoubaoRequestInclude
+    from .answer_doubao_request_include_zero_item import AnswerDoubaoRequestIncludeZeroItem
 _dynamic_imports: typing.Dict[str, str] = {
-    "AnswerDolaRequestInclude": ".answer_dola_request_include",
-    "AnswerDolaRequestIncludeZeroItem": ".answer_dola_request_include_zero_item",
+    "AnswerDoubaoRequestInclude": ".answer_doubao_request_include",
+    "AnswerDoubaoRequestIncludeZeroItem": ".answer_doubao_request_include_zero_item",
 }
 
 
@@ -35,4 +35,4 @@ def __dir__():
     return sorted(lazy_attrs)
 
 
-__all__ = ["AnswerDolaRequestInclude", "AnswerDolaRequestIncludeZeroItem"]
+__all__ = ["AnswerDoubaoRequestInclude", "AnswerDoubaoRequestIncludeZeroItem"]

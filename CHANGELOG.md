@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.25
+
+Follows the API as of 2026-11-20:
+
+- New operations: `POST /v1/meta-ai/answer`.
+
 ## 0.1.24
 
 Follows the API as of 2026-11-20.

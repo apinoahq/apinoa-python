@@ -365,6 +365,7 @@ if typing.TYPE_CHECKING:
         instagram,
         linkedin,
         marketplaces,
+        meta_ai,
         naver,
         naver_ai_brief,
         naver_ai_tab,
@@ -482,6 +483,7 @@ if typing.TYPE_CHECKING:
         TranslateImageTranslateRequestSourceLanguage,
     )
     from .instagram import CommentsInstagramRequestSort, GroupsInstagramRequestType, PostsInstagramRequestType
+    from .meta_ai import AnswerMetaAiRequestInclude, AnswerMetaAiRequestIncludeZeroItem
     from .naver import (
         PlacesNaverRequestCountry,
         PlacesNaverRequestType,
@@ -608,6 +610,8 @@ _dynamic_imports: typing.Dict[str, str] = {
     "AnswerGoogleAioRequestIncludeZeroItem": ".google_aio",
     "AnswerMention": ".types",
     "AnswerMentionKind": ".types",
+    "AnswerMetaAiRequestInclude": ".meta_ai",
+    "AnswerMetaAiRequestIncludeZeroItem": ".meta_ai",
     "AnswerNaverAiBriefRequestInclude": ".naver_ai_brief",
     "AnswerNaverAiBriefRequestIncludeZeroItem": ".naver_ai_brief",
     "AnswerNaverAiTabRequestInclude": ".naver_ai_tab",
@@ -1091,6 +1095,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "instagram": ".instagram",
     "linkedin": ".linkedin",
     "marketplaces": ".marketplaces",
+    "meta_ai": ".meta_ai",
     "naver": ".naver",
     "naver_ai_brief": ".naver_ai_brief",
     "naver_ai_tab": ".naver_ai_tab",
@@ -1171,6 +1176,8 @@ __all__ = [
     "AnswerGoogleAioRequestIncludeZeroItem",
     "AnswerMention",
     "AnswerMentionKind",
+    "AnswerMetaAiRequestInclude",
+    "AnswerMetaAiRequestIncludeZeroItem",
     "AnswerNaverAiBriefRequestInclude",
     "AnswerNaverAiBriefRequestIncludeZeroItem",
     "AnswerNaverAiTabRequestInclude",
@@ -1654,6 +1661,7 @@ __all__ = [
     "instagram",
     "linkedin",
     "marketplaces",
+    "meta_ai",
     "naver",
     "naver_ai_brief",
     "naver_ai_tab",

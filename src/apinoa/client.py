@@ -36,6 +36,7 @@ if typing.TYPE_CHECKING:
     from .instagram.client import AsyncInstagramClient, InstagramClient
     from .linkedin.client import AsyncLinkedinClient, LinkedinClient
     from .marketplaces.client import AsyncMarketplacesClient, MarketplacesClient
+    from .meta_ai.client import AsyncMetaAiClient, MetaAiClient
     from .naver.client import AsyncNaverClient, NaverClient
     from .naver_ai_brief.client import AsyncNaverAiBriefClient, NaverAiBriefClient
     from .naver_ai_tab.client import AsyncNaverAiTabClient, NaverAiTabClient
@@ -169,6 +170,7 @@ class Apinoa:
         self._google_trends: typing.Optional[GoogleTrendsClient] = None
         self._instagram: typing.Optional[InstagramClient] = None
         self._linkedin: typing.Optional[LinkedinClient] = None
+        self._meta_ai: typing.Optional[MetaAiClient] = None
         self._naver: typing.Optional[NaverClient] = None
         self._naver_ai_brief: typing.Optional[NaverAiBriefClient] = None
         self._naver_ai_tab: typing.Optional[NaverAiTabClient] = None
@@ -361,6 +363,14 @@ class Apinoa:
 
             self._linkedin = LinkedinClient(client_wrapper=self._client_wrapper)
         return self._linkedin
+
+    @property
+    def meta_ai(self):
+        if self._meta_ai is None:
+            from .meta_ai.client import MetaAiClient  # noqa: E402
+
+            self._meta_ai = MetaAiClient(client_wrapper=self._client_wrapper)
+        return self._meta_ai
 
     @property
     def naver(self):
@@ -681,6 +691,7 @@ class AsyncApinoa:
         self._google_trends: typing.Optional[AsyncGoogleTrendsClient] = None
         self._instagram: typing.Optional[AsyncInstagramClient] = None
         self._linkedin: typing.Optional[AsyncLinkedinClient] = None
+        self._meta_ai: typing.Optional[AsyncMetaAiClient] = None
         self._naver: typing.Optional[AsyncNaverClient] = None
         self._naver_ai_brief: typing.Optional[AsyncNaverAiBriefClient] = None
         self._naver_ai_tab: typing.Optional[AsyncNaverAiTabClient] = None
@@ -873,6 +884,14 @@ class AsyncApinoa:
 
             self._linkedin = AsyncLinkedinClient(client_wrapper=self._client_wrapper)
         return self._linkedin
+
+    @property
+    def meta_ai(self):
+        if self._meta_ai is None:
+            from .meta_ai.client import AsyncMetaAiClient  # noqa: E402
+
+            self._meta_ai = AsyncMetaAiClient(client_wrapper=self._client_wrapper)
+        return self._meta_ai
 
     @property
     def naver(self):

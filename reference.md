@@ -5933,6 +5933,96 @@ client.linkedin.jobs()
 </dl>
 </details>
 
+## Meta AI
+<details><summary><code>client.meta_ai.<a href="src/apinoa/meta_ai/client.py">answer</a>(...) -> AnswerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Answer` in `data`. Costs 1 unit. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/meta-ai/answer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.meta_ai.answer(
+    prompt="prompt",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**prompt:** `str` — The question, as a person would type it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The market the answer is asked from, as an ISO 3166 country code. Each engine's page lists its countries.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[AnswerMetaAiRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Naver
 <details><summary><code>client.naver.<a href="src/apinoa/naver/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
 <dl>

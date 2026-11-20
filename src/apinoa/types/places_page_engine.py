@@ -16,6 +16,7 @@ PlacesPageEngine = typing.Union[
         "daum",
         "sogou",
         "tripadvisor",
+        "brave",
     ],
     typing.Any,
 ]

@@ -17,6 +17,7 @@ AnswerFollowUpsItemEngine = typing.Union[
         "doubao",
         "meta-ai",
         "baidu-ai-search",
+        "brave-ai-answers",
     ],
     typing.Any,
 ]

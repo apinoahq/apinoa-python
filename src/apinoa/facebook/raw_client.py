@@ -19,6 +19,7 @@ from ..errors.payment_required_error import PaymentRequiredError
 from ..errors.service_unavailable_error import ServiceUnavailableError
 from ..errors.too_many_requests_error import TooManyRequestsError
 from ..errors.unauthorized_error import UnauthorizedError
+from ..types.account_page_response import AccountPageResponse
 from ..types.account_response import AccountResponse
 from ..types.error_response import ErrorResponse
 from ..types.facebook_ads_page_response import FacebookAdsPageResponse
@@ -26,6 +27,7 @@ from .types.ads_facebook_request_ad_type import AdsFacebookRequestAdType
 from .types.ads_facebook_request_media_type import AdsFacebookRequestMediaType
 from .types.ads_facebook_request_sort import AdsFacebookRequestSort
 from .types.ads_facebook_request_status import AdsFacebookRequestStatus
+from .types.profiles_facebook_request_ad_type import ProfilesFacebookRequestAdType
 from pydantic import ValidationError
 
 
@@ -189,6 +191,175 @@ class RawFacebookClient:
             )
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
+    def profiles(
+        self,
+        *,
+        query: typing.Optional[str] = None,
+        country: typing.Optional[str] = None,
+        ad_type: typing.Optional[ProfilesFacebookRequestAdType] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> HttpResponse[AccountPageResponse]:
+        """
+        Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/profiles
+
+        Parameters
+        ----------
+        query : typing.Optional[str]
+            An advertiser's name (or part of it): the Pages the Ad Library's search box suggests for it, each with the `id` that `ads?pageId=` takes.
+
+        country : typing.Optional[str]
+            Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
+
+        ad_type : typing.Optional[ProfilesFacebookRequestAdType]
+            all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[AccountPageResponse]
+            `AccountPage`
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            "v1/facebook/profiles",
+            method="GET",
+            params={
+                "query": query,
+                "country": country,
+                "adType": ad_type,
+            },
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    AccountPageResponse,
+                    construct_type(
+                        type_=AccountPageResponse,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return HttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 402:
+                raise PaymentRequiredError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 429:
+                raise TooManyRequestsError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 501:
+                raise NotImplementedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 502:
+                raise BadGatewayError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 503:
+                raise ServiceUnavailableError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
     def ads(
         self,
         *,
@@ -216,7 +387,7 @@ class RawFacebookClient:
             Keywords to search the Ad Library for.
 
         page_id : typing.Optional[str]
-            Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`).
+            Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`; `profiles?query=` finds it by name).
 
         exact : typing.Optional[bool]
             query: match the exact phrase instead of any of its words.
@@ -569,6 +740,175 @@ class AsyncRawFacebookClient:
             )
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
+    async def profiles(
+        self,
+        *,
+        query: typing.Optional[str] = None,
+        country: typing.Optional[str] = None,
+        ad_type: typing.Optional[ProfilesFacebookRequestAdType] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> AsyncHttpResponse[AccountPageResponse]:
+        """
+        Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/profiles
+
+        Parameters
+        ----------
+        query : typing.Optional[str]
+            An advertiser's name (or part of it): the Pages the Ad Library's search box suggests for it, each with the `id` that `ads?pageId=` takes.
+
+        country : typing.Optional[str]
+            Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
+
+        ad_type : typing.Optional[ProfilesFacebookRequestAdType]
+            all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[AccountPageResponse]
+            `AccountPage`
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            "v1/facebook/profiles",
+            method="GET",
+            params={
+                "query": query,
+                "country": country,
+                "adType": ad_type,
+            },
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    AccountPageResponse,
+                    construct_type(
+                        type_=AccountPageResponse,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return AsyncHttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 402:
+                raise PaymentRequiredError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 429:
+                raise TooManyRequestsError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 501:
+                raise NotImplementedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 502:
+                raise BadGatewayError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 503:
+                raise ServiceUnavailableError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ErrorResponse,
+                        construct_type(
+                            type_=ErrorResponse,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
     async def ads(
         self,
         *,
@@ -596,7 +936,7 @@ class AsyncRawFacebookClient:
             Keywords to search the Ad Library for.
 
         page_id : typing.Optional[str]
-            Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`).
+            Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`; `profiles?query=` finds it by name).
 
         exact : typing.Optional[bool]
             query: match the exact phrase instead of any of its words.

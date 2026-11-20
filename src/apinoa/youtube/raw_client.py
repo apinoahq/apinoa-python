@@ -365,15 +365,30 @@ class RawYoutubeClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
     def post(
-        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        lang: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        generated: typing.Optional[bool] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[PostResponse]:
         """
-        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
+        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
 
         Parameters
         ----------
         id : typing.Optional[str]
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit).
+
+        lang : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            include=transcript only: preferred caption languages, in order (comma-separated): en, ko, pt-BR … `en` also matches en-US. Default: the video's own caption language.
+
+        generated : typing.Optional[bool]
+            include=transcript only: true for the auto-generated (speech recognition) track, false for a track the creator supplied. Default: the creator's first.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -388,6 +403,9 @@ class RawYoutubeClient:
             method="GET",
             params={
                 "id": id,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
+                "lang": ",".join(map(str, lang)) if isinstance(lang, (list, tuple, set)) else lang,
+                "generated": generated,
             },
             request_options=request_options,
         )
@@ -1396,15 +1414,30 @@ class AsyncRawYoutubeClient:
         raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
 
     async def post(
-        self, *, id: typing.Optional[str] = None, request_options: typing.Optional[RequestOptions] = None
+        self,
+        *,
+        id: typing.Optional[str] = None,
+        include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        lang: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        generated: typing.Optional[bool] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[PostResponse]:
         """
-        Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
+        Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
 
         Parameters
         ----------
         id : typing.Optional[str]
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
+
+        include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit).
+
+        lang : typing.Optional[typing.Union[str, typing.Sequence[str]]]
+            include=transcript only: preferred caption languages, in order (comma-separated): en, ko, pt-BR … `en` also matches en-US. Default: the video's own caption language.
+
+        generated : typing.Optional[bool]
+            include=transcript only: true for the auto-generated (speech recognition) track, false for a track the creator supplied. Default: the creator's first.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1419,6 +1452,9 @@ class AsyncRawYoutubeClient:
             method="GET",
             params={
                 "id": id,
+                "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
+                "lang": ",".join(map(str, lang)) if isinstance(lang, (list, tuple, set)) else lang,
+                "generated": generated,
             },
             request_options=request_options,
         )

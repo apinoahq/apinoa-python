@@ -2,4 +2,6 @@
 
 import typing
 
-CatalogMarketplacesItemKind = typing.Union[typing.Literal["marketplace", "sns"], typing.Any]
+CatalogMarketplacesItemKind = typing.Union[
+    typing.Literal["marketplace", "sns", "serp", "answers", "company", "unlocker", "reader"], typing.Any
+]

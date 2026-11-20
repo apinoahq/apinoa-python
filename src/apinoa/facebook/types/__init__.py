@@ -10,11 +10,13 @@ if typing.TYPE_CHECKING:
     from .ads_facebook_request_media_type import AdsFacebookRequestMediaType
     from .ads_facebook_request_sort import AdsFacebookRequestSort
     from .ads_facebook_request_status import AdsFacebookRequestStatus
+    from .profiles_facebook_request_ad_type import ProfilesFacebookRequestAdType
 _dynamic_imports: typing.Dict[str, str] = {
     "AdsFacebookRequestAdType": ".ads_facebook_request_ad_type",
     "AdsFacebookRequestMediaType": ".ads_facebook_request_media_type",
     "AdsFacebookRequestSort": ".ads_facebook_request_sort",
     "AdsFacebookRequestStatus": ".ads_facebook_request_status",
+    "ProfilesFacebookRequestAdType": ".profiles_facebook_request_ad_type",
 }
 
 
@@ -44,4 +46,5 @@ __all__ = [
     "AdsFacebookRequestMediaType",
     "AdsFacebookRequestSort",
     "AdsFacebookRequestStatus",
+    "ProfilesFacebookRequestAdType",
 ]

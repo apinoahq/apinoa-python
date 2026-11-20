@@ -823,7 +823,8 @@ class RawAmazonClient:
     def product(
         self,
         *,
-        id: str,
+        id: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         include: typing.Optional[str] = None,
         region: typing.Optional[ProductAmazonRequestRegion] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -833,8 +834,11 @@ class RawAmazonClient:
 
         Parameters
         ----------
-        id : str
-            The marketplace's own product id, as carried by a search item.
+        id : typing.Optional[str]
+            The ASIN (or a book's ISBN-10), as a search item's `id` carries it. Pass this or `url`.
+
+        url : typing.Optional[str]
+            An Amazon product page link instead of `id`, e.g. https://www.amazon.com/dp/B07JD5GLBN or https://www.amazon.co.jp/<name>/dp/<ASIN>. The link's site sets `region` (amazon.co.jp is JP); a `region` that disagrees with it is refused.
 
         include : typing.Optional[str]
             `offers` · `offers:5` · `offers:all` — the enumerated competing-seller offers, which are fetched separately and so opt-in. Depth counts pages of offers (10 offers each) and each page is charged; `all` walks to the end, capped at 30 pages.
@@ -855,6 +859,7 @@ class RawAmazonClient:
             method="GET",
             params={
                 "id": id,
+                "url": url,
                 "include": include,
                 "region": region,
             },
@@ -1774,7 +1779,8 @@ class AsyncRawAmazonClient:
     async def product(
         self,
         *,
-        id: str,
+        id: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         include: typing.Optional[str] = None,
         region: typing.Optional[ProductAmazonRequestRegion] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -1784,8 +1790,11 @@ class AsyncRawAmazonClient:
 
         Parameters
         ----------
-        id : str
-            The marketplace's own product id, as carried by a search item.
+        id : typing.Optional[str]
+            The ASIN (or a book's ISBN-10), as a search item's `id` carries it. Pass this or `url`.
+
+        url : typing.Optional[str]
+            An Amazon product page link instead of `id`, e.g. https://www.amazon.com/dp/B07JD5GLBN or https://www.amazon.co.jp/<name>/dp/<ASIN>. The link's site sets `region` (amazon.co.jp is JP); a `region` that disagrees with it is refused.
 
         include : typing.Optional[str]
             `offers` · `offers:5` · `offers:all` — the enumerated competing-seller offers, which are fetched separately and so opt-in. Depth counts pages of offers (10 offers each) and each page is charged; `all` walks to the end, capped at 30 pages.
@@ -1806,6 +1815,7 @@ class AsyncRawAmazonClient:
             method="GET",
             params={
                 "id": id,
+                "url": url,
                 "include": include,
                 "region": region,
             },

@@ -1208,9 +1208,7 @@ client = Apinoa(
     environment=ApinoaEnvironment.DEFAULT,
 )
 
-client.amazon.product(
-    id="id",
-)
+client.amazon.product()
 
 ```
 </dd>
@@ -1226,7 +1224,15 @@ client.amazon.product(
 <dl>
 <dd>
 
-**id:** `str` — The marketplace's own product id, as carried by a search item.
+**id:** `typing.Optional[str]` — The ASIN (or a book's ISBN-10), as a search item's `id` carries it. Pass this or `url`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — An Amazon product page link instead of `id`, e.g. https://www.amazon.com/dp/B07JD5GLBN or https://www.amazon.co.jp/<name>/dp/<ASIN>. The link's site sets `region` (amazon.co.jp is JP); a `region` that disagrees with it is refused.
     
 </dd>
 </dl>
@@ -2100,6 +2106,14 @@ client.chatgpt.answer(
 <dl>
 <dd>
 
+**web_search:** `typing.Optional[bool]` — Let the engine search the web for the answer.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **include:** `typing.Optional[AnswerChatgptRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
     
 </dd>
@@ -2856,6 +2870,93 @@ client.facebook.profile()
 </dl>
 </details>
 
+<details><summary><code>client.facebook.<a href="src/apinoa/facebook/client.py">profiles</a>(...) -> AccountPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/profiles
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.facebook.profiles()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — An advertiser's name (or part of it): the Pages the Ad Library's search box suggests for it, each with the `id` that `ads?pageId=` takes.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**ad_type:** `typing.Optional[ProfilesFacebookRequestAdType]` — all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.facebook.<a href="src/apinoa/facebook/client.py">ads</a>(...) -> FacebookAdsPageResponse</code></summary>
 <dl>
 <dd>
@@ -2915,7 +3016,7 @@ client.facebook.ads()
 <dl>
 <dd>
 
-**page_id:** `typing.Optional[str]` — Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`).
+**page_id:** `typing.Optional[str]` — Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`; `profiles?query=` finds it by name).
     
 </dd>
 </dl>
@@ -3134,7 +3235,7 @@ client.gemini.answer(
 <dl>
 <dd>
 
-Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/google/search
+Returns `ResultsPage` in `data`. Costs 1 unit, up to 10 units. Reference: https://apinoa.com/docs/api-reference/google/search
 </dd>
 </dl>
 </dd>
@@ -3237,7 +3338,31 @@ client.google.search()
 <dl>
 <dd>
 
+**near:** `typing.Optional[str]` — Search as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. Sets `country` to the place's country when `country` is not given.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**uule:** `typing.Optional[str]` — Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **limit:** `typing.Optional[int]` — Results wanted (default 10, at most 50). More than one page is charged per page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**pages:** `typing.Optional[int]` — Result pages to read in one call (1-10), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
     
 </dd>
 </dl>
@@ -6497,6 +6622,104 @@ client.qwen.answer(
 <dd>
 
 **include:** `typing.Optional[AnswerQwenRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Reader
+<details><summary><code>client.reader.<a href="src/apinoa/reader/client.py">page</a>(...) -> ReaderPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `ReaderPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/reader/page
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.reader.page(
+    url="url",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**url:** `str` — The page's address, http or https.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Extra fields, comma-separated: `html` (the page as fetched), `contentHtml` (its main content as HTML).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**max_chars:** `typing.Optional[int]` — Cut `markdown` to at most this many characters, at a paragraph break where one is near; `truncated` is then true.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[PageReaderRequestCountry]` — Where the page is read from.
     
 </dd>
 </dl>
@@ -10147,6 +10370,136 @@ client.tripadvisor.reviews()
 </dl>
 </details>
 
+## Unlocker
+<details><summary><code>client.unlocker.<a href="src/apinoa/unlocker/client.py">request</a>(...) -> UnlockResultResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `UnlockResult` in `data`. Costs 1 unit, up to 10 units. POST only, with a JSON body. Reference: https://apinoa.com/docs/api-reference/unlocker/request
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.unlocker.request(
+    url="url",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**url:** `str` — The address to request (http or https).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**method:** `typing.Optional[RequestUnlockerRequestMethod]` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**headers:** `typing.Optional[typing.Dict[str, str]]` — Headers to send, as given. A real browser's own headers replace User-Agent, sec-ch-ua*, Accept-Encoding, Host, Connection and Content-Length.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**body:** `typing.Optional[str]` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**body_encoding:** `typing.Optional[RequestUnlockerRequestBodyEncoding]` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**profile:** `typing.Optional[RequestUnlockerRequestProfile]` — Which kind of browser to present: desktop or mobile. Absent: either.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[RequestUnlockerRequestCountry]` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**follow_redirects:** `typing.Optional[bool]` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Walmart
 <details><summary><code>client.walmart.<a href="src/apinoa/walmart/client.py">search</a>(...) -> SearchResultResponse</code></summary>
 <dl>
@@ -10544,9 +10897,7 @@ client = Apinoa(
     environment=ApinoaEnvironment.DEFAULT,
 )
 
-client.walmart.product(
-    id="id",
-)
+client.walmart.product()
 
 ```
 </dd>
@@ -10562,7 +10913,15 @@ client.walmart.product(
 <dl>
 <dd>
 
-**id:** `str` — Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+**id:** `typing.Optional[str]` — Walmart's `usItemId`, all digits, as carried by a search item — chain straight in. Pass this or `url`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A Walmart product page link instead of `id`, e.g. https://www.walmart.com/ip/<name>/5402638498. A `selectedSellerId` in the link sets `seller`.
     
 </dd>
 </dl>
@@ -12079,7 +12438,7 @@ client.youtube.profiles()
 <dl>
 <dd>
 
-Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/youtube/post
+Returns `Post` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/youtube/post
 </dd>
 </dl>
 </dd>
@@ -12119,6 +12478,30 @@ client.youtube.post()
 <dd>
 
 **id:** `typing.Optional[str]` — Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — include=transcript only: preferred caption languages, in order (comma-separated): en, ko, pt-BR … `en` also matches en-US. Default: the video's own caption language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**generated:** `typing.Optional[bool]` — include=transcript only: true for the auto-generated (speech recognition) track, false for a track the creator supplied. Default: the creator's first.
     
 </dd>
 </dl>

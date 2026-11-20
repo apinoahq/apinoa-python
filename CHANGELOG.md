@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.19
+
+Follows the API as of 2026-11-20:
+
+- New operations: `GET /v1/facebook/profiles`, `GET /v1/reader/page`, `POST /v1/unlocker/request`.
+- New type `ReaderPage`.
+- New type `ReaderPageResponse`.
+- New type `UnlockResult`.
+- New type `UnlockResultResponse`.
+
 ## 0.1.18
 
 Follows the API as of 2026-11-16:

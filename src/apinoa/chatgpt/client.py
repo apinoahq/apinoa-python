@@ -34,6 +34,7 @@ class ChatgptClient:
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
         photos: typing.Optional[typing.Sequence[str]] = OMIT,
+        web_search: typing.Optional[bool] = OMIT,
         include: typing.Optional[AnswerChatgptRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
@@ -53,6 +54,9 @@ class ChatgptClient:
 
         photos : typing.Optional[typing.Sequence[str]]
             Up to four photos to ask about: https URLs, or `data:image/…;base64,` URLs.
+
+        web_search : typing.Optional[bool]
+            Let the engine search the web for the answer.
 
         include : typing.Optional[AnswerChatgptRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
@@ -81,6 +85,7 @@ class ChatgptClient:
             country=country,
             conversation=conversation,
             photos=photos,
+            web_search=web_search,
             include=include,
             request_options=request_options,
         )
@@ -109,6 +114,7 @@ class AsyncChatgptClient:
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
         photos: typing.Optional[typing.Sequence[str]] = OMIT,
+        web_search: typing.Optional[bool] = OMIT,
         include: typing.Optional[AnswerChatgptRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
@@ -128,6 +134,9 @@ class AsyncChatgptClient:
 
         photos : typing.Optional[typing.Sequence[str]]
             Up to four photos to ask about: https URLs, or `data:image/…;base64,` URLs.
+
+        web_search : typing.Optional[bool]
+            Let the engine search the web for the answer.
 
         include : typing.Optional[AnswerChatgptRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
@@ -164,6 +173,7 @@ class AsyncChatgptClient:
             country=country,
             conversation=conversation,
             photos=photos,
+            web_search=web_search,
             include=include,
             request_options=request_options,
         )

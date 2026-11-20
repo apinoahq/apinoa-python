@@ -40,6 +40,7 @@ class RawChatgptClient:
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
         photos: typing.Optional[typing.Sequence[str]] = OMIT,
+        web_search: typing.Optional[bool] = OMIT,
         include: typing.Optional[AnswerChatgptRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[AnswerResponse]:
@@ -60,6 +61,9 @@ class RawChatgptClient:
         photos : typing.Optional[typing.Sequence[str]]
             Up to four photos to ask about: https URLs, or `data:image/…;base64,` URLs.
 
+        web_search : typing.Optional[bool]
+            Let the engine search the web for the answer.
+
         include : typing.Optional[AnswerChatgptRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
 
@@ -79,6 +83,7 @@ class RawChatgptClient:
                 "country": country,
                 "conversation": conversation,
                 "photos": photos,
+                "webSearch": web_search,
                 "include": convert_and_respect_annotation_metadata(
                     object_=include, annotation=AnswerChatgptRequestInclude, direction="write"
                 ),
@@ -230,6 +235,7 @@ class AsyncRawChatgptClient:
         country: typing.Optional[str] = OMIT,
         conversation: typing.Optional[str] = OMIT,
         photos: typing.Optional[typing.Sequence[str]] = OMIT,
+        web_search: typing.Optional[bool] = OMIT,
         include: typing.Optional[AnswerChatgptRequestInclude] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[AnswerResponse]:
@@ -250,6 +256,9 @@ class AsyncRawChatgptClient:
         photos : typing.Optional[typing.Sequence[str]]
             Up to four photos to ask about: https URLs, or `data:image/…;base64,` URLs.
 
+        web_search : typing.Optional[bool]
+            Let the engine search the web for the answer.
+
         include : typing.Optional[AnswerChatgptRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
 
@@ -269,6 +278,7 @@ class AsyncRawChatgptClient:
                 "country": country,
                 "conversation": conversation,
                 "photos": photos,
+                "webSearch": web_search,
                 "include": convert_and_respect_annotation_metadata(
                     object_=include, annotation=AnswerChatgptRequestInclude, direction="write"
                 ),

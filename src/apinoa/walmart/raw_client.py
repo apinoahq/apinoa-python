@@ -603,7 +603,8 @@ class RawWalmartClient:
     def product(
         self,
         *,
-        id: str,
+        id: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         seller: typing.Optional[str] = None,
         region: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -613,8 +614,11 @@ class RawWalmartClient:
 
         Parameters
         ----------
-        id : str
-            Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+        id : typing.Optional[str]
+            Walmart's `usItemId`, all digits, as carried by a search item — chain straight in. Pass this or `url`.
+
+        url : typing.Optional[str]
+            A Walmart product page link instead of `id`, e.g. https://www.walmart.com/ip/<name>/5402638498. A `selectedSellerId` in the link sets `seller`.
 
         seller : typing.Optional[str]
             Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
@@ -635,6 +639,7 @@ class RawWalmartClient:
             method="GET",
             params={
                 "id": id,
+                "url": url,
                 "seller": seller,
                 "region": region,
             },
@@ -1504,7 +1509,8 @@ class AsyncRawWalmartClient:
     async def product(
         self,
         *,
-        id: str,
+        id: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         seller: typing.Optional[str] = None,
         region: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -1514,8 +1520,11 @@ class AsyncRawWalmartClient:
 
         Parameters
         ----------
-        id : str
-            Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+        id : typing.Optional[str]
+            Walmart's `usItemId`, all digits, as carried by a search item — chain straight in. Pass this or `url`.
+
+        url : typing.Optional[str]
+            A Walmart product page link instead of `id`, e.g. https://www.walmart.com/ip/<name>/5402638498. A `selectedSellerId` in the link sets `seller`.
 
         seller : typing.Optional[str]
             Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
@@ -1536,6 +1545,7 @@ class AsyncRawWalmartClient:
             method="GET",
             params={
                 "id": id,
+                "url": url,
                 "seller": seller,
                 "region": region,
             },

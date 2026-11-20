@@ -232,7 +232,8 @@ class WalmartClient:
     def product(
         self,
         *,
-        id: str,
+        id: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         seller: typing.Optional[str] = None,
         region: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -242,8 +243,11 @@ class WalmartClient:
 
         Parameters
         ----------
-        id : str
-            Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+        id : typing.Optional[str]
+            Walmart's `usItemId`, all digits, as carried by a search item — chain straight in. Pass this or `url`.
+
+        url : typing.Optional[str]
+            A Walmart product page link instead of `id`, e.g. https://www.walmart.com/ip/<name>/5402638498. A `selectedSellerId` in the link sets `seller`.
 
         seller : typing.Optional[str]
             Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
@@ -266,11 +270,11 @@ class WalmartClient:
         client = Apinoa(
             api_key="YOUR_API_KEY",
         )
-        client.walmart.product(
-            id="id",
-        )
+        client.walmart.product()
         """
-        _response = self._raw_client.product(id=id, seller=seller, region=region, request_options=request_options)
+        _response = self._raw_client.product(
+            id=id, url=url, seller=seller, region=region, request_options=request_options
+        )
         return _response.data
 
     def reviews(
@@ -555,7 +559,8 @@ class AsyncWalmartClient:
     async def product(
         self,
         *,
-        id: str,
+        id: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         seller: typing.Optional[str] = None,
         region: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -565,8 +570,11 @@ class AsyncWalmartClient:
 
         Parameters
         ----------
-        id : str
-            Walmart's `usItemId`, all digits, as carried by a search item — chain straight in.
+        id : typing.Optional[str]
+            Walmart's `usItemId`, all digits, as carried by a search item — chain straight in. Pass this or `url`.
+
+        url : typing.Optional[str]
+            A Walmart product page link instead of `id`, e.g. https://www.walmart.com/ip/<name>/5402638498. A `selectedSellerId` in the link sets `seller`.
 
         seller : typing.Optional[str]
             Walmart's numeric seller id (`seller.ext.catalogSellerId`, or `selectedSellerId` in a Walmart link; `0` is Walmart.com): the product's offer from that seller. A seller that does not sell the item gets Walmart's default offer, so compare the returned `seller.ext.catalogSellerId`.
@@ -594,14 +602,14 @@ class AsyncWalmartClient:
 
 
         async def main() -> None:
-            await client.walmart.product(
-                id="id",
-            )
+            await client.walmart.product()
 
 
         asyncio.run(main())
         """
-        _response = await self._raw_client.product(id=id, seller=seller, region=region, request_options=request_options)
+        _response = await self._raw_client.product(
+            id=id, url=url, seller=seller, region=region, request_options=request_options
+        )
         return _response.data
 
     async def reviews(

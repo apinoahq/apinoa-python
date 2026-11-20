@@ -49,12 +49,15 @@ class RawGoogleClient:
         device: typing.Optional[SearchGoogleRequestDevice] = None,
         time_range: typing.Optional[SearchGoogleRequestTimeRange] = None,
         safe: typing.Optional[SearchGoogleRequestSafe] = None,
+        near: typing.Optional[str] = None,
+        uule: typing.Optional[str] = None,
         limit: typing.Optional[int] = None,
+        pages: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[ResultsPageResponse]:
         """
-        Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/google/search
+        Returns `ResultsPage` in `data`. Costs 1 unit, up to 10 units. Reference: https://apinoa.com/docs/api-reference/google/search
 
         Parameters
         ----------
@@ -82,8 +85,17 @@ class RawGoogleClient:
         safe : typing.Optional[SearchGoogleRequestSafe]
             Safe search.
 
+        near : typing.Optional[str]
+            Search as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. Sets `country` to the place's country when `country` is not given.
+
+        uule : typing.Optional[str]
+            Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+
         limit : typing.Optional[int]
             Results wanted (default 10, at most 50). More than one page is charged per page.
+
+        pages : typing.Optional[int]
+            Result pages to read in one call (1-10), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
 
         cursor : typing.Optional[str]
             The previous page's `cursor`. Pass it alone for the next page.
@@ -108,7 +120,10 @@ class RawGoogleClient:
                 "device": device,
                 "timeRange": time_range,
                 "safe": safe,
+                "near": near,
+                "uule": uule,
                 "limit": limit,
+                "pages": pages,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -785,12 +800,15 @@ class AsyncRawGoogleClient:
         device: typing.Optional[SearchGoogleRequestDevice] = None,
         time_range: typing.Optional[SearchGoogleRequestTimeRange] = None,
         safe: typing.Optional[SearchGoogleRequestSafe] = None,
+        near: typing.Optional[str] = None,
+        uule: typing.Optional[str] = None,
         limit: typing.Optional[int] = None,
+        pages: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[ResultsPageResponse]:
         """
-        Returns `ResultsPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/google/search
+        Returns `ResultsPage` in `data`. Costs 1 unit, up to 10 units. Reference: https://apinoa.com/docs/api-reference/google/search
 
         Parameters
         ----------
@@ -818,8 +836,17 @@ class AsyncRawGoogleClient:
         safe : typing.Optional[SearchGoogleRequestSafe]
             Safe search.
 
+        near : typing.Optional[str]
+            Search as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. Sets `country` to the place's country when `country` is not given.
+
+        uule : typing.Optional[str]
+            Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+
         limit : typing.Optional[int]
             Results wanted (default 10, at most 50). More than one page is charged per page.
+
+        pages : typing.Optional[int]
+            Result pages to read in one call (1-10), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
 
         cursor : typing.Optional[str]
             The previous page's `cursor`. Pass it alone for the next page.
@@ -844,7 +871,10 @@ class AsyncRawGoogleClient:
                 "device": device,
                 "timeRange": time_range,
                 "safe": safe,
+                "near": near,
+                "uule": uule,
                 "limit": limit,
+                "pages": pages,
                 "cursor": cursor,
             },
             request_options=request_options,

@@ -4,6 +4,7 @@ import typing
 
 from ..core.client_wrapper import AsyncClientWrapper, SyncClientWrapper
 from ..core.request_options import RequestOptions
+from ..types.account_page_response import AccountPageResponse
 from ..types.account_response import AccountResponse
 from ..types.facebook_ads_page_response import FacebookAdsPageResponse
 from .raw_client import AsyncRawFacebookClient, RawFacebookClient
@@ -11,6 +12,7 @@ from .types.ads_facebook_request_ad_type import AdsFacebookRequestAdType
 from .types.ads_facebook_request_media_type import AdsFacebookRequestMediaType
 from .types.ads_facebook_request_sort import AdsFacebookRequestSort
 from .types.ads_facebook_request_status import AdsFacebookRequestStatus
+from .types.profiles_facebook_request_ad_type import ProfilesFacebookRequestAdType
 
 
 class FacebookClient:
@@ -59,6 +61,50 @@ class FacebookClient:
         _response = self._raw_client.profile(username=username, request_options=request_options)
         return _response.data
 
+    def profiles(
+        self,
+        *,
+        query: typing.Optional[str] = None,
+        country: typing.Optional[str] = None,
+        ad_type: typing.Optional[ProfilesFacebookRequestAdType] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> AccountPageResponse:
+        """
+        Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/profiles
+
+        Parameters
+        ----------
+        query : typing.Optional[str]
+            An advertiser's name (or part of it): the Pages the Ad Library's search box suggests for it, each with the `id` that `ads?pageId=` takes.
+
+        country : typing.Optional[str]
+            Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
+
+        ad_type : typing.Optional[ProfilesFacebookRequestAdType]
+            all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AccountPageResponse
+            `AccountPage`
+
+        Examples
+        --------
+        from apinoa import Apinoa
+
+        client = Apinoa(
+            api_key="YOUR_API_KEY",
+        )
+        client.facebook.profiles()
+        """
+        _response = self._raw_client.profiles(
+            query=query, country=country, ad_type=ad_type, request_options=request_options
+        )
+        return _response.data
+
     def ads(
         self,
         *,
@@ -86,7 +132,7 @@ class FacebookClient:
             Keywords to search the Ad Library for.
 
         page_id : typing.Optional[str]
-            Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`).
+            Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`; `profiles?query=` finds it by name).
 
         exact : typing.Optional[bool]
             query: match the exact phrase instead of any of its words.
@@ -211,6 +257,58 @@ class AsyncFacebookClient:
         _response = await self._raw_client.profile(username=username, request_options=request_options)
         return _response.data
 
+    async def profiles(
+        self,
+        *,
+        query: typing.Optional[str] = None,
+        country: typing.Optional[str] = None,
+        ad_type: typing.Optional[ProfilesFacebookRequestAdType] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> AccountPageResponse:
+        """
+        Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/profiles
+
+        Parameters
+        ----------
+        query : typing.Optional[str]
+            An advertiser's name (or part of it): the Pages the Ad Library's search box suggests for it, each with the `id` that `ads?pageId=` takes.
+
+        country : typing.Optional[str]
+            Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
+
+        ad_type : typing.Optional[ProfilesFacebookRequestAdType]
+            all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AccountPageResponse
+            `AccountPage`
+
+        Examples
+        --------
+        import asyncio
+
+        from apinoa import AsyncApinoa
+
+        client = AsyncApinoa(
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.facebook.profiles()
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.profiles(
+            query=query, country=country, ad_type=ad_type, request_options=request_options
+        )
+        return _response.data
+
     async def ads(
         self,
         *,
@@ -238,7 +336,7 @@ class AsyncFacebookClient:
             Keywords to search the Ad Library for.
 
         page_id : typing.Optional[str]
-            Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`).
+            Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`; `profiles?query=` finds it by name).
 
         exact : typing.Optional[bool]
             query: match the exact phrase instead of any of its words.

@@ -15,6 +15,7 @@ AnswerEngine = typing.Union[
         "qwen",
         "yuanbao",
         "doubao",
+        "baidu-ai-search",
     ],
     typing.Any,
 ]

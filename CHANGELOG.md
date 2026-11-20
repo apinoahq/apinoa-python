@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.23
+
+Follows the API as of 2026-11-20: an answer's `engine` can be `"baidu-ai-search"`, the AI answer Baidu shows above its results, returned in a `baidu.search` page as an `aiOverview` item.
+
 ## 0.1.22
 
 Follows the API as of 2026-11-20:

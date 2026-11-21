@@ -16,6 +16,7 @@ if typing.TYPE_CHECKING:
     from .amazon.client import AmazonClient, AsyncAmazonClient
     from .app_store.client import AppStoreClient, AsyncAppStoreClient
     from .baidu.client import AsyncBaiduClient, BaiduClient
+    from .baidu_wenxin.client import AsyncBaiduWenxinClient, BaiduWenxinClient
     from .bing.client import AsyncBingClient, BingClient
     from .brave.client import AsyncBraveClient, BraveClient
     from .chatgpt.client import AsyncChatgptClient, ChatgptClient
@@ -154,6 +155,7 @@ class Apinoa:
         self._amazon: typing.Optional[AmazonClient] = None
         self._app_store: typing.Optional[AppStoreClient] = None
         self._baidu: typing.Optional[BaiduClient] = None
+        self._baidu_wenxin: typing.Optional[BaiduWenxinClient] = None
         self._bing: typing.Optional[BingClient] = None
         self._brave: typing.Optional[BraveClient] = None
         self._chatgpt: typing.Optional[ChatgptClient] = None
@@ -229,6 +231,14 @@ class Apinoa:
 
             self._baidu = BaiduClient(client_wrapper=self._client_wrapper)
         return self._baidu
+
+    @property
+    def baidu_wenxin(self):
+        if self._baidu_wenxin is None:
+            from .baidu_wenxin.client import BaiduWenxinClient  # noqa: E402
+
+            self._baidu_wenxin = BaiduWenxinClient(client_wrapper=self._client_wrapper)
+        return self._baidu_wenxin
 
     @property
     def bing(self):
@@ -684,6 +694,7 @@ class AsyncApinoa:
         self._amazon: typing.Optional[AsyncAmazonClient] = None
         self._app_store: typing.Optional[AsyncAppStoreClient] = None
         self._baidu: typing.Optional[AsyncBaiduClient] = None
+        self._baidu_wenxin: typing.Optional[AsyncBaiduWenxinClient] = None
         self._bing: typing.Optional[AsyncBingClient] = None
         self._brave: typing.Optional[AsyncBraveClient] = None
         self._chatgpt: typing.Optional[AsyncChatgptClient] = None
@@ -759,6 +770,14 @@ class AsyncApinoa:
 
             self._baidu = AsyncBaiduClient(client_wrapper=self._client_wrapper)
         return self._baidu
+
+    @property
+    def baidu_wenxin(self):
+        if self._baidu_wenxin is None:
+            from .baidu_wenxin.client import AsyncBaiduWenxinClient  # noqa: E402
+
+            self._baidu_wenxin = AsyncBaiduWenxinClient(client_wrapper=self._client_wrapper)
+        return self._baidu_wenxin
 
     @property
     def bing(self):

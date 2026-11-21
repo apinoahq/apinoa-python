@@ -18,7 +18,6 @@ if typing.TYPE_CHECKING:
     from .baidu.client import AsyncBaiduClient, BaiduClient
     from .baidu_wenxin.client import AsyncBaiduWenxinClient, BaiduWenxinClient
     from .bing.client import AsyncBingClient, BingClient
-    from .brave.client import AsyncBraveClient, BraveClient
     from .chatgpt.client import AsyncChatgptClient, ChatgptClient
     from .company.client import AsyncCompanyClient, CompanyClient
     from .copilot.client import AsyncCopilotClient, CopilotClient
@@ -157,7 +156,6 @@ class Apinoa:
         self._baidu: typing.Optional[BaiduClient] = None
         self._baidu_wenxin: typing.Optional[BaiduWenxinClient] = None
         self._bing: typing.Optional[BingClient] = None
-        self._brave: typing.Optional[BraveClient] = None
         self._chatgpt: typing.Optional[ChatgptClient] = None
         self._company: typing.Optional[CompanyClient] = None
         self._copilot: typing.Optional[CopilotClient] = None
@@ -247,14 +245,6 @@ class Apinoa:
 
             self._bing = BingClient(client_wrapper=self._client_wrapper)
         return self._bing
-
-    @property
-    def brave(self):
-        if self._brave is None:
-            from .brave.client import BraveClient  # noqa: E402
-
-            self._brave = BraveClient(client_wrapper=self._client_wrapper)
-        return self._brave
 
     @property
     def chatgpt(self):
@@ -696,7 +686,6 @@ class AsyncApinoa:
         self._baidu: typing.Optional[AsyncBaiduClient] = None
         self._baidu_wenxin: typing.Optional[AsyncBaiduWenxinClient] = None
         self._bing: typing.Optional[AsyncBingClient] = None
-        self._brave: typing.Optional[AsyncBraveClient] = None
         self._chatgpt: typing.Optional[AsyncChatgptClient] = None
         self._company: typing.Optional[AsyncCompanyClient] = None
         self._copilot: typing.Optional[AsyncCopilotClient] = None
@@ -786,14 +775,6 @@ class AsyncApinoa:
 
             self._bing = AsyncBingClient(client_wrapper=self._client_wrapper)
         return self._bing
-
-    @property
-    def brave(self):
-        if self._brave is None:
-            from .brave.client import AsyncBraveClient  # noqa: E402
-
-            self._brave = AsyncBraveClient(client_wrapper=self._client_wrapper)
-        return self._brave
 
     @property
     def chatgpt(self):

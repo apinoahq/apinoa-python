@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.28
+
+Follows the API as of 2026-11-21:
+
+- Operations removed: `GET /v1/brave/search`, `GET /v1/brave/suggestions`.
+
 ## 0.1.27
 
 Follows the API as of 2026-11-21:

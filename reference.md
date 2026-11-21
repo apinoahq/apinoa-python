@@ -7130,6 +7130,14 @@ client.reddit.profiles()
 <dl>
 <dd>
 
+**type:** `typing.Optional[ProfilesRedditRequestType]` — Without query: Reddit's directory of popular or newest user profiles.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **limit:** `typing.Optional[int]` — Items per page, 1–100.
     
 </dd>
@@ -7288,7 +7296,7 @@ client.reddit.posts()
 <dl>
 <dd>
 
-**community:** `typing.Optional[str]` — A community's posts: name (with or without r/) or URL. With `query`, narrows the search to it.
+**community:** `typing.Optional[str]` — A community's posts: name (with or without r/) or URL; several joined by + (SaaS+startups) for one merged feed; all or popular for the whole site. With `query`, narrows the search to one community.
     
 </dd>
 </dl>
@@ -7312,7 +7320,31 @@ client.reddit.posts()
 <dl>
 <dd>
 
-**sort:** `typing.Optional[PostsRedditRequestSort]` — Order. username: new, hot, top, controversial · community: hot, new, top, rising, controversial · query: relevance, hot, top, new, comments · default feed: hot, new, top, rising.
+**domain:** `typing.Optional[str]` — Posts linking to one site, across every community: its domain (github.com, i.redd.it) or a URL on it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**related_to:** `typing.Optional[str]` — A post id or URL: the posts Reddit shows beside it as related, or with type crossposts its crossposts.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[PostsRedditRequestType]` — query: media (only posts with images or video) · relatedTo: crossposts (the post's copies in other communities).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[PostsRedditRequestSort]` — Order. username: new, hot, top, controversial · community: hot, new, top, rising, controversial (several joined by +: not new) · query: relevance, hot, top, new, comments · domain: hot, new, top, rising, controversial · default feed: hot, new, top, rising, best (Reddit's front page).
     
 </dd>
 </dl>
@@ -7328,7 +7360,7 @@ client.reddit.posts()
 <dl>
 <dd>
 
-**country:** `typing.Optional[str]` — Default feed only: the country whose popular feed to read (ISO alpha-2).
+**country:** `typing.Optional[str]` — Default feed only: the country whose popular feed to read (ISO alpha-2). Not with sort new or best.
     
 </dd>
 </dl>
@@ -7439,7 +7471,23 @@ client.reddit.comments()
 <dl>
 <dd>
 
-**sort:** `typing.Optional[CommentsRedditRequestSort]` — Order. post: confidence (Reddit's 'best'), top, new, controversial, old, qa · username: new, hot, top, controversial.
+**community:** `typing.Optional[str]` — A community's newest comments across its posts: name (with or without r/) or URL; several joined by + (SaaS+startups); all for the whole site. With `query`, narrows the search to one community.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — Search comments by keyword.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[CommentsRedditRequestSort]` — Order. post: confidence (Reddit's 'best'), top, new, controversial, old, qa · username: new, hot, top, controversial · query: relevance, top, new · community: newest first, no sort.
     
 </dd>
 </dl>
@@ -7495,7 +7543,7 @@ client.reddit.comments()
 <dl>
 <dd>
 
-Returns `Group` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/reddit/group
+Returns `Group` in `data`. Costs 1 unit, up to 4 units. Reference: https://apinoa.com/docs/api-reference/reddit/group
 </dd>
 </dl>
 </dd>
@@ -7542,7 +7590,7 @@ client.reddit.group()
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Extra reads to attach under `ext`: rules (+1 unit). The community's style is always in `ext.style` (it comes with the community), so `style` is accepted and free.
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Extra reads to attach under `ext`, +1 unit each: rules; widgets (the sidebar: ID card, text, buttons, menus, images, recommended communities, events, post flairs); wiki (the wiki's front page, or `available: false` with Reddit's reason). The community's style is always in `ext.style` (it comes with the community), so `style` is accepted and free.
     
 </dd>
 </dl>
@@ -7629,7 +7677,15 @@ client.reddit.groups()
 <dl>
 <dd>
 
-**username:** `typing.Optional[str]` — The communities a user is active in: username or profile URL.
+**username:** `typing.Optional[str]` — The communities a user is active in (with type moderated: the ones they moderate): username or profile URL.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type:** `typing.Optional[GroupsRedditRequestType]` — Alone: Reddit's directory of popular, newest or default communities · with username: moderated.
     
 </dd>
 </dl>

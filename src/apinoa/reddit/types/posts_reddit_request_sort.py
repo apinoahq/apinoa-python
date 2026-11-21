@@ -3,5 +3,5 @@
 import typing
 
 PostsRedditRequestSort = typing.Union[
-    typing.Literal["hot", "new", "top", "rising", "controversial", "relevance", "comments"], typing.Any
+    typing.Literal["hot", "new", "top", "rising", "controversial", "relevance", "comments", "best"], typing.Any
 ]

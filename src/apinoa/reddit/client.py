@@ -14,8 +14,11 @@ from ..types.post_response import PostResponse
 from .raw_client import AsyncRawRedditClient, RawRedditClient
 from .types.comments_reddit_request_period import CommentsRedditRequestPeriod
 from .types.comments_reddit_request_sort import CommentsRedditRequestSort
+from .types.groups_reddit_request_type import GroupsRedditRequestType
 from .types.posts_reddit_request_period import PostsRedditRequestPeriod
 from .types.posts_reddit_request_sort import PostsRedditRequestSort
+from .types.posts_reddit_request_type import PostsRedditRequestType
+from .types.profiles_reddit_request_type import ProfilesRedditRequestType
 
 
 class RedditClient:
@@ -75,6 +78,7 @@ class RedditClient:
         self,
         *,
         query: typing.Optional[str] = None,
+        type: typing.Optional[ProfilesRedditRequestType] = None,
         limit: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -86,6 +90,9 @@ class RedditClient:
         ----------
         query : typing.Optional[str]
             Keywords to search accounts for.
+
+        type : typing.Optional[ProfilesRedditRequestType]
+            Without query: Reddit's directory of popular or newest user profiles.
 
         limit : typing.Optional[int]
             Items per page, 1–100.
@@ -110,7 +117,9 @@ class RedditClient:
         )
         client.reddit.profiles()
         """
-        _response = self._raw_client.profiles(query=query, limit=limit, cursor=cursor, request_options=request_options)
+        _response = self._raw_client.profiles(
+            query=query, type=type, limit=limit, cursor=cursor, request_options=request_options
+        )
         return _response.data
 
     def post(
@@ -151,6 +160,9 @@ class RedditClient:
         community: typing.Optional[str] = None,
         query: typing.Optional[str] = None,
         ids: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        domain: typing.Optional[str] = None,
+        related_to: typing.Optional[str] = None,
+        type: typing.Optional[PostsRedditRequestType] = None,
         sort: typing.Optional[PostsRedditRequestSort] = None,
         period: typing.Optional[PostsRedditRequestPeriod] = None,
         country: typing.Optional[str] = None,
@@ -167,7 +179,7 @@ class RedditClient:
             A user's posts: username (with or without u/) or profile URL.
 
         community : typing.Optional[str]
-            A community's posts: name (with or without r/) or URL. With `query`, narrows the search to it.
+            A community's posts: name (with or without r/) or URL; several joined by + (SaaS+startups) for one merged feed; all or popular for the whole site. With `query`, narrows the search to one community.
 
         query : typing.Optional[str]
             Search posts by keyword.
@@ -175,14 +187,23 @@ class RedditClient:
         ids : typing.Optional[typing.Union[str, typing.Sequence[str]]]
             Specific posts: ids, fullnames (t3_…) or URLs, 1–100 in one call.
 
+        domain : typing.Optional[str]
+            Posts linking to one site, across every community: its domain (github.com, i.redd.it) or a URL on it.
+
+        related_to : typing.Optional[str]
+            A post id or URL: the posts Reddit shows beside it as related, or with type crossposts its crossposts.
+
+        type : typing.Optional[PostsRedditRequestType]
+            query: media (only posts with images or video) · relatedTo: crossposts (the post's copies in other communities).
+
         sort : typing.Optional[PostsRedditRequestSort]
-            Order. username: new, hot, top, controversial · community: hot, new, top, rising, controversial · query: relevance, hot, top, new, comments · default feed: hot, new, top, rising.
+            Order. username: new, hot, top, controversial · community: hot, new, top, rising, controversial (several joined by +: not new) · query: relevance, hot, top, new, comments · domain: hot, new, top, rising, controversial · default feed: hot, new, top, rising, best (Reddit's front page).
 
         period : typing.Optional[PostsRedditRequestPeriod]
             Time window for sort top or controversial: hour, day, week, month, year or all.
 
         country : typing.Optional[str]
-            Default feed only: the country whose popular feed to read (ISO alpha-2).
+            Default feed only: the country whose popular feed to read (ISO alpha-2). Not with sort new or best.
 
         limit : typing.Optional[int]
             Items per page, 1–100.
@@ -212,6 +233,9 @@ class RedditClient:
             community=community,
             query=query,
             ids=ids,
+            domain=domain,
+            related_to=related_to,
+            type=type,
             sort=sort,
             period=period,
             country=country,
@@ -227,6 +251,8 @@ class RedditClient:
         post: typing.Optional[str] = None,
         comment: typing.Optional[str] = None,
         username: typing.Optional[str] = None,
+        community: typing.Optional[str] = None,
+        query: typing.Optional[str] = None,
         sort: typing.Optional[CommentsRedditRequestSort] = None,
         period: typing.Optional[CommentsRedditRequestPeriod] = None,
         limit: typing.Optional[int] = None,
@@ -247,8 +273,14 @@ class RedditClient:
         username : typing.Optional[str]
             A user's comments: username or profile URL.
 
+        community : typing.Optional[str]
+            A community's newest comments across its posts: name (with or without r/) or URL; several joined by + (SaaS+startups); all for the whole site. With `query`, narrows the search to one community.
+
+        query : typing.Optional[str]
+            Search comments by keyword.
+
         sort : typing.Optional[CommentsRedditRequestSort]
-            Order. post: confidence (Reddit's 'best'), top, new, controversial, old, qa · username: new, hot, top, controversial.
+            Order. post: confidence (Reddit's 'best'), top, new, controversial, old, qa · username: new, hot, top, controversial · query: relevance, top, new · community: newest first, no sort.
 
         period : typing.Optional[CommentsRedditRequestPeriod]
             Time window for sort top or controversial: hour, day, week, month, year or all.
@@ -280,6 +312,8 @@ class RedditClient:
             post=post,
             comment=comment,
             username=username,
+            community=community,
+            query=query,
             sort=sort,
             period=period,
             limit=limit,
@@ -296,7 +330,7 @@ class RedditClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> GroupResponse:
         """
-        Returns `Group` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/reddit/group
+        Returns `Group` in `data`. Costs 1 unit, up to 4 units. Reference: https://apinoa.com/docs/api-reference/reddit/group
 
         Parameters
         ----------
@@ -304,7 +338,7 @@ class RedditClient:
             Community name (with or without r/) or URL.
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Extra reads to attach under `ext`: rules (+1 unit). The community's style is always in `ext.style` (it comes with the community), so `style` is accepted and free.
+            Extra reads to attach under `ext`, +1 unit each: rules; widgets (the sidebar: ID card, text, buttons, menus, images, recommended communities, events, post flairs); wiki (the wiki's front page, or `available: false` with Reddit's reason). The community's style is always in `ext.style` (it comes with the community), so `style` is accepted and free.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -332,6 +366,7 @@ class RedditClient:
         query: typing.Optional[str] = None,
         prefix: typing.Optional[str] = None,
         username: typing.Optional[str] = None,
+        type: typing.Optional[GroupsRedditRequestType] = None,
         include_nsfw: typing.Optional[bool] = None,
         limit: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
@@ -349,7 +384,10 @@ class RedditClient:
             Autocomplete: communities whose name starts with this (fast, one page).
 
         username : typing.Optional[str]
-            The communities a user is active in: username or profile URL.
+            The communities a user is active in (with type moderated: the ones they moderate): username or profile URL.
+
+        type : typing.Optional[GroupsRedditRequestType]
+            Alone: Reddit's directory of popular, newest or default communities · with username: moderated.
 
         include_nsfw : typing.Optional[bool]
             prefix only: include over-18 communities.
@@ -381,6 +419,7 @@ class RedditClient:
             query=query,
             prefix=prefix,
             username=username,
+            type=type,
             include_nsfw=include_nsfw,
             limit=limit,
             cursor=cursor,
@@ -454,6 +493,7 @@ class AsyncRedditClient:
         self,
         *,
         query: typing.Optional[str] = None,
+        type: typing.Optional[ProfilesRedditRequestType] = None,
         limit: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
@@ -465,6 +505,9 @@ class AsyncRedditClient:
         ----------
         query : typing.Optional[str]
             Keywords to search accounts for.
+
+        type : typing.Optional[ProfilesRedditRequestType]
+            Without query: Reddit's directory of popular or newest user profiles.
 
         limit : typing.Optional[int]
             Items per page, 1–100.
@@ -498,7 +541,7 @@ class AsyncRedditClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.profiles(
-            query=query, limit=limit, cursor=cursor, request_options=request_options
+            query=query, type=type, limit=limit, cursor=cursor, request_options=request_options
         )
         return _response.data
 
@@ -548,6 +591,9 @@ class AsyncRedditClient:
         community: typing.Optional[str] = None,
         query: typing.Optional[str] = None,
         ids: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
+        domain: typing.Optional[str] = None,
+        related_to: typing.Optional[str] = None,
+        type: typing.Optional[PostsRedditRequestType] = None,
         sort: typing.Optional[PostsRedditRequestSort] = None,
         period: typing.Optional[PostsRedditRequestPeriod] = None,
         country: typing.Optional[str] = None,
@@ -564,7 +610,7 @@ class AsyncRedditClient:
             A user's posts: username (with or without u/) or profile URL.
 
         community : typing.Optional[str]
-            A community's posts: name (with or without r/) or URL. With `query`, narrows the search to it.
+            A community's posts: name (with or without r/) or URL; several joined by + (SaaS+startups) for one merged feed; all or popular for the whole site. With `query`, narrows the search to one community.
 
         query : typing.Optional[str]
             Search posts by keyword.
@@ -572,14 +618,23 @@ class AsyncRedditClient:
         ids : typing.Optional[typing.Union[str, typing.Sequence[str]]]
             Specific posts: ids, fullnames (t3_…) or URLs, 1–100 in one call.
 
+        domain : typing.Optional[str]
+            Posts linking to one site, across every community: its domain (github.com, i.redd.it) or a URL on it.
+
+        related_to : typing.Optional[str]
+            A post id or URL: the posts Reddit shows beside it as related, or with type crossposts its crossposts.
+
+        type : typing.Optional[PostsRedditRequestType]
+            query: media (only posts with images or video) · relatedTo: crossposts (the post's copies in other communities).
+
         sort : typing.Optional[PostsRedditRequestSort]
-            Order. username: new, hot, top, controversial · community: hot, new, top, rising, controversial · query: relevance, hot, top, new, comments · default feed: hot, new, top, rising.
+            Order. username: new, hot, top, controversial · community: hot, new, top, rising, controversial (several joined by +: not new) · query: relevance, hot, top, new, comments · domain: hot, new, top, rising, controversial · default feed: hot, new, top, rising, best (Reddit's front page).
 
         period : typing.Optional[PostsRedditRequestPeriod]
             Time window for sort top or controversial: hour, day, week, month, year or all.
 
         country : typing.Optional[str]
-            Default feed only: the country whose popular feed to read (ISO alpha-2).
+            Default feed only: the country whose popular feed to read (ISO alpha-2). Not with sort new or best.
 
         limit : typing.Optional[int]
             Items per page, 1–100.
@@ -617,6 +672,9 @@ class AsyncRedditClient:
             community=community,
             query=query,
             ids=ids,
+            domain=domain,
+            related_to=related_to,
+            type=type,
             sort=sort,
             period=period,
             country=country,
@@ -632,6 +690,8 @@ class AsyncRedditClient:
         post: typing.Optional[str] = None,
         comment: typing.Optional[str] = None,
         username: typing.Optional[str] = None,
+        community: typing.Optional[str] = None,
+        query: typing.Optional[str] = None,
         sort: typing.Optional[CommentsRedditRequestSort] = None,
         period: typing.Optional[CommentsRedditRequestPeriod] = None,
         limit: typing.Optional[int] = None,
@@ -652,8 +712,14 @@ class AsyncRedditClient:
         username : typing.Optional[str]
             A user's comments: username or profile URL.
 
+        community : typing.Optional[str]
+            A community's newest comments across its posts: name (with or without r/) or URL; several joined by + (SaaS+startups); all for the whole site. With `query`, narrows the search to one community.
+
+        query : typing.Optional[str]
+            Search comments by keyword.
+
         sort : typing.Optional[CommentsRedditRequestSort]
-            Order. post: confidence (Reddit's 'best'), top, new, controversial, old, qa · username: new, hot, top, controversial.
+            Order. post: confidence (Reddit's 'best'), top, new, controversial, old, qa · username: new, hot, top, controversial · query: relevance, top, new · community: newest first, no sort.
 
         period : typing.Optional[CommentsRedditRequestPeriod]
             Time window for sort top or controversial: hour, day, week, month, year or all.
@@ -693,6 +759,8 @@ class AsyncRedditClient:
             post=post,
             comment=comment,
             username=username,
+            community=community,
+            query=query,
             sort=sort,
             period=period,
             limit=limit,
@@ -709,7 +777,7 @@ class AsyncRedditClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> GroupResponse:
         """
-        Returns `Group` in `data`. Costs 1 unit, up to 2 units. Reference: https://apinoa.com/docs/api-reference/reddit/group
+        Returns `Group` in `data`. Costs 1 unit, up to 4 units. Reference: https://apinoa.com/docs/api-reference/reddit/group
 
         Parameters
         ----------
@@ -717,7 +785,7 @@ class AsyncRedditClient:
             Community name (with or without r/) or URL.
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Extra reads to attach under `ext`: rules (+1 unit). The community's style is always in `ext.style` (it comes with the community), so `style` is accepted and free.
+            Extra reads to attach under `ext`, +1 unit each: rules; widgets (the sidebar: ID card, text, buttons, menus, images, recommended communities, events, post flairs); wiki (the wiki's front page, or `available: false` with Reddit's reason). The community's style is always in `ext.style` (it comes with the community), so `style` is accepted and free.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -753,6 +821,7 @@ class AsyncRedditClient:
         query: typing.Optional[str] = None,
         prefix: typing.Optional[str] = None,
         username: typing.Optional[str] = None,
+        type: typing.Optional[GroupsRedditRequestType] = None,
         include_nsfw: typing.Optional[bool] = None,
         limit: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
@@ -770,7 +839,10 @@ class AsyncRedditClient:
             Autocomplete: communities whose name starts with this (fast, one page).
 
         username : typing.Optional[str]
-            The communities a user is active in: username or profile URL.
+            The communities a user is active in (with type moderated: the ones they moderate): username or profile URL.
+
+        type : typing.Optional[GroupsRedditRequestType]
+            Alone: Reddit's directory of popular, newest or default communities · with username: moderated.
 
         include_nsfw : typing.Optional[bool]
             prefix only: include over-18 communities.
@@ -810,6 +882,7 @@ class AsyncRedditClient:
             query=query,
             prefix=prefix,
             username=username,
+            type=type,
             include_nsfw=include_nsfw,
             limit=limit,
             cursor=cursor,

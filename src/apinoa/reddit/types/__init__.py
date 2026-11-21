@@ -8,13 +8,19 @@ from importlib import import_module
 if typing.TYPE_CHECKING:
     from .comments_reddit_request_period import CommentsRedditRequestPeriod
     from .comments_reddit_request_sort import CommentsRedditRequestSort
+    from .groups_reddit_request_type import GroupsRedditRequestType
     from .posts_reddit_request_period import PostsRedditRequestPeriod
     from .posts_reddit_request_sort import PostsRedditRequestSort
+    from .posts_reddit_request_type import PostsRedditRequestType
+    from .profiles_reddit_request_type import ProfilesRedditRequestType
 _dynamic_imports: typing.Dict[str, str] = {
     "CommentsRedditRequestPeriod": ".comments_reddit_request_period",
     "CommentsRedditRequestSort": ".comments_reddit_request_sort",
+    "GroupsRedditRequestType": ".groups_reddit_request_type",
     "PostsRedditRequestPeriod": ".posts_reddit_request_period",
     "PostsRedditRequestSort": ".posts_reddit_request_sort",
+    "PostsRedditRequestType": ".posts_reddit_request_type",
+    "ProfilesRedditRequestType": ".profiles_reddit_request_type",
 }
 
 
@@ -42,6 +48,9 @@ def __dir__():
 __all__ = [
     "CommentsRedditRequestPeriod",
     "CommentsRedditRequestSort",
+    "GroupsRedditRequestType",
     "PostsRedditRequestPeriod",
     "PostsRedditRequestSort",
+    "PostsRedditRequestType",
+    "ProfilesRedditRequestType",
 ]

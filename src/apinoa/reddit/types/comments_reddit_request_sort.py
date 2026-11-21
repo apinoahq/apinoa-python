@@ -3,5 +3,5 @@
 import typing
 
 CommentsRedditRequestSort = typing.Union[
-    typing.Literal["confidence", "top", "new", "controversial", "old", "qa", "hot"], typing.Any
+    typing.Literal["confidence", "top", "new", "controversial", "old", "qa", "hot", "relevance"], typing.Any
 ]

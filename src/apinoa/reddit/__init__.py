@@ -9,14 +9,20 @@ if typing.TYPE_CHECKING:
     from .types import (
         CommentsRedditRequestPeriod,
         CommentsRedditRequestSort,
+        GroupsRedditRequestType,
         PostsRedditRequestPeriod,
         PostsRedditRequestSort,
+        PostsRedditRequestType,
+        ProfilesRedditRequestType,
     )
 _dynamic_imports: typing.Dict[str, str] = {
     "CommentsRedditRequestPeriod": ".types",
     "CommentsRedditRequestSort": ".types",
+    "GroupsRedditRequestType": ".types",
     "PostsRedditRequestPeriod": ".types",
     "PostsRedditRequestSort": ".types",
+    "PostsRedditRequestType": ".types",
+    "ProfilesRedditRequestType": ".types",
 }
 
 
@@ -44,6 +50,9 @@ def __dir__():
 __all__ = [
     "CommentsRedditRequestPeriod",
     "CommentsRedditRequestSort",
+    "GroupsRedditRequestType",
     "PostsRedditRequestPeriod",
     "PostsRedditRequestSort",
+    "PostsRedditRequestType",
+    "ProfilesRedditRequestType",
 ]

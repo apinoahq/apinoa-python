@@ -12769,6 +12769,220 @@ client.x.group()
 </dl>
 </details>
 
+## Xiaohongshu
+<details><summary><code>client.xiaohongshu.<a href="src/apinoa/xiaohongshu/client.py">profile</a>(...) -> AccountResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Account` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/xiaohongshu/profile
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.xiaohongshu.profile()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**username:** `typing.Optional[str]` — The account's user id (24 hex characters, from its profile link), or the profile link.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.xiaohongshu.<a href="src/apinoa/xiaohongshu/client.py">post</a>(...) -> PostResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Post` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/xiaohongshu/post
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.xiaohongshu.post()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The note's id (24 hex characters), or its link.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.xiaohongshu.<a href="src/apinoa/xiaohongshu/client.py">posts</a>(...) -> PostPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PostPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/xiaohongshu/posts
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.xiaohongshu.posts()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**username:** `typing.Optional[str]` — Not served: the profile page lists a creator's posts without their ids. Ask `profile`, whose `ext.posts` lists them.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Yahoo
 <details><summary><code>client.yahoo.<a href="src/apinoa/yahoo/client.py">search</a>(...) -> ResultsPageResponse</code></summary>
 <dl>

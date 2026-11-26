@@ -59,6 +59,7 @@ if typing.TYPE_CHECKING:
     from .unlocker.client import AsyncUnlockerClient, UnlockerClient
     from .walmart.client import AsyncWalmartClient, WalmartClient
     from .x.client import AsyncXClient, XClient
+    from .xiaohongshu.client import AsyncXiaohongshuClient, XiaohongshuClient
     from .yahoo.client import AsyncYahooClient, YahooClient
     from .yahoo_japan.client import AsyncYahooJapanClient, YahooJapanClient
     from .yandex.client import AsyncYandexClient, YandexClient
@@ -197,6 +198,7 @@ class Apinoa:
         self._unlocker: typing.Optional[UnlockerClient] = None
         self._walmart: typing.Optional[WalmartClient] = None
         self._x: typing.Optional[XClient] = None
+        self._xiaohongshu: typing.Optional[XiaohongshuClient] = None
         self._yahoo: typing.Optional[YahooClient] = None
         self._yahoo_japan: typing.Optional[YahooJapanClient] = None
         self._yandex: typing.Optional[YandexClient] = None
@@ -551,6 +553,14 @@ class Apinoa:
         return self._x
 
     @property
+    def xiaohongshu(self):
+        if self._xiaohongshu is None:
+            from .xiaohongshu.client import XiaohongshuClient  # noqa: E402
+
+            self._xiaohongshu = XiaohongshuClient(client_wrapper=self._client_wrapper)
+        return self._xiaohongshu
+
+    @property
     def yahoo(self):
         if self._yahoo is None:
             from .yahoo.client import YahooClient  # noqa: E402
@@ -763,6 +773,7 @@ class AsyncApinoa:
         self._unlocker: typing.Optional[AsyncUnlockerClient] = None
         self._walmart: typing.Optional[AsyncWalmartClient] = None
         self._x: typing.Optional[AsyncXClient] = None
+        self._xiaohongshu: typing.Optional[AsyncXiaohongshuClient] = None
         self._yahoo: typing.Optional[AsyncYahooClient] = None
         self._yahoo_japan: typing.Optional[AsyncYahooJapanClient] = None
         self._yandex: typing.Optional[AsyncYandexClient] = None
@@ -1115,6 +1126,14 @@ class AsyncApinoa:
 
             self._x = AsyncXClient(client_wrapper=self._client_wrapper)
         return self._x
+
+    @property
+    def xiaohongshu(self):
+        if self._xiaohongshu is None:
+            from .xiaohongshu.client import AsyncXiaohongshuClient  # noqa: E402
+
+            self._xiaohongshu = AsyncXiaohongshuClient(client_wrapper=self._client_wrapper)
+        return self._xiaohongshu
 
     @property
     def yahoo(self):

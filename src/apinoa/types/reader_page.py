@@ -7,6 +7,8 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2
 from ..core.serialization import FieldMetadata
 from ..core.unchecked_base_model import UncheckedBaseModel
+from .reader_page_images_item import ReaderPageImagesItem
+from .reader_page_links_item import ReaderPageLinksItem
 
 
 class ReaderPage(UncheckedBaseModel):
@@ -82,7 +84,7 @@ class ReaderPage(UncheckedBaseModel):
     word_count: typing_extensions.Annotated[int, FieldMetadata(alias="wordCount"), pydantic.Field(alias="wordCount")]
     truncated: typing.Optional[bool] = pydantic.Field(default=None)
     """
-    Present when `maxChars` cut the Markdown.
+    Present when `maxChars` cut the Markdown or the text.
     """
 
     json_ld: typing_extensions.Annotated[
@@ -108,6 +110,21 @@ class ReaderPage(UncheckedBaseModel):
     ] = None
     """
     The page's main content as HTML (include=contentHtml).
+    """
+
+    text: typing.Optional[str] = pydantic.Field(default=None)
+    """
+    The page's main content as plain text, a line per block (include=text).
+    """
+
+    links: typing.Optional[typing.List[ReaderPageLinksItem]] = pydantic.Field(default=None)
+    """
+    Every link in the main content, once each, in page order (include=links).
+    """
+
+    images: typing.Optional[typing.List[ReaderPageImagesItem]] = pydantic.Field(default=None)
+    """
+    Every image in the main content, once each, in page order (include=images). `image` is the page's lead image.
     """
 
     if IS_PYDANTIC_V2:

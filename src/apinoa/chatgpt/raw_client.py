@@ -43,6 +43,7 @@ class RawChatgptClient:
         web_search: typing.Optional[bool] = OMIT,
         follow_ups: typing.Optional[typing.Sequence[str]] = OMIT,
         include: typing.Optional[AnswerChatgptRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[AnswerResponse]:
         """
@@ -71,6 +72,9 @@ class RawChatgptClient:
         include : typing.Optional[AnswerChatgptRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
 
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
+
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
 
@@ -92,6 +96,7 @@ class RawChatgptClient:
                 "include": convert_and_respect_annotation_metadata(
                     object_=include, annotation=AnswerChatgptRequestInclude, direction="write"
                 ),
+                "near": near,
             },
             headers={
                 "content-type": "application/json",
@@ -243,6 +248,7 @@ class AsyncRawChatgptClient:
         web_search: typing.Optional[bool] = OMIT,
         follow_ups: typing.Optional[typing.Sequence[str]] = OMIT,
         include: typing.Optional[AnswerChatgptRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[AnswerResponse]:
         """
@@ -271,6 +277,9 @@ class AsyncRawChatgptClient:
         include : typing.Optional[AnswerChatgptRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
 
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
+
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
 
@@ -292,6 +301,7 @@ class AsyncRawChatgptClient:
                 "include": convert_and_respect_annotation_metadata(
                     object_=include, annotation=AnswerChatgptRequestInclude, direction="write"
                 ),
+                "near": near,
             },
             headers={
                 "content-type": "application/json",

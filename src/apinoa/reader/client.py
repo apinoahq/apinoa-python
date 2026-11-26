@@ -42,10 +42,10 @@ class ReaderClient:
             The page's address, http or https.
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Extra fields, comma-separated: `html` (the page as fetched), `contentHtml` (its main content as HTML).
+            Extra fields, comma-separated: `html` (the page as fetched), `contentHtml` (its main content as HTML), `text` (its main content as plain text), `links` (the links in its main content), `images` (the images in its main content).
 
         max_chars : typing.Optional[int]
-            Cut `markdown` to at most this many characters, at a paragraph break where one is near; `truncated` is then true.
+            Cut `markdown` (and `text`) to at most this many characters, at a paragraph break where one is near; `truncated` is then true.
 
         country : typing.Optional[PageReaderRequestCountry]
             Where the page is read from.
@@ -108,10 +108,10 @@ class AsyncReaderClient:
             The page's address, http or https.
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Extra fields, comma-separated: `html` (the page as fetched), `contentHtml` (its main content as HTML).
+            Extra fields, comma-separated: `html` (the page as fetched), `contentHtml` (its main content as HTML), `text` (its main content as plain text), `links` (the links in its main content), `images` (the images in its main content).
 
         max_chars : typing.Optional[int]
-            Cut `markdown` to at most this many characters, at a paragraph break where one is near; `truncated` is then true.
+            Cut `markdown` (and `text`) to at most this many characters, at a paragraph break where one is near; `truncated` is then true.
 
         country : typing.Optional[PageReaderRequestCountry]
             Where the page is read from.

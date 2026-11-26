@@ -39,6 +39,7 @@ class RawMetaAiClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         include: typing.Optional[AnswerMetaAiRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[AnswerResponse]:
         """
@@ -54,6 +55,9 @@ class RawMetaAiClient:
 
         include : typing.Optional[AnswerMetaAiRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
+
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -72,6 +76,7 @@ class RawMetaAiClient:
                 "include": convert_and_respect_annotation_metadata(
                     object_=include, annotation=AnswerMetaAiRequestInclude, direction="write"
                 ),
+                "near": near,
             },
             headers={
                 "content-type": "application/json",
@@ -219,6 +224,7 @@ class AsyncRawMetaAiClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         include: typing.Optional[AnswerMetaAiRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[AnswerResponse]:
         """
@@ -234,6 +240,9 @@ class AsyncRawMetaAiClient:
 
         include : typing.Optional[AnswerMetaAiRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
+
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -252,6 +261,7 @@ class AsyncRawMetaAiClient:
                 "include": convert_and_respect_annotation_metadata(
                     object_=include, annotation=AnswerMetaAiRequestInclude, direction="write"
                 ),
+                "near": near,
             },
             headers={
                 "content-type": "application/json",

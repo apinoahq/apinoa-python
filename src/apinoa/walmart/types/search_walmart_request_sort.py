@@ -3,5 +3,5 @@
 import typing
 
 SearchWalmartRequestSort = typing.Union[
-    typing.Literal["best_match", "price_asc", "price_desc", "newly_listed", "best_seller"], typing.Any
+    typing.Literal["best_match", "price_asc", "price_desc", "newly_listed", "best_seller", "avg_review"], typing.Any
 ]

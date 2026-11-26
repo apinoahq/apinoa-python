@@ -487,9 +487,7 @@ client = Apinoa(
     environment=ApinoaEnvironment.DEFAULT,
 )
 
-client.aliexpress.product(
-    id="id",
-)
+client.aliexpress.product()
 
 ```
 </dd>
@@ -505,7 +503,7 @@ client.aliexpress.product(
 <dl>
 <dd>
 
-**id:** `str` — AliExpress product id, as carried by a search item.
+**currency:** `typing.Optional[str]` — Presentment currency.
     
 </dd>
 </dl>
@@ -513,7 +511,7 @@ client.aliexpress.product(
 <dl>
 <dd>
 
-**currency:** `typing.Optional[str]` — Presentment currency.
+**id:** `typing.Optional[str]` — AliExpress product id, as carried by a search item. Pass this or `url`.
     
 </dd>
 </dl>
@@ -538,6 +536,14 @@ client.aliexpress.product(
 <dd>
 
 **region:** `typing.Optional[str]` — Buyer country (ISO 3166-1 alpha-2).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — The product page's address instead of its id, e.g. https://www.aliexpress.com/item/1005006123456789.html (any AliExpress storefront; query string ignored). Pass this or `id`.
     
 </dd>
 </dl>
@@ -796,7 +802,7 @@ client.amazon.search(
 <dl>
 <dd>
 
-**sort:** `typing.Optional[SearchAmazonRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed` or `avg_review`. Defaults to `best_match`, Amazon's own relevance ordering.
+**sort:** `typing.Optional[SearchAmazonRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed`, `avg_review` or `best_seller`. Defaults to `best_match`, Amazon's own relevance ordering.
     
 </dd>
 </dl>
@@ -937,7 +943,7 @@ client.amazon.image_search(
 <dl>
 <dd>
 
-**sort:** `typing.Optional[ImageSearchAmazonRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed` or `avg_review`. Defaults to `best_match`, Amazon's own relevance ordering.
+**sort:** `typing.Optional[ImageSearchAmazonRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed`, `avg_review` or `best_seller`. Defaults to `best_match`, Amazon's own relevance ordering.
     
 </dd>
 </dl>
@@ -1074,7 +1080,7 @@ client.amazon.browse(
 <dl>
 <dd>
 
-**sort:** `typing.Optional[BrowseAmazonRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed` or `avg_review`. Defaults to `best_match`, Amazon's own relevance ordering.
+**sort:** `typing.Optional[BrowseAmazonRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed`, `avg_review` or `best_seller`. Defaults to `best_match`, Amazon's own relevance ordering.
     
 </dd>
 </dl>
@@ -2220,6 +2226,14 @@ client.chatgpt.answer(
 <dl>
 <dd>
 
+**near:** `typing.Optional[str]` — Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
     
 </dd>
@@ -2968,260 +2982,6 @@ client.facebook.profile()
 </dl>
 </details>
 
-<details><summary><code>client.facebook.<a href="src/apinoa/facebook/client.py">profiles</a>(...) -> AccountPageResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns `AccountPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/profiles
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```python
-from apinoa import Apinoa
-from apinoa.environment import ApinoaEnvironment
-
-client = Apinoa(
-    api_key="<value>",
-    environment=ApinoaEnvironment.DEFAULT,
-)
-
-client.facebook.profiles()
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**query:** `typing.Optional[str]` — An advertiser's name (or part of it): the Pages the Ad Library's search box suggests for it, each with the `id` that `ads?pageId=` takes.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**country:** `typing.Optional[str]` — Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**ad_type:** `typing.Optional[ProfilesFacebookRequestAdType]` — all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.facebook.<a href="src/apinoa/facebook/client.py">ads</a>(...) -> FacebookAdsPageResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns `FacebookAdsPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/facebook/ads
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```python
-from apinoa import Apinoa
-from apinoa.environment import ApinoaEnvironment
-
-client = Apinoa(
-    api_key="<value>",
-    environment=ApinoaEnvironment.DEFAULT,
-)
-
-client.facebook.ads()
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**query:** `typing.Optional[str]` — Keywords to search the Ad Library for.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**page_id:** `typing.Optional[str]` — Every ad one advertiser runs: its numeric Page id (`profile` returns it as `id`; `profiles?query=` finds it by name).
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**exact:** `typing.Optional[bool]` — query: match the exact phrase instead of any of its words.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**country:** `typing.Optional[str]` — Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**status:** `typing.Optional[AdsFacebookRequestStatus]` — active (default), inactive or all.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**ad_type:** `typing.Optional[AdsFacebookRequestAdType]` — all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**media_type:** `typing.Optional[AdsFacebookRequestMediaType]` — all (default), image, video, meme, image_and_meme, none.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**platforms:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Only ads that ran on these platforms.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**languages:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Only ads in these languages (ISO 639-1).
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**start_date:** `typing.Optional[str]` — Only ads that started running on or after this day (YYYY-MM-DD).
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**end_date:** `typing.Optional[str]` — Only ads that started running on or before this day (YYYY-MM-DD).
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**sort:** `typing.Optional[AdsFacebookRequestSort]` — relevance (default), or impressions (highest first; Facebook states impressions for political ads).
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 ## Gemini
 <details><summary><code>client.gemini.<a href="src/apinoa/gemini/client.py">answer</a>(...) -> AnswerResponse</code></summary>
 <dl>
@@ -3309,6 +3069,14 @@ client.gemini.answer(
 <dd>
 
 **include:** `typing.Optional[AnswerGeminiRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**near:** `typing.Optional[str]` — Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
     
 </dd>
 </dl>
@@ -3476,6 +3244,14 @@ client.google.search()
 <dl>
 <dd>
 
+**page:** `typing.Optional[int]` — The result page to start at (1-10): `page=3` reads page 3 alone, the way Google numbers its pages. With `pages` or `limit`, reading goes on from there (no further than page 10). Not with `cursor`, which already knows its page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **cursor:** `typing.Optional[str]` — The previous page's `cursor`. Pass it alone for the next page.
     
 </dd>
@@ -3597,7 +3373,7 @@ client.google.suggestions(
 <dl>
 <dd>
 
-Returns `PlacesPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/google/places
+Returns `PlacesPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/google/places
 </dd>
 </dl>
 </dd>
@@ -3684,7 +3460,7 @@ client.google.places()
 <dl>
 <dd>
 
-**limit:** `typing.Optional[int]` — Results wanted (default 20, at most 60). More than one page is charged per page.
+**limit:** `typing.Optional[int]` — Results wanted (default 20, at most 100). More than one page is charged per page.
     
 </dd>
 </dl>
@@ -3692,7 +3468,15 @@ client.google.places()
 <dl>
 <dd>
 
-**pages:** `typing.Optional[int]` — Pages of 20 places to read in one call (1-3), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
+**pages:** `typing.Optional[int]` — Pages of 20 places to read in one call (1-5), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page:** `typing.Optional[int]` — The page of 20 places to start at (1-5): `page=3` reads places 41-60 alone. With `pages` or `limit`, reading goes on from there (no further than page 5). Not with `cursor`, which already knows its page.
     
 </dd>
 </dl>
@@ -3788,6 +3572,427 @@ client.google.place()
 <dd>
 
 **lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## GoogleAds
+<details><summary><code>client.google_ads.<a href="src/apinoa/google_ads/client.py">advertisers</a>(...) -> AdvertiserPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AdvertiserPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-ads/advertisers
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_ads.advertisers()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — An advertiser's name or a website: the advertisers whose name matches, each with the `id` that `ads?advertiser=` takes, and the matching websites (for `ads?domain=`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — Only advertisers whose ads were shown in this country (ISO 3166-1 alpha-2). Default: anywhere.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Advertisers per page, 1–100. Up to 10 (the default) also lists matching websites; more pages through every advertiser that matches.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google_ads.<a href="src/apinoa/google_ads/client.py">advertiser</a>(...) -> AdvertiserResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Advertiser` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-ads/advertiser
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_ads.advertiser()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The advertiser id (AR…), or its Transparency Center URL.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The country to read the advertiser for (ISO 3166-1 alpha-2). Default: anywhere.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google_ads.<a href="src/apinoa/google_ads/client.py">ads</a>(...) -> AdPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AdPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google-ads/ads
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_ads.ads()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**advertiser:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Every ad these advertisers ran: up to 10 advertiser ids (AR…), comma-separated (`advertisers?query=` finds one by name).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**domain:** `typing.Optional[str]` — Every ad that leads to this website (nike.com), whichever advertiser ran it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — Only ads shown in this country (ISO 3166-1 alpha-2). Default: anywhere.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**platform:** `typing.Optional[AdsGoogleAdsRequestPlatform]` — Only ads shown on this Google platform: search, youtube, shopping, maps or play.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**format:** `typing.Optional[AdsGoogleAdsRequestFormat]` — Only ads of this format: text, image or video.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**start_date:** `typing.Optional[str]` — Only ads shown on or after this day (YYYY-MM-DD).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**end_date:** `typing.Optional[str]` — Only ads shown on or before this day (YYYY-MM-DD).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**political:** `typing.Optional[bool]` — Political ads only (the Transparency Center's political ads report): these state impressions, spend and regions.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**limit:** `typing.Optional[int]` — Ads per page, 1–100 (default 40).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.google_ads.<a href="src/apinoa/google_ads/client.py">ad</a>(...) -> AdResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Ad` in `data`. Costs 1 unit, up to 11 units. Reference: https://apinoa.com/docs/api-reference/google-ads/ad
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google_ads.ad()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The ad's id (CR…) with `advertiser`, or the ad's Transparency Center URL (…/advertiser/AR…/creative/CR…).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advertiser:** `typing.Optional[str]` — The advertiser id (AR…) that ran the ad; not needed with the ad's URL.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — The country to read the ad for: it decides which countries come back, and in the EU their impressions. Default: the URL's region, else anywhere.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**political:** `typing.Optional[bool]` — Read the ad from the political ads report (as `ads?political=true` lists it).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — content: also read each version's preview — the ad's text and pictures as it shows them, in `cards`. Best-effort: one unit per preview read; a preview that cannot be read is not billed and the ad is still returned.
     
 </dd>
 </dl>
@@ -4477,6 +4682,22 @@ client.google_shopping.search()
 <dl>
 <dd>
 
+**near:** `typing.Optional[str]` — Shop as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name. It must be in the market asked (`region`). A name that matches more than one place is refused with the candidates.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**uule:** `typing.Optional[str]` — Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **cursor:** `typing.Optional[str]` — Next page: pass the previous result's `cursor` alone.
     
 </dd>
@@ -4573,6 +4794,22 @@ client.google_shopping.product()
 <dd>
 
 **region:** `typing.Optional[ProductGoogleShoppingRequestRegion]` — The market, ISO 3166-1 alpha-2: US (default), GB, CA, AU. Sets the shops, prices and currency.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**near:** `typing.Optional[str]` — Shop as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name. It must be in the market asked (`region`). A name that matches more than one place is refused with the candidates.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**uule:** `typing.Optional[str]` — Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
     
 </dd>
 </dl>
@@ -6003,7 +6240,495 @@ client.linkedin.jobs()
 <dl>
 <dd>
 
+**posted_within:** `typing.Optional[JobsLinkedinRequestPostedWithin]` — Only jobs posted within the past day, week, or month.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## LinkedinAds
+<details><summary><code>client.linkedin_ads.<a href="src/apinoa/linkedin_ads/client.py">ads</a>(...) -> AdPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AdPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/linkedin-ads/ads
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.linkedin_ads.ads()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — Keywords to search the Ad Library for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advertiser:** `typing.Optional[str]` — Every ad one company runs, by its numeric LinkedIn company id (an ad's `advertiser.id`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**company:** `typing.Optional[str]` — Every ad one company runs: its vanity name (e.g. microsoft), its company URL, or its numeric LinkedIn company id.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advertiser_name:** `typing.Optional[str]` — Ads from advertisers whose name matches this one (LinkedIn matches loosely: "Microsoft" also finds "Microsoft Azure"). For one company exactly, use `advertiser` or `company`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payer:** `typing.Optional[str]` — Ads paid for by this payer, as an ad's `paidBy` names it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Only ads shown in these countries: ISO 3166-1 alpha-2 codes, comma-separated (e.g. DE,FR). Default: every country.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date_option:** `typing.Optional[AdsLinkedinAdsRequestDateOption]` — Only ads shown in this window: last-30-days, current-month, current-year or last-year. Default: the last twelve months.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**start_date:** `typing.Optional[str]` — With endDate: only ads shown from this day (YYYY-MM-DD), at most twelve months back.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**end_date:** `typing.Optional[str]` — With startDate: only ads shown up to this day (YYYY-MM-DD).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[AdsLinkedinAdsRequestSort]` — newest first (default) or oldest first.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.linkedin_ads.<a href="src/apinoa/linkedin_ads/client.py">ad</a>(...) -> AdResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Ad` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/linkedin-ads/ad
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.linkedin_ads.ad()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The ad's Ad Library id, or its Ad Library URL (linkedin.com/ad-library/detail/<id>).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## MetaAds
+<details><summary><code>client.meta_ads.<a href="src/apinoa/meta_ads/client.py">ads</a>(...) -> AdPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AdPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/meta-ads/ads
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.meta_ads.ads()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — Keywords to search the Ad Library for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advertiser:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — The advertiser's id, as `advertisers` returns it (or an ad's `advertiser.id`): every ad it runs. With `query`, up to 10 ids, comma-separated, narrow the keyword search to those advertisers.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**exact:** `typing.Optional[bool]` — query: match the exact phrase instead of any of its words.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**status:** `typing.Optional[AdsMetaAdsRequestStatus]` — active (default), inactive or all.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**ad_type:** `typing.Optional[AdsMetaAdsRequestAdType]` — all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**media_type:** `typing.Optional[AdsMetaAdsRequestMediaType]` — all (default), image, video, meme, image_and_meme, none.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**platforms:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Only ads that ran on these platforms.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**languages:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Only ads in these languages (ISO 639-1).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**start_date:** `typing.Optional[str]` — Only ads that started running on or after this day (YYYY-MM-DD).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**end_date:** `typing.Optional[str]` — Only ads that started running on or before this day (YYYY-MM-DD).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[AdsMetaAdsRequestSort]` — relevance (default), or impressions (highest first; Facebook states impressions for political ads).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.meta_ads.<a href="src/apinoa/meta_ads/client.py">advertisers</a>(...) -> AdvertiserPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AdvertiserPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/meta-ads/advertisers
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.meta_ads.advertisers(
+    query="query",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `str` — An advertiser's name (or part of it): the advertisers the Ad Library's search box suggests, each with the `id` that `ads?advertiser=` takes.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[str]` — Where the ads ran: an ISO 3166-1 alpha-2 code, or ALL (default).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**ad_type:** `typing.Optional[AdvertisersMetaAdsRequestAdType]` — all (default), or one special category: political (social issues, elections or politics), housing, employment, credit.
     
 </dd>
 </dl>
@@ -6094,6 +6819,14 @@ client.meta_ai.answer(
 <dd>
 
 **include:** `typing.Optional[AnswerMetaAiRequestInclude]` — `page`: also return the answer as a self-contained HTML page, in `page`.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**near:** `typing.Optional[str]` — Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
     
 </dd>
 </dl>
@@ -6955,7 +7688,7 @@ client.reader.page(
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Extra fields, comma-separated: `html` (the page as fetched), `contentHtml` (its main content as HTML).
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Extra fields, comma-separated: `html` (the page as fetched), `contentHtml` (its main content as HTML), `text` (its main content as plain text), `links` (the links in its main content), `images` (the images in its main content).
     
 </dd>
 </dl>
@@ -6963,7 +7696,7 @@ client.reader.page(
 <dl>
 <dd>
 
-**max_chars:** `typing.Optional[int]` — Cut `markdown` to at most this many characters, at a paragraph break where one is near; `truncated` is then true.
+**max_chars:** `typing.Optional[int]` — Cut `markdown` (and `text`) to at most this many characters, at a paragraph break where one is near; `truncated` is then true.
     
 </dd>
 </dl>
@@ -9835,6 +10568,292 @@ client.tiktok.media()
 </dl>
 </details>
 
+## TiktokAds
+<details><summary><code>client.tiktok_ads.<a href="src/apinoa/tiktok_ads/client.py">ads</a>(...) -> AdPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AdPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok-ads/ads
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.tiktok_ads.ads()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — Keywords to search the library's ads for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advertiser_name:** `typing.Optional[str]` — Every ad one advertiser ran: its name exactly as `advertisers` lists it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advertiser:** `typing.Optional[str]` — With `advertiserName`: the advertiser's id (`advertisers` and an ad's `advertiser.id` give it), which saves the name lookup. A comma list where the library lists several.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country:** `typing.Optional[AdsTiktokAdsRequestCountry]` — Where the ads were shown (required): one of AT, BE, BG, HR, CY, CZ, DK, EE, FI, FR, DE, GR, HU, IE, IT, LV, LT, LU, MT, NL, PL, PT, RO, SK, SI, ES, SE, IS, LI, NO, CH, GB, TR, BR — the EU, the EEA, Switzerland, the UK, Turkey and Brazil (not the US), which is what the library covers.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**start_date:** `typing.Optional[str]` — First day shown, YYYY-MM-DD (default: 30 days before `endDate`).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**end_date:** `typing.Optional[str]` — Last day shown, YYYY-MM-DD (default: today).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[AdsTiktokAdsRequestSort]` — Order: the day last shown (default), creation, or impressions.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**order:** `typing.Optional[AdsTiktokAdsRequestOrder]` — desc (default) or asc.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**status:** `typing.Optional[AdsTiktokAdsRequestStatus]` — all ads (default), or only those still running.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cursor:** `typing.Optional[str]` — Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.tiktok_ads.<a href="src/apinoa/tiktok_ads/client.py">ad</a>(...) -> AdResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `Ad` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok-ads/ad
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.tiktok_ads.ad()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `typing.Optional[str]` — The ad's id in the library, or its library URL (…/ads/detail/?ad_id=<id>).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.tiktok_ads.<a href="src/apinoa/tiktok_ads/client.py">advertisers</a>(...) -> AdvertiserPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `AdvertiserPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/tiktok-ads/advertisers
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.tiktok_ads.advertisers()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `typing.Optional[str]` — An advertiser's name, or part of it: the advertisers the library's search box suggests, each with the `name` and `id` that `ads?advertiserName=&advertiser=` take.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## TikTok Shop
 <details><summary><code>client.tiktokshop.<a href="src/apinoa/tiktokshop/client.py">search</a>(...) -> SearchResultResponse</code></summary>
 <dl>
@@ -10934,7 +11953,7 @@ client.walmart.search(
 <dl>
 <dd>
 
-**sort:** `typing.Optional[SearchWalmartRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed` or `best_seller`. Defaults to `best_match`, Walmart's own relevance ordering.
+**sort:** `typing.Optional[SearchWalmartRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed`, `best_seller` or `avg_review` (highest rated). Defaults to `best_match`, Walmart's own relevance ordering.
     
 </dd>
 </dl>
@@ -11071,7 +12090,7 @@ client.walmart.browse(
 <dl>
 <dd>
 
-**sort:** `typing.Optional[BrowseWalmartRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed` or `best_seller`. Defaults to `best_match`, Walmart's own relevance ordering.
+**sort:** `typing.Optional[BrowseWalmartRequestSort]` — Result ordering: `best_match`, `price_asc`, `price_desc`, `newly_listed`, `best_seller` or `avg_review` (highest rated). Defaults to `best_match`, Walmart's own relevance ordering.
     
 </dd>
 </dl>
@@ -12809,7 +13828,7 @@ client.youtube.post()
 <dl>
 <dd>
 
-**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit).
+**include:** `typing.Optional[typing.Union[str, typing.Sequence[str]]]` — Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit) · related (the videos YouTube recommends beside it, ext.related; no extra cost).
     
 </dd>
 </dl>
@@ -12826,6 +13845,14 @@ client.youtube.post()
 <dd>
 
 **generated:** `typing.Optional[bool]` — include=transcript only: true for the auto-generated (speech recognition) track, false for a track the creator supplied. Default: the creator's first.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**track_name:** `typing.Optional[str]` — include=transcript only: read the caption track of this name, when several share a language (a track's `ext.trackName` or `ext.name` in `ext.transcript.tracks`, case-insensitive).
     
 </dd>
 </dl>
@@ -12936,7 +13963,7 @@ client.youtube.posts()
 <dl>
 <dd>
 
-**type:** `typing.Optional[PostsYoutubeRequestType]` — username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included).
+**type:** `typing.Optional[PostsYoutubeRequestType]` — username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included) · hashtag: shorts (the hashtag's Shorts tab; omitted: all its videos).
     
 </dd>
 </dl>
@@ -12944,7 +13971,7 @@ client.youtube.posts()
 <dl>
 <dd>
 
-**sort:** `typing.Optional[PostsYoutubeRequestSort]` — query only: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort).
+**sort:** `typing.Optional[PostsYoutubeRequestSort]` — query: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort) · username/userId (videos, shorts or live): recent (default, newest first), top (the channel's Popular order) or oldest.
     
 </dd>
 </dl>
@@ -12984,7 +14011,7 @@ client.youtube.posts()
 <dl>
 <dd>
 
-**country:** `typing.Optional[str]` — query: the country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
+**country:** `typing.Optional[str]` — query, hashtag, relatedTo: the country YouTube ranks the results for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
     
 </dd>
 </dl>

@@ -41,6 +41,8 @@ class RawGoogleShoppingClient:
         facets: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         region: typing.Optional[SearchGoogleShoppingRequestRegion] = None,
+        near: typing.Optional[str] = None,
+        uule: typing.Optional[str] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[SearchResultResponse]:
@@ -67,6 +69,12 @@ class RawGoogleShoppingClient:
         region : typing.Optional[SearchGoogleShoppingRequestRegion]
             The market, ISO 3166-1 alpha-2: US (default), GB, CA, AU. Sets the shops, prices and currency.
 
+        near : typing.Optional[str]
+            Shop as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name. It must be in the market asked (`region`). A name that matches more than one place is refused with the candidates.
+
+        uule : typing.Optional[str]
+            Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+
         cursor : typing.Optional[str]
             Next page: pass the previous result's `cursor` alone.
 
@@ -88,6 +96,8 @@ class RawGoogleShoppingClient:
                 "facets": ",".join(map(str, facets)) if isinstance(facets, (list, tuple, set)) else facets,
                 "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
                 "region": region,
+                "near": near,
+                "uule": uule,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -228,6 +238,8 @@ class RawGoogleShoppingClient:
         url: typing.Optional[str] = None,
         include: typing.Optional[str] = None,
         region: typing.Optional[ProductGoogleShoppingRequestRegion] = None,
+        near: typing.Optional[str] = None,
+        uule: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[ProductResponse]:
         """
@@ -247,6 +259,12 @@ class RawGoogleShoppingClient:
         region : typing.Optional[ProductGoogleShoppingRequestRegion]
             The market, ISO 3166-1 alpha-2: US (default), GB, CA, AU. Sets the shops, prices and currency.
 
+        near : typing.Optional[str]
+            Shop as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name. It must be in the market asked (`region`). A name that matches more than one place is refused with the candidates.
+
+        uule : typing.Optional[str]
+            Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
 
@@ -263,6 +281,8 @@ class RawGoogleShoppingClient:
                 "url": url,
                 "include": include,
                 "region": region,
+                "near": near,
+                "uule": uule,
             },
             request_options=request_options,
         )
@@ -578,6 +598,8 @@ class AsyncRawGoogleShoppingClient:
         facets: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         region: typing.Optional[SearchGoogleShoppingRequestRegion] = None,
+        near: typing.Optional[str] = None,
+        uule: typing.Optional[str] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[SearchResultResponse]:
@@ -604,6 +626,12 @@ class AsyncRawGoogleShoppingClient:
         region : typing.Optional[SearchGoogleShoppingRequestRegion]
             The market, ISO 3166-1 alpha-2: US (default), GB, CA, AU. Sets the shops, prices and currency.
 
+        near : typing.Optional[str]
+            Shop as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name. It must be in the market asked (`region`). A name that matches more than one place is refused with the candidates.
+
+        uule : typing.Optional[str]
+            Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+
         cursor : typing.Optional[str]
             Next page: pass the previous result's `cursor` alone.
 
@@ -625,6 +653,8 @@ class AsyncRawGoogleShoppingClient:
                 "facets": ",".join(map(str, facets)) if isinstance(facets, (list, tuple, set)) else facets,
                 "include": ",".join(map(str, include)) if isinstance(include, (list, tuple, set)) else include,
                 "region": region,
+                "near": near,
+                "uule": uule,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -765,6 +795,8 @@ class AsyncRawGoogleShoppingClient:
         url: typing.Optional[str] = None,
         include: typing.Optional[str] = None,
         region: typing.Optional[ProductGoogleShoppingRequestRegion] = None,
+        near: typing.Optional[str] = None,
+        uule: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[ProductResponse]:
         """
@@ -784,6 +816,12 @@ class AsyncRawGoogleShoppingClient:
         region : typing.Optional[ProductGoogleShoppingRequestRegion]
             The market, ISO 3166-1 alpha-2: US (default), GB, CA, AU. Sets the shops, prices and currency.
 
+        near : typing.Optional[str]
+            Shop as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name. It must be in the market asked (`region`). A name that matches more than one place is refused with the candidates.
+
+        uule : typing.Optional[str]
+            Search as if from this place, as Google's own `uule` value (`w+…`). Instead of `near`.
+
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
 
@@ -800,6 +838,8 @@ class AsyncRawGoogleShoppingClient:
                 "url": url,
                 "include": include,
                 "region": region,
+                "near": near,
+                "uule": uule,
             },
             request_options=request_options,
         )

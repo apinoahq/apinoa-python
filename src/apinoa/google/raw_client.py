@@ -53,6 +53,7 @@ class RawGoogleClient:
         uule: typing.Optional[str] = None,
         limit: typing.Optional[int] = None,
         pages: typing.Optional[int] = None,
+        page: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[ResultsPageResponse]:
@@ -97,6 +98,9 @@ class RawGoogleClient:
         pages : typing.Optional[int]
             Result pages to read in one call (1-10), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
 
+        page : typing.Optional[int]
+            The result page to start at (1-10): `page=3` reads page 3 alone, the way Google numbers its pages. With `pages` or `limit`, reading goes on from there (no further than page 10). Not with `cursor`, which already knows its page.
+
         cursor : typing.Optional[str]
             The previous page's `cursor`. Pass it alone for the next page.
 
@@ -124,6 +128,7 @@ class RawGoogleClient:
                 "uule": uule,
                 "limit": limit,
                 "pages": pages,
+                "page": page,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -437,11 +442,12 @@ class RawGoogleClient:
         lang: typing.Optional[str] = None,
         limit: typing.Optional[int] = None,
         pages: typing.Optional[int] = None,
+        page: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[PlacesPageResponse]:
         """
-        Returns `PlacesPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/google/places
+        Returns `PlacesPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/google/places
 
         Parameters
         ----------
@@ -464,10 +470,13 @@ class RawGoogleClient:
             Interface language.
 
         limit : typing.Optional[int]
-            Results wanted (default 20, at most 60). More than one page is charged per page.
+            Results wanted (default 20, at most 100). More than one page is charged per page.
 
         pages : typing.Optional[int]
-            Pages of 20 places to read in one call (1-3), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
+            Pages of 20 places to read in one call (1-5), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
+
+        page : typing.Optional[int]
+            The page of 20 places to start at (1-5): `page=3` reads places 41-60 alone. With `pages` or `limit`, reading goes on from there (no further than page 5). Not with `cursor`, which already knows its page.
 
         cursor : typing.Optional[str]
             The previous page's `cursor`. Pass it alone for the next page.
@@ -492,6 +501,7 @@ class RawGoogleClient:
                 "lang": lang,
                 "limit": limit,
                 "pages": pages,
+                "page": page,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -814,6 +824,7 @@ class AsyncRawGoogleClient:
         uule: typing.Optional[str] = None,
         limit: typing.Optional[int] = None,
         pages: typing.Optional[int] = None,
+        page: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[ResultsPageResponse]:
@@ -858,6 +869,9 @@ class AsyncRawGoogleClient:
         pages : typing.Optional[int]
             Result pages to read in one call (1-10), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
 
+        page : typing.Optional[int]
+            The result page to start at (1-10): `page=3` reads page 3 alone, the way Google numbers its pages. With `pages` or `limit`, reading goes on from there (no further than page 10). Not with `cursor`, which already knows its page.
+
         cursor : typing.Optional[str]
             The previous page's `cursor`. Pass it alone for the next page.
 
@@ -885,6 +899,7 @@ class AsyncRawGoogleClient:
                 "uule": uule,
                 "limit": limit,
                 "pages": pages,
+                "page": page,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -1198,11 +1213,12 @@ class AsyncRawGoogleClient:
         lang: typing.Optional[str] = None,
         limit: typing.Optional[int] = None,
         pages: typing.Optional[int] = None,
+        page: typing.Optional[int] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[PlacesPageResponse]:
         """
-        Returns `PlacesPage` in `data`. Costs 1 unit, up to 3 units. Reference: https://apinoa.com/docs/api-reference/google/places
+        Returns `PlacesPage` in `data`. Costs 1 unit, up to 5 units. Reference: https://apinoa.com/docs/api-reference/google/places
 
         Parameters
         ----------
@@ -1225,10 +1241,13 @@ class AsyncRawGoogleClient:
             Interface language.
 
         limit : typing.Optional[int]
-            Results wanted (default 20, at most 60). More than one page is charged per page.
+            Results wanted (default 20, at most 100). More than one page is charged per page.
 
         pages : typing.Optional[int]
-            Pages of 20 places to read in one call (1-3), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
+            Pages of 20 places to read in one call (1-5), returned as one list. Instead of `limit`; each page past the first is charged as one more unit.
+
+        page : typing.Optional[int]
+            The page of 20 places to start at (1-5): `page=3` reads places 41-60 alone. With `pages` or `limit`, reading goes on from there (no further than page 5). Not with `cursor`, which already knows its page.
 
         cursor : typing.Optional[str]
             The previous page's `cursor`. Pass it alone for the next page.
@@ -1253,6 +1272,7 @@ class AsyncRawGoogleClient:
                 "lang": lang,
                 "limit": limit,
                 "pages": pages,
+                "page": page,
                 "cursor": cursor,
             },
             request_options=request_options,

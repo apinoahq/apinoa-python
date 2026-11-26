@@ -3,5 +3,5 @@
 import typing
 
 SearchAmazonRequestSort = typing.Union[
-    typing.Literal["best_match", "price_asc", "price_desc", "newly_listed", "avg_review"], typing.Any
+    typing.Literal["best_match", "price_asc", "price_desc", "newly_listed", "avg_review", "best_seller"], typing.Any
 ]

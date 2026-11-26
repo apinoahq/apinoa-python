@@ -28,6 +28,7 @@ if typing.TYPE_CHECKING:
     from .feedback.client import AsyncFeedbackClient, FeedbackClient
     from .gemini.client import AsyncGeminiClient, GeminiClient
     from .google.client import AsyncGoogleClient, GoogleClient
+    from .google_ads.client import AsyncGoogleAdsClient, GoogleAdsClient
     from .google_ai_mode.client import AsyncGoogleAiModeClient, GoogleAiModeClient
     from .google_aio.client import AsyncGoogleAioClient, GoogleAioClient
     from .google_play.client import AsyncGooglePlayClient, GooglePlayClient
@@ -36,7 +37,9 @@ if typing.TYPE_CHECKING:
     from .image_translate.client import AsyncImageTranslateClient, ImageTranslateClient
     from .instagram.client import AsyncInstagramClient, InstagramClient
     from .linkedin.client import AsyncLinkedinClient, LinkedinClient
+    from .linkedin_ads.client import AsyncLinkedinAdsClient, LinkedinAdsClient
     from .marketplaces.client import AsyncMarketplacesClient, MarketplacesClient
+    from .meta_ads.client import AsyncMetaAdsClient, MetaAdsClient
     from .meta_ai.client import AsyncMetaAiClient, MetaAiClient
     from .naver.client import AsyncNaverClient, NaverClient
     from .naver_ai_brief.client import AsyncNaverAiBriefClient, NaverAiBriefClient
@@ -50,6 +53,7 @@ if typing.TYPE_CHECKING:
     from .sogou.client import AsyncSogouClient, SogouClient
     from .threads.client import AsyncThreadsClient, ThreadsClient
     from .tiktok.client import AsyncTiktokClient, TiktokClient
+    from .tiktok_ads.client import AsyncTiktokAdsClient, TiktokAdsClient
     from .tiktokshop.client import AsyncTiktokshopClient, TiktokshopClient
     from .tripadvisor.client import AsyncTripadvisorClient, TripadvisorClient
     from .unlocker.client import AsyncUnlockerClient, UnlockerClient
@@ -165,6 +169,7 @@ class Apinoa:
         self._facebook: typing.Optional[FacebookClient] = None
         self._gemini: typing.Optional[GeminiClient] = None
         self._google: typing.Optional[GoogleClient] = None
+        self._google_ads: typing.Optional[GoogleAdsClient] = None
         self._google_ai_mode: typing.Optional[GoogleAiModeClient] = None
         self._google_aio: typing.Optional[GoogleAioClient] = None
         self._google_play: typing.Optional[GooglePlayClient] = None
@@ -172,6 +177,8 @@ class Apinoa:
         self._google_trends: typing.Optional[GoogleTrendsClient] = None
         self._instagram: typing.Optional[InstagramClient] = None
         self._linkedin: typing.Optional[LinkedinClient] = None
+        self._linkedin_ads: typing.Optional[LinkedinAdsClient] = None
+        self._meta_ads: typing.Optional[MetaAdsClient] = None
         self._meta_ai: typing.Optional[MetaAiClient] = None
         self._naver: typing.Optional[NaverClient] = None
         self._naver_ai_brief: typing.Optional[NaverAiBriefClient] = None
@@ -184,6 +191,7 @@ class Apinoa:
         self._sogou: typing.Optional[SogouClient] = None
         self._threads: typing.Optional[ThreadsClient] = None
         self._tiktok: typing.Optional[TiktokClient] = None
+        self._tiktok_ads: typing.Optional[TiktokAdsClient] = None
         self._tiktokshop: typing.Optional[TiktokshopClient] = None
         self._tripadvisor: typing.Optional[TripadvisorClient] = None
         self._unlocker: typing.Optional[UnlockerClient] = None
@@ -319,6 +327,14 @@ class Apinoa:
         return self._google
 
     @property
+    def google_ads(self):
+        if self._google_ads is None:
+            from .google_ads.client import GoogleAdsClient  # noqa: E402
+
+            self._google_ads = GoogleAdsClient(client_wrapper=self._client_wrapper)
+        return self._google_ads
+
+    @property
     def google_ai_mode(self):
         if self._google_ai_mode is None:
             from .google_ai_mode.client import GoogleAiModeClient  # noqa: E402
@@ -373,6 +389,22 @@ class Apinoa:
 
             self._linkedin = LinkedinClient(client_wrapper=self._client_wrapper)
         return self._linkedin
+
+    @property
+    def linkedin_ads(self):
+        if self._linkedin_ads is None:
+            from .linkedin_ads.client import LinkedinAdsClient  # noqa: E402
+
+            self._linkedin_ads = LinkedinAdsClient(client_wrapper=self._client_wrapper)
+        return self._linkedin_ads
+
+    @property
+    def meta_ads(self):
+        if self._meta_ads is None:
+            from .meta_ads.client import MetaAdsClient  # noqa: E402
+
+            self._meta_ads = MetaAdsClient(client_wrapper=self._client_wrapper)
+        return self._meta_ads
 
     @property
     def meta_ai(self):
@@ -469,6 +501,14 @@ class Apinoa:
 
             self._tiktok = TiktokClient(client_wrapper=self._client_wrapper)
         return self._tiktok
+
+    @property
+    def tiktok_ads(self):
+        if self._tiktok_ads is None:
+            from .tiktok_ads.client import TiktokAdsClient  # noqa: E402
+
+            self._tiktok_ads = TiktokAdsClient(client_wrapper=self._client_wrapper)
+        return self._tiktok_ads
 
     @property
     def tiktokshop(self):
@@ -695,6 +735,7 @@ class AsyncApinoa:
         self._facebook: typing.Optional[AsyncFacebookClient] = None
         self._gemini: typing.Optional[AsyncGeminiClient] = None
         self._google: typing.Optional[AsyncGoogleClient] = None
+        self._google_ads: typing.Optional[AsyncGoogleAdsClient] = None
         self._google_ai_mode: typing.Optional[AsyncGoogleAiModeClient] = None
         self._google_aio: typing.Optional[AsyncGoogleAioClient] = None
         self._google_play: typing.Optional[AsyncGooglePlayClient] = None
@@ -702,6 +743,8 @@ class AsyncApinoa:
         self._google_trends: typing.Optional[AsyncGoogleTrendsClient] = None
         self._instagram: typing.Optional[AsyncInstagramClient] = None
         self._linkedin: typing.Optional[AsyncLinkedinClient] = None
+        self._linkedin_ads: typing.Optional[AsyncLinkedinAdsClient] = None
+        self._meta_ads: typing.Optional[AsyncMetaAdsClient] = None
         self._meta_ai: typing.Optional[AsyncMetaAiClient] = None
         self._naver: typing.Optional[AsyncNaverClient] = None
         self._naver_ai_brief: typing.Optional[AsyncNaverAiBriefClient] = None
@@ -714,6 +757,7 @@ class AsyncApinoa:
         self._sogou: typing.Optional[AsyncSogouClient] = None
         self._threads: typing.Optional[AsyncThreadsClient] = None
         self._tiktok: typing.Optional[AsyncTiktokClient] = None
+        self._tiktok_ads: typing.Optional[AsyncTiktokAdsClient] = None
         self._tiktokshop: typing.Optional[AsyncTiktokshopClient] = None
         self._tripadvisor: typing.Optional[AsyncTripadvisorClient] = None
         self._unlocker: typing.Optional[AsyncUnlockerClient] = None
@@ -849,6 +893,14 @@ class AsyncApinoa:
         return self._google
 
     @property
+    def google_ads(self):
+        if self._google_ads is None:
+            from .google_ads.client import AsyncGoogleAdsClient  # noqa: E402
+
+            self._google_ads = AsyncGoogleAdsClient(client_wrapper=self._client_wrapper)
+        return self._google_ads
+
+    @property
     def google_ai_mode(self):
         if self._google_ai_mode is None:
             from .google_ai_mode.client import AsyncGoogleAiModeClient  # noqa: E402
@@ -903,6 +955,22 @@ class AsyncApinoa:
 
             self._linkedin = AsyncLinkedinClient(client_wrapper=self._client_wrapper)
         return self._linkedin
+
+    @property
+    def linkedin_ads(self):
+        if self._linkedin_ads is None:
+            from .linkedin_ads.client import AsyncLinkedinAdsClient  # noqa: E402
+
+            self._linkedin_ads = AsyncLinkedinAdsClient(client_wrapper=self._client_wrapper)
+        return self._linkedin_ads
+
+    @property
+    def meta_ads(self):
+        if self._meta_ads is None:
+            from .meta_ads.client import AsyncMetaAdsClient  # noqa: E402
+
+            self._meta_ads = AsyncMetaAdsClient(client_wrapper=self._client_wrapper)
+        return self._meta_ads
 
     @property
     def meta_ai(self):
@@ -999,6 +1067,14 @@ class AsyncApinoa:
 
             self._tiktok = AsyncTiktokClient(client_wrapper=self._client_wrapper)
         return self._tiktok
+
+    @property
+    def tiktok_ads(self):
+        if self._tiktok_ads is None:
+            from .tiktok_ads.client import AsyncTiktokAdsClient  # noqa: E402
+
+            self._tiktok_ads = AsyncTiktokAdsClient(client_wrapper=self._client_wrapper)
+        return self._tiktok_ads
 
     @property
     def tiktokshop(self):

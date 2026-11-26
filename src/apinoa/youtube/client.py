@@ -127,6 +127,7 @@ class YoutubeClient:
         include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         lang: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         generated: typing.Optional[bool] = None,
+        track_name: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
@@ -138,13 +139,16 @@ class YoutubeClient:
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit).
+            Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit) · related (the videos YouTube recommends beside it, ext.related; no extra cost).
 
         lang : typing.Optional[typing.Union[str, typing.Sequence[str]]]
             include=transcript only: preferred caption languages, in order (comma-separated): en, ko, pt-BR … `en` also matches en-US. Default: the video's own caption language.
 
         generated : typing.Optional[bool]
             include=transcript only: true for the auto-generated (speech recognition) track, false for a track the creator supplied. Default: the creator's first.
+
+        track_name : typing.Optional[str]
+            include=transcript only: read the caption track of this name, when several share a language (a track's `ext.trackName` or `ext.name` in `ext.transcript.tracks`, case-insensitive).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -164,7 +168,12 @@ class YoutubeClient:
         client.youtube.post()
         """
         _response = self._raw_client.post(
-            id=id, include=include, lang=lang, generated=generated, request_options=request_options
+            id=id,
+            include=include,
+            lang=lang,
+            generated=generated,
+            track_name=track_name,
+            request_options=request_options,
         )
         return _response.data
 
@@ -207,10 +216,10 @@ class YoutubeClient:
             A video id or URL; returns the videos YouTube recommends beside it.
 
         type : typing.Optional[PostsYoutubeRequestType]
-            username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included).
+            username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included) · hashtag: shorts (the hashtag's Shorts tab; omitted: all its videos).
 
         sort : typing.Optional[PostsYoutubeRequestSort]
-            query only: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort).
+            query: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort) · username/userId (videos, shorts or live): recent (default, newest first), top (the channel's Popular order) or oldest.
 
         period : typing.Optional[PostsYoutubeRequestPeriod]
             query only: uploaded within the last hour, today, this week, this month or this year (YouTube's upload-date filter; it has no other windows).
@@ -225,7 +234,7 @@ class YoutubeClient:
             Search the query exactly as typed: no "Showing results for" spelling correction (when YouTube does correct, page 1's ext.correctedQuery names what it searched).
 
         country : typing.Optional[str]
-            query: the country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
+            query, hashtag, relatedTo: the country YouTube ranks the results for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -505,6 +514,7 @@ class AsyncYoutubeClient:
         include: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         lang: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None,
         generated: typing.Optional[bool] = None,
+        track_name: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PostResponse:
         """
@@ -516,13 +526,16 @@ class AsyncYoutubeClient:
             Video id (11 chars), or the video URL (watch?v=…, youtu.be/…, /shorts/…).
 
         include : typing.Optional[typing.Union[str, typing.Sequence[str]]]
-            Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit).
+            Extra reads to attach under `ext`: transcript (the video's captions as timed segments, with every caption track it ships; +1 unit) · related (the videos YouTube recommends beside it, ext.related; no extra cost).
 
         lang : typing.Optional[typing.Union[str, typing.Sequence[str]]]
             include=transcript only: preferred caption languages, in order (comma-separated): en, ko, pt-BR … `en` also matches en-US. Default: the video's own caption language.
 
         generated : typing.Optional[bool]
             include=transcript only: true for the auto-generated (speech recognition) track, false for a track the creator supplied. Default: the creator's first.
+
+        track_name : typing.Optional[str]
+            include=transcript only: read the caption track of this name, when several share a language (a track's `ext.trackName` or `ext.name` in `ext.transcript.tracks`, case-insensitive).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -550,7 +563,12 @@ class AsyncYoutubeClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.post(
-            id=id, include=include, lang=lang, generated=generated, request_options=request_options
+            id=id,
+            include=include,
+            lang=lang,
+            generated=generated,
+            track_name=track_name,
+            request_options=request_options,
         )
         return _response.data
 
@@ -593,10 +611,10 @@ class AsyncYoutubeClient:
             A video id or URL; returns the videos YouTube recommends beside it.
 
         type : typing.Optional[PostsYoutubeRequestType]
-            username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included).
+            username/userId: which channel tab — videos (default), shorts, live or community · query: only videos, only shorts or only movies (omitted: YouTube's mixed results page, Shorts shelves included) · hashtag: shorts (the hashtag's Shorts tab; omitted: all its videos).
 
         sort : typing.Optional[PostsYoutubeRequestSort]
-            query only: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort).
+            query: relevance (default) or top (YouTube's Popularity order, which leans on views; not a strict view-count sort) · username/userId (videos, shorts or live): recent (default, newest first), top (the channel's Popular order) or oldest.
 
         period : typing.Optional[PostsYoutubeRequestPeriod]
             query only: uploaded within the last hour, today, this week, this month or this year (YouTube's upload-date filter; it has no other windows).
@@ -611,7 +629,7 @@ class AsyncYoutubeClient:
             Search the query exactly as typed: no "Showing results for" spelling correction (when YouTube does correct, page 1's ext.correctedQuery names what it searched).
 
         country : typing.Optional[str]
-            query: the country YouTube ranks the search for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
+            query, hashtag, relatedTo: the country YouTube ranks the results for (ISO alpha-2, default US; it biases the ranking, it does not restrict it) · default feed: the country whose trending feed to read (default US).
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.

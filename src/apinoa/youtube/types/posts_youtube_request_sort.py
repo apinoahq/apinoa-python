@@ -2,4 +2,4 @@
 
 import typing
 
-PostsYoutubeRequestSort = typing.Union[typing.Literal["relevance", "top"], typing.Any]
+PostsYoutubeRequestSort = typing.Union[typing.Literal["relevance", "top", "recent", "oldest"], typing.Any]

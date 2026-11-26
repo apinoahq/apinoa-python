@@ -35,6 +35,7 @@ class GeminiClient:
         conversation: typing.Optional[str] = OMIT,
         follow_ups: typing.Optional[typing.Sequence[str]] = OMIT,
         include: typing.Optional[AnswerGeminiRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
@@ -56,6 +57,9 @@ class GeminiClient:
 
         include : typing.Optional[AnswerGeminiRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
+
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -82,6 +86,7 @@ class GeminiClient:
             conversation=conversation,
             follow_ups=follow_ups,
             include=include,
+            near=near,
             request_options=request_options,
         )
         return _response.data
@@ -110,6 +115,7 @@ class AsyncGeminiClient:
         conversation: typing.Optional[str] = OMIT,
         follow_ups: typing.Optional[typing.Sequence[str]] = OMIT,
         include: typing.Optional[AnswerGeminiRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
@@ -131,6 +137,9 @@ class AsyncGeminiClient:
 
         include : typing.Optional[AnswerGeminiRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
+
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -165,6 +174,7 @@ class AsyncGeminiClient:
             conversation=conversation,
             follow_ups=follow_ups,
             include=include,
+            near=near,
             request_options=request_options,
         )
         return _response.data

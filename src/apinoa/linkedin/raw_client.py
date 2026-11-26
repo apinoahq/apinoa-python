@@ -27,6 +27,7 @@ from ..types.job_page_response import JobPageResponse
 from ..types.job_response import JobResponse
 from ..types.post_page_response import PostPageResponse
 from ..types.post_response import PostResponse
+from .types.jobs_linkedin_request_posted_within import JobsLinkedinRequestPostedWithin
 from pydantic import ValidationError
 
 
@@ -997,6 +998,7 @@ class RawLinkedinClient:
         query: typing.Optional[str] = None,
         company: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
+        posted_within: typing.Optional[JobsLinkedinRequestPostedWithin] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[JobPageResponse]:
@@ -1013,6 +1015,9 @@ class RawLinkedinClient:
 
         location : typing.Optional[str]
             Location name (e.g. United States). Default: worldwide.
+
+        posted_within : typing.Optional[JobsLinkedinRequestPostedWithin]
+            Only jobs posted within the past day, week, or month.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -1032,6 +1037,7 @@ class RawLinkedinClient:
                 "query": query,
                 "company": company,
                 "location": location,
+                "postedWithin": posted_within,
                 "cursor": cursor,
             },
             request_options=request_options,
@@ -2133,6 +2139,7 @@ class AsyncRawLinkedinClient:
         query: typing.Optional[str] = None,
         company: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
+        posted_within: typing.Optional[JobsLinkedinRequestPostedWithin] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[JobPageResponse]:
@@ -2149,6 +2156,9 @@ class AsyncRawLinkedinClient:
 
         location : typing.Optional[str]
             Location name (e.g. United States). Default: worldwide.
+
+        posted_within : typing.Optional[JobsLinkedinRequestPostedWithin]
+            Only jobs posted within the past day, week, or month.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -2168,6 +2178,7 @@ class AsyncRawLinkedinClient:
                 "query": query,
                 "company": company,
                 "location": location,
+                "postedWithin": posted_within,
                 "cursor": cursor,
             },
             request_options=request_options,

@@ -33,6 +33,7 @@ class MetaAiClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         include: typing.Optional[AnswerMetaAiRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
@@ -48,6 +49,9 @@ class MetaAiClient:
 
         include : typing.Optional[AnswerMetaAiRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
+
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -69,7 +73,7 @@ class MetaAiClient:
         )
         """
         _response = self._raw_client.answer(
-            prompt=prompt, country=country, include=include, request_options=request_options
+            prompt=prompt, country=country, include=include, near=near, request_options=request_options
         )
         return _response.data
 
@@ -95,6 +99,7 @@ class AsyncMetaAiClient:
         prompt: str,
         country: typing.Optional[str] = OMIT,
         include: typing.Optional[AnswerMetaAiRequestInclude] = OMIT,
+        near: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AnswerResponse:
         """
@@ -110,6 +115,9 @@ class AsyncMetaAiClient:
 
         include : typing.Optional[AnswerMetaAiRequestInclude]
             `page`: also return the answer as a self-contained HTML page, in `page`.
+
+        near : typing.Optional[str]
+            Ask as if from this place: a city, region or US state ("Austin, Texas", "Austin, TX", "Texas"), or Google's canonical location name ("Austin,Texas,United States"). A name that matches more than one place is refused with the candidates. The place must be in the country asked.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -139,6 +147,6 @@ class AsyncMetaAiClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.answer(
-            prompt=prompt, country=country, include=include, request_options=request_options
+            prompt=prompt, country=country, include=include, near=near, request_options=request_options
         )
         return _response.data

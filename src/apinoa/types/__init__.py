@@ -16,7 +16,26 @@ if typing.TYPE_CHECKING:
     from .account_ref_counts import AccountRefCounts
     from .account_ref_platform import AccountRefPlatform
     from .account_response import AccountResponse
+    from .ad import Ad
+    from .ad_advertiser_ref import AdAdvertiserRef
+    from .ad_card import AdCard
+    from .ad_country import AdCountry
+    from .ad_country_first_shown_at import AdCountryFirstShownAt
+    from .ad_country_last_shown_at import AdCountryLastShownAt
+    from .ad_first_shown_at import AdFirstShownAt
+    from .ad_image import AdImage
+    from .ad_last_shown_at import AdLastShownAt
+    from .ad_library import AdLibrary
+    from .ad_page import AdPage
+    from .ad_page_response import AdPageResponse
+    from .ad_range import AdRange
+    from .ad_response import AdResponse
+    from .ad_video import AdVideo
     from .address import Address
+    from .advertiser import Advertiser
+    from .advertiser_page import AdvertiserPage
+    from .advertiser_page_response import AdvertiserPageResponse
+    from .advertiser_response import AdvertiserResponse
     from .answer import Answer
     from .answer_engine import AnswerEngine
     from .answer_follow_ups_item import AnswerFollowUpsItem
@@ -109,17 +128,6 @@ if typing.TYPE_CHECKING:
     from .evidence import Evidence
     from .evidence_source import EvidenceSource
     from .ext import Ext
-    from .facebook_ad import FacebookAd
-    from .facebook_ad_card import FacebookAdCard
-    from .facebook_ad_disclaimer import FacebookAdDisclaimer
-    from .facebook_ad_image import FacebookAdImage
-    from .facebook_ad_page import FacebookAdPage
-    from .facebook_ad_platform import FacebookAdPlatform
-    from .facebook_ad_video import FacebookAdVideo
-    from .facebook_ads_page import FacebookAdsPage
-    from .facebook_ads_page_platform import FacebookAdsPagePlatform
-    from .facebook_ads_page_response import FacebookAdsPageResponse
-    from .facebook_range import FacebookRange
     from .facet import Facet
     from .facet_kind import FacetKind
     from .facet_value import FacetValue
@@ -204,6 +212,8 @@ if typing.TYPE_CHECKING:
     from .protection_plan import ProtectionPlan
     from .rating import Rating
     from .reader_page import ReaderPage
+    from .reader_page_images_item import ReaderPageImagesItem
+    from .reader_page_links_item import ReaderPageLinksItem
     from .reader_page_response import ReaderPageResponse
     from .redirect import Redirect
     from .related import Related
@@ -338,7 +348,26 @@ _dynamic_imports: typing.Dict[str, str] = {
     "AccountRefCounts": ".account_ref_counts",
     "AccountRefPlatform": ".account_ref_platform",
     "AccountResponse": ".account_response",
+    "Ad": ".ad",
+    "AdAdvertiserRef": ".ad_advertiser_ref",
+    "AdCard": ".ad_card",
+    "AdCountry": ".ad_country",
+    "AdCountryFirstShownAt": ".ad_country_first_shown_at",
+    "AdCountryLastShownAt": ".ad_country_last_shown_at",
+    "AdFirstShownAt": ".ad_first_shown_at",
+    "AdImage": ".ad_image",
+    "AdLastShownAt": ".ad_last_shown_at",
+    "AdLibrary": ".ad_library",
+    "AdPage": ".ad_page",
+    "AdPageResponse": ".ad_page_response",
+    "AdRange": ".ad_range",
+    "AdResponse": ".ad_response",
+    "AdVideo": ".ad_video",
     "Address": ".address",
+    "Advertiser": ".advertiser",
+    "AdvertiserPage": ".advertiser_page",
+    "AdvertiserPageResponse": ".advertiser_page_response",
+    "AdvertiserResponse": ".advertiser_response",
     "Answer": ".answer",
     "AnswerEngine": ".answer_engine",
     "AnswerFollowUpsItem": ".answer_follow_ups_item",
@@ -429,17 +458,6 @@ _dynamic_imports: typing.Dict[str, str] = {
     "Evidence": ".evidence",
     "EvidenceSource": ".evidence_source",
     "Ext": ".ext",
-    "FacebookAd": ".facebook_ad",
-    "FacebookAdCard": ".facebook_ad_card",
-    "FacebookAdDisclaimer": ".facebook_ad_disclaimer",
-    "FacebookAdImage": ".facebook_ad_image",
-    "FacebookAdPage": ".facebook_ad_page",
-    "FacebookAdPlatform": ".facebook_ad_platform",
-    "FacebookAdVideo": ".facebook_ad_video",
-    "FacebookAdsPage": ".facebook_ads_page",
-    "FacebookAdsPagePlatform": ".facebook_ads_page_platform",
-    "FacebookAdsPageResponse": ".facebook_ads_page_response",
-    "FacebookRange": ".facebook_range",
     "Facet": ".facet",
     "FacetKind": ".facet_kind",
     "FacetValue": ".facet_value",
@@ -524,6 +542,8 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ProtectionPlan": ".protection_plan",
     "Rating": ".rating",
     "ReaderPage": ".reader_page",
+    "ReaderPageImagesItem": ".reader_page_images_item",
+    "ReaderPageLinksItem": ".reader_page_links_item",
     "ReaderPageResponse": ".reader_page_response",
     "Redirect": ".redirect",
     "Related": ".related",
@@ -682,7 +702,26 @@ __all__ = [
     "AccountRefCounts",
     "AccountRefPlatform",
     "AccountResponse",
+    "Ad",
+    "AdAdvertiserRef",
+    "AdCard",
+    "AdCountry",
+    "AdCountryFirstShownAt",
+    "AdCountryLastShownAt",
+    "AdFirstShownAt",
+    "AdImage",
+    "AdLastShownAt",
+    "AdLibrary",
+    "AdPage",
+    "AdPageResponse",
+    "AdRange",
+    "AdResponse",
+    "AdVideo",
     "Address",
+    "Advertiser",
+    "AdvertiserPage",
+    "AdvertiserPageResponse",
+    "AdvertiserResponse",
     "Answer",
     "AnswerEngine",
     "AnswerFollowUpsItem",
@@ -773,17 +812,6 @@ __all__ = [
     "Evidence",
     "EvidenceSource",
     "Ext",
-    "FacebookAd",
-    "FacebookAdCard",
-    "FacebookAdDisclaimer",
-    "FacebookAdImage",
-    "FacebookAdPage",
-    "FacebookAdPlatform",
-    "FacebookAdVideo",
-    "FacebookAdsPage",
-    "FacebookAdsPagePlatform",
-    "FacebookAdsPageResponse",
-    "FacebookRange",
     "Facet",
     "FacetKind",
     "FacetValue",
@@ -868,6 +896,8 @@ __all__ = [
     "ProtectionPlan",
     "Rating",
     "ReaderPage",
+    "ReaderPageImagesItem",
+    "ReaderPageLinksItem",
     "ReaderPageResponse",
     "Redirect",
     "Related",

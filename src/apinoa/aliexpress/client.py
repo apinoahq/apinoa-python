@@ -279,11 +279,12 @@ class AliexpressClient:
     def product(
         self,
         *,
-        id: str,
         currency: typing.Optional[str] = None,
+        id: typing.Optional[str] = None,
         include: typing.Optional[ProductAliexpressRequestInclude] = None,
         language: typing.Optional[str] = None,
         region: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> ProductResponse:
         """
@@ -291,11 +292,11 @@ class AliexpressClient:
 
         Parameters
         ----------
-        id : str
-            AliExpress product id, as carried by a search item.
-
         currency : typing.Optional[str]
             Presentment currency.
+
+        id : typing.Optional[str]
+            AliExpress product id, as carried by a search item. Pass this or `url`.
 
         include : typing.Optional[ProductAliexpressRequestInclude]
             include=shipping adds `delivery`: the cheapest shipping cost and delivery days to `region` for the product's listed variant. Costs one more unit.
@@ -305,6 +306,9 @@ class AliexpressClient:
 
         region : typing.Optional[str]
             Buyer country (ISO 3166-1 alpha-2).
+
+        url : typing.Optional[str]
+            The product page's address instead of its id, e.g. https://www.aliexpress.com/item/1005006123456789.html (any AliExpress storefront; query string ignored). Pass this or `id`.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -321,12 +325,16 @@ class AliexpressClient:
         client = Apinoa(
             api_key="YOUR_API_KEY",
         )
-        client.aliexpress.product(
-            id="id",
-        )
+        client.aliexpress.product()
         """
         _response = self._raw_client.product(
-            id=id, currency=currency, include=include, language=language, region=region, request_options=request_options
+            currency=currency,
+            id=id,
+            include=include,
+            language=language,
+            region=region,
+            url=url,
+            request_options=request_options,
         )
         return _response.data
 
@@ -679,11 +687,12 @@ class AsyncAliexpressClient:
     async def product(
         self,
         *,
-        id: str,
         currency: typing.Optional[str] = None,
+        id: typing.Optional[str] = None,
         include: typing.Optional[ProductAliexpressRequestInclude] = None,
         language: typing.Optional[str] = None,
         region: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> ProductResponse:
         """
@@ -691,11 +700,11 @@ class AsyncAliexpressClient:
 
         Parameters
         ----------
-        id : str
-            AliExpress product id, as carried by a search item.
-
         currency : typing.Optional[str]
             Presentment currency.
+
+        id : typing.Optional[str]
+            AliExpress product id, as carried by a search item. Pass this or `url`.
 
         include : typing.Optional[ProductAliexpressRequestInclude]
             include=shipping adds `delivery`: the cheapest shipping cost and delivery days to `region` for the product's listed variant. Costs one more unit.
@@ -705,6 +714,9 @@ class AsyncAliexpressClient:
 
         region : typing.Optional[str]
             Buyer country (ISO 3166-1 alpha-2).
+
+        url : typing.Optional[str]
+            The product page's address instead of its id, e.g. https://www.aliexpress.com/item/1005006123456789.html (any AliExpress storefront; query string ignored). Pass this or `id`.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -726,15 +738,19 @@ class AsyncAliexpressClient:
 
 
         async def main() -> None:
-            await client.aliexpress.product(
-                id="id",
-            )
+            await client.aliexpress.product()
 
 
         asyncio.run(main())
         """
         _response = await self._raw_client.product(
-            id=id, currency=currency, include=include, language=language, region=region, request_options=request_options
+            currency=currency,
+            id=id,
+            include=include,
+            language=language,
+            region=region,
+            url=url,
+            request_options=request_options,
         )
         return _response.data
 

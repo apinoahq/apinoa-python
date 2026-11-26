@@ -777,11 +777,12 @@ class RawAliexpressClient:
     def product(
         self,
         *,
-        id: str,
         currency: typing.Optional[str] = None,
+        id: typing.Optional[str] = None,
         include: typing.Optional[ProductAliexpressRequestInclude] = None,
         language: typing.Optional[str] = None,
         region: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[ProductResponse]:
         """
@@ -789,11 +790,11 @@ class RawAliexpressClient:
 
         Parameters
         ----------
-        id : str
-            AliExpress product id, as carried by a search item.
-
         currency : typing.Optional[str]
             Presentment currency.
+
+        id : typing.Optional[str]
+            AliExpress product id, as carried by a search item. Pass this or `url`.
 
         include : typing.Optional[ProductAliexpressRequestInclude]
             include=shipping adds `delivery`: the cheapest shipping cost and delivery days to `region` for the product's listed variant. Costs one more unit.
@@ -803,6 +804,9 @@ class RawAliexpressClient:
 
         region : typing.Optional[str]
             Buyer country (ISO 3166-1 alpha-2).
+
+        url : typing.Optional[str]
+            The product page's address instead of its id, e.g. https://www.aliexpress.com/item/1005006123456789.html (any AliExpress storefront; query string ignored). Pass this or `id`.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -821,6 +825,7 @@ class RawAliexpressClient:
                 "include": include,
                 "language": language,
                 "region": region,
+                "url": url,
             },
             request_options=request_options,
         )
@@ -1877,11 +1882,12 @@ class AsyncRawAliexpressClient:
     async def product(
         self,
         *,
-        id: str,
         currency: typing.Optional[str] = None,
+        id: typing.Optional[str] = None,
         include: typing.Optional[ProductAliexpressRequestInclude] = None,
         language: typing.Optional[str] = None,
         region: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[ProductResponse]:
         """
@@ -1889,11 +1895,11 @@ class AsyncRawAliexpressClient:
 
         Parameters
         ----------
-        id : str
-            AliExpress product id, as carried by a search item.
-
         currency : typing.Optional[str]
             Presentment currency.
+
+        id : typing.Optional[str]
+            AliExpress product id, as carried by a search item. Pass this or `url`.
 
         include : typing.Optional[ProductAliexpressRequestInclude]
             include=shipping adds `delivery`: the cheapest shipping cost and delivery days to `region` for the product's listed variant. Costs one more unit.
@@ -1903,6 +1909,9 @@ class AsyncRawAliexpressClient:
 
         region : typing.Optional[str]
             Buyer country (ISO 3166-1 alpha-2).
+
+        url : typing.Optional[str]
+            The product page's address instead of its id, e.g. https://www.aliexpress.com/item/1005006123456789.html (any AliExpress storefront; query string ignored). Pass this or `id`.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1921,6 +1930,7 @@ class AsyncRawAliexpressClient:
                 "include": include,
                 "language": language,
                 "region": region,
+                "url": url,
             },
             request_options=request_options,
         )

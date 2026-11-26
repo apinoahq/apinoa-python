@@ -12,6 +12,7 @@ from ..types.job_response import JobResponse
 from ..types.post_page_response import PostPageResponse
 from ..types.post_response import PostResponse
 from .raw_client import AsyncRawLinkedinClient, RawLinkedinClient
+from .types.jobs_linkedin_request_posted_within import JobsLinkedinRequestPostedWithin
 
 
 class LinkedinClient:
@@ -241,6 +242,7 @@ class LinkedinClient:
         query: typing.Optional[str] = None,
         company: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
+        posted_within: typing.Optional[JobsLinkedinRequestPostedWithin] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> JobPageResponse:
@@ -257,6 +259,9 @@ class LinkedinClient:
 
         location : typing.Optional[str]
             Location name (e.g. United States). Default: worldwide.
+
+        posted_within : typing.Optional[JobsLinkedinRequestPostedWithin]
+            Only jobs posted within the past day, week, or month.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -279,7 +284,12 @@ class LinkedinClient:
         client.linkedin.jobs()
         """
         _response = self._raw_client.jobs(
-            query=query, company=company, location=location, cursor=cursor, request_options=request_options
+            query=query,
+            company=company,
+            location=location,
+            posted_within=posted_within,
+            cursor=cursor,
+            request_options=request_options,
         )
         return _response.data
 
@@ -559,6 +569,7 @@ class AsyncLinkedinClient:
         query: typing.Optional[str] = None,
         company: typing.Optional[str] = None,
         location: typing.Optional[str] = None,
+        posted_within: typing.Optional[JobsLinkedinRequestPostedWithin] = None,
         cursor: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> JobPageResponse:
@@ -575,6 +586,9 @@ class AsyncLinkedinClient:
 
         location : typing.Optional[str]
             Location name (e.g. United States). Default: worldwide.
+
+        posted_within : typing.Optional[JobsLinkedinRequestPostedWithin]
+            Only jobs posted within the past day, week, or month.
 
         cursor : typing.Optional[str]
             Opaque cursor from the previous page's `cursor`. Pass it alone for the next page.
@@ -605,6 +619,11 @@ class AsyncLinkedinClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.jobs(
-            query=query, company=company, location=location, cursor=cursor, request_options=request_options
+            query=query,
+            company=company,
+            location=location,
+            posted_within=posted_within,
+            cursor=cursor,
+            request_options=request_options,
         )
         return _response.data

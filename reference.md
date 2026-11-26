@@ -3591,6 +3591,101 @@ client.google.place()
 </dl>
 </details>
 
+<details><summary><code>client.google.<a href="src/apinoa/google/client.py">reviews</a>(...) -> PlaceReviewsPageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns `PlaceReviewsPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google/reviews
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from apinoa import Apinoa
+from apinoa.environment import ApinoaEnvironment
+
+client = Apinoa(
+    api_key="<value>",
+    environment=ApinoaEnvironment.DEFAULT,
+)
+
+client.google.reviews()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**place:** `typing.Optional[str]` — The place's id, as `places` returns it.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**url:** `typing.Optional[str]` — A Google Maps place URL.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `typing.Optional[ReviewsGoogleRequestSort]` — Review order: most relevant (default), newest, highest or lowest rated. Each order gives its own five reviews.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lang:** `typing.Optional[str]` — Interface language.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## GoogleAds
 <details><summary><code>client.google_ads.<a href="src/apinoa/google_ads/client.py">advertisers</a>(...) -> AdvertiserPageResponse</code></summary>
 <dl>

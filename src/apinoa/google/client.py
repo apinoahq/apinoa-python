@@ -4,12 +4,14 @@ import typing
 
 from ..core.client_wrapper import AsyncClientWrapper, SyncClientWrapper
 from ..core.request_options import RequestOptions
+from ..types.place_reviews_page_response import PlaceReviewsPageResponse
 from ..types.places_page_response import PlacesPageResponse
 from ..types.results_page_response import ResultsPageResponse
 from ..types.serp_place_response import SerpPlaceResponse
 from ..types.suggestions_response import SuggestionsResponse
 from .raw_client import AsyncRawGoogleClient, RawGoogleClient
 from .types.places_google_request_country import PlacesGoogleRequestCountry
+from .types.reviews_google_request_sort import ReviewsGoogleRequestSort
 from .types.search_google_request_country import SearchGoogleRequestCountry
 from .types.search_google_request_device import SearchGoogleRequestDevice
 from .types.search_google_request_safe import SearchGoogleRequestSafe
@@ -301,6 +303,54 @@ class GoogleClient:
         client.google.place()
         """
         _response = self._raw_client.place(id=id, url=url, lang=lang, request_options=request_options)
+        return _response.data
+
+    def reviews(
+        self,
+        *,
+        place: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
+        sort: typing.Optional[ReviewsGoogleRequestSort] = None,
+        lang: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> PlaceReviewsPageResponse:
+        """
+        Returns `PlaceReviewsPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google/reviews
+
+        Parameters
+        ----------
+        place : typing.Optional[str]
+            The place's id, as `places` returns it.
+
+        url : typing.Optional[str]
+            A Google Maps place URL.
+
+        sort : typing.Optional[ReviewsGoogleRequestSort]
+            Review order: most relevant (default), newest, highest or lowest rated. Each order gives its own five reviews.
+
+        lang : typing.Optional[str]
+            Interface language.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        PlaceReviewsPageResponse
+            `PlaceReviewsPage`
+
+        Examples
+        --------
+        from apinoa import Apinoa
+
+        client = Apinoa(
+            api_key="YOUR_API_KEY",
+        )
+        client.google.reviews()
+        """
+        _response = self._raw_client.reviews(
+            place=place, url=url, sort=sort, lang=lang, request_options=request_options
+        )
         return _response.data
 
 
@@ -619,4 +669,60 @@ class AsyncGoogleClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.place(id=id, url=url, lang=lang, request_options=request_options)
+        return _response.data
+
+    async def reviews(
+        self,
+        *,
+        place: typing.Optional[str] = None,
+        url: typing.Optional[str] = None,
+        sort: typing.Optional[ReviewsGoogleRequestSort] = None,
+        lang: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> PlaceReviewsPageResponse:
+        """
+        Returns `PlaceReviewsPage` in `data`. Costs 1 unit. Reference: https://apinoa.com/docs/api-reference/google/reviews
+
+        Parameters
+        ----------
+        place : typing.Optional[str]
+            The place's id, as `places` returns it.
+
+        url : typing.Optional[str]
+            A Google Maps place URL.
+
+        sort : typing.Optional[ReviewsGoogleRequestSort]
+            Review order: most relevant (default), newest, highest or lowest rated. Each order gives its own five reviews.
+
+        lang : typing.Optional[str]
+            Interface language.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        PlaceReviewsPageResponse
+            `PlaceReviewsPage`
+
+        Examples
+        --------
+        import asyncio
+
+        from apinoa import AsyncApinoa
+
+        client = AsyncApinoa(
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.google.reviews()
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.reviews(
+            place=place, url=url, sort=sort, lang=lang, request_options=request_options
+        )
         return _response.data

@@ -7,6 +7,7 @@ from importlib import import_module
 
 if typing.TYPE_CHECKING:
     from .places_google_request_country import PlacesGoogleRequestCountry
+    from .reviews_google_request_sort import ReviewsGoogleRequestSort
     from .search_google_request_country import SearchGoogleRequestCountry
     from .search_google_request_device import SearchGoogleRequestDevice
     from .search_google_request_safe import SearchGoogleRequestSafe
@@ -15,6 +16,7 @@ if typing.TYPE_CHECKING:
     from .suggestions_google_request_country import SuggestionsGoogleRequestCountry
 _dynamic_imports: typing.Dict[str, str] = {
     "PlacesGoogleRequestCountry": ".places_google_request_country",
+    "ReviewsGoogleRequestSort": ".reviews_google_request_sort",
     "SearchGoogleRequestCountry": ".search_google_request_country",
     "SearchGoogleRequestDevice": ".search_google_request_device",
     "SearchGoogleRequestSafe": ".search_google_request_safe",
@@ -47,6 +49,7 @@ def __dir__():
 
 __all__ = [
     "PlacesGoogleRequestCountry",
+    "ReviewsGoogleRequestSort",
     "SearchGoogleRequestCountry",
     "SearchGoogleRequestDevice",
     "SearchGoogleRequestSafe",

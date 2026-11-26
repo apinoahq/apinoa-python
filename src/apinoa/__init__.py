@@ -460,6 +460,7 @@ if typing.TYPE_CHECKING:
     from .gemini import AnswerGeminiRequestInclude, AnswerGeminiRequestIncludeZeroItem
     from .google import (
         PlacesGoogleRequestCountry,
+        ReviewsGoogleRequestSort,
         SearchGoogleRequestCountry,
         SearchGoogleRequestDevice,
         SearchGoogleRequestSafe,
@@ -943,6 +944,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ReviewsGooglePlayRequestCountry": ".google_play",
     "ReviewsGooglePlayRequestDevice": ".google_play",
     "ReviewsGooglePlayRequestSort": ".google_play",
+    "ReviewsGoogleRequestSort": ".google",
     "ReviewsNaverRequestSort": ".naver",
     "ReviewsTripadvisorRequestSort": ".tripadvisor",
     "ReviewsYandexRequestSort": ".yandex",
@@ -1538,6 +1540,7 @@ __all__ = [
     "ReviewsGooglePlayRequestCountry",
     "ReviewsGooglePlayRequestDevice",
     "ReviewsGooglePlayRequestSort",
+    "ReviewsGoogleRequestSort",
     "ReviewsNaverRequestSort",
     "ReviewsTripadvisorRequestSort",
     "ReviewsYandexRequestSort",

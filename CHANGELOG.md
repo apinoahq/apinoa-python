@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.32
+
+Follows the API as of 2026-11-26.
+
 ## 0.1.31
 
 Follows the API as of 2026-11-26:

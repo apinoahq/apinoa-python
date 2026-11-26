@@ -3,5 +3,6 @@
 import typing
 
 CommentPlatform = typing.Union[
-    typing.Literal["reddit", "linkedin", "tiktok", "youtube", "instagram", "threads", "x", "facebook"], typing.Any
+    typing.Literal["reddit", "linkedin", "tiktok", "youtube", "instagram", "threads", "x", "facebook", "xiaohongshu"],
+    typing.Any,
 ]
